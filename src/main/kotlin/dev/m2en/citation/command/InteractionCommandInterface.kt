@@ -4,7 +4,6 @@ import dev.kord.core.behavior.interaction.response.DeferredEphemeralMessageInter
 import dev.kord.core.entity.interaction.GuildChatInputCommandInteraction
 
 interface InteractionCommandInterface {
-
     suspend fun onCommand(
         interaction: GuildChatInputCommandInteraction,
         responseBehavior: DeferredEphemeralMessageInteractionResponseBehavior
