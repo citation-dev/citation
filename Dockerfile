@@ -1,4 +1,4 @@
-FROM openjdk:17-oracle as Build
+FROM openjdk:18-oracle as Build
 
 COPY . .
 
