@@ -17,6 +17,7 @@ object RegisterCommand: MessageCommandInterface {
         val member = message.author?.id?.let { message.getGuild().getMemberOrNull(it) } ?: return
         if(member.getPermissions().contains(Permission.ManageGuild)) {
             message.reply { content = "> **エラー:** 権限が足りません。このコマンドを実行するには **サーバーの管理権限(`ManageGuild`)** が必要です。" }
+            return
         }
 
         val kord = message.kord
