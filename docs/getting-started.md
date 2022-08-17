@@ -26,7 +26,7 @@ docker pull ghcr.io/m2en/citation:<任意のバージョン>
 2. `New Application`をクリックする
 3. `name` にBotの名前を入力する
 4. 次に `Bots` タブへ移動し、 `New bot` をクリックしBotを作成する
-5. `PRESENCE INTENT`, `SERVER MEMBERS INTENT`, `MESSAGE CONTENT INTENT` をそれぞれONにする
+5. ~~`PRESENCE INTENT`, `SERVER MEMBERS INTENT`~~ `MESSAGE CONTENT INTENT` をそれぞれONにする
 6. `Reset token` からトークンを取得する
 7. `OAuth2` タブに移動し、 `URL Generator` をクリックする
 8. `SCOPES` から以下のScopeを選択する
