@@ -31,9 +31,6 @@ suspend fun main() {
         println("citation is ready!")
     }
 
-    /**
-     * Kordが接続しているクライアントユーザー(Bot)が参加しているギルドに対してメッセージが送信されたら発火するイベント
-     */
     kord.on<MessageCreateEvent> {
         if(message.author?.isBot == true || message.getGuildOrNull() == null) return@on
         when(message.content) {
@@ -45,9 +42,6 @@ suspend fun main() {
         }
     }
 
-    /**
-     * Kordが接続しているクライアントユーザー(Bot)に対してインタラクションが発行されたら動作するイベント
-     */
     kord.on<GuildChatInputCommandInteractionCreateEvent> {
         val responseBehavior = interaction.deferEphemeralResponse()
 
