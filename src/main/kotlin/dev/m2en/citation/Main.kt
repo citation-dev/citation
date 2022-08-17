@@ -40,6 +40,8 @@ suspend fun main() {
             "!register" -> {
                 messageMap["!register"]?.onCommand(message)
             }
+
+            else -> onQuote()
         }
     }
 
