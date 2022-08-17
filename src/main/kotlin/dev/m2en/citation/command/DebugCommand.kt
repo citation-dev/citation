@@ -12,7 +12,7 @@ object DebugCommand: InteractionCommandInterface {
     override suspend fun onCommand(interaction: GuildChatInputCommandInteraction, responseBehavior: DeferredEphemeralMessageInteractionResponseBehavior) {
         try {
             val command = interaction.command
-            val recruit = interaction.channel.getMessage(Snowflake(command.strings["target-message"]!!))
+            val recruit = interaction.channel.getMessage(Snowflake(command.strings["target"]!!))
 
             responseBehavior.respond { embeds = MutableList(1) { buildEmbed(recruit.content) } }
             kordLogger.info("デバック: ${interaction.user.tag} が メッセージID:${command.strings["target-message"]} をデバックしました")
