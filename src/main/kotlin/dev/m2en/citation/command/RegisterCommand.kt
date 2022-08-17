@@ -43,7 +43,7 @@ object RegisterCommand: MessageCommandInterface {
             "ヘルプを表示します"
         )
 
-        // /debug <messageId> [channelId]
+        // /debug <messageId>
         kord.createGuildChatInputCommand(
             Snowflake(dotenv.get("GUILD_ID")),
             "debug",
