@@ -3,6 +3,7 @@ FROM openjdk:17-oracle as Build
 COPY . .
 
 RUN chmod +x ./gradlew
+RUN microdnf install findutils
 RUN ./gradlew --no-daemon shadowJar
 
 FROM openjdk:17-oracle as Run
