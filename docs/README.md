@@ -1,11 +1,8 @@
 # citation docs
 
-- [Getting Started](getting-started.md) - citationのセットアップ方法
-- [Command Overview](./commands/overview.md) - コマンドのオーバービュー
-- [Command Details](./commands/details.md) - コマンドの詳細
-- [Command Permission](./commands/permission.md) - コマンドの権限を設定する
-
-----
-
+- [Getting Started](getting-started.md)
+- [コマンドの詳細](./commands/details.md)
+- [Command Permission](./commands/permission.md)
+- [コマンドの削除](./commands/remove.md)
 - [メッセージデバック](./function/debug.md)
 - [メッセージの引用](./function/quote.md)
