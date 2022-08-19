@@ -42,16 +42,10 @@ object RegisterCommand: MessageCommandInterface {
             "help",
             "ヘルプを表示します"
         )
-
-        // /debug <messageId>
-        kord.createGuildChatInputCommand(
+        
+        kord.createGuildMessageCommand(
             Snowflake(dotenv.get("GUILD_ID")),
-            "debug",
-            "メッセージをデバックします"
-        ) {
-            string("target", "メッセージIDを指定してください") {
-                required = true
-            }
-        }
+            "Debug"
+        )
     }
 }
