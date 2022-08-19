@@ -15,7 +15,9 @@ object RegisterCommand: MessageCommandInterface {
 
     override suspend fun onCommand(message: Message) {
         val member = message.author?.id?.let { message.getGuild().getMemberOrNull(it) } ?: return
-        if(member.getPermissions().contains(Permission.ManageGuild)) {
+
+        val memberPermission = member.getPermissions()
+        if(memberPermission.contains(Permission.ManageGuild) || memberPermission.contains(Permission.Administrator)) {
             message.reply { content = "> **エラー:** 権限が足りません。このコマンドを実行するには **サーバーの管理権限(`ManageGuild`)** が必要です。" }
             return
         }
