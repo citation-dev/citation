@@ -82,6 +82,9 @@ private fun buildEmbed(targetMessage: Message, targetUser: User): EmbedBuilder {
 
 private fun checkMessageType(targetMessage: Message): Boolean {
     if(targetMessage.type != MessageType.Default) {
+        if(targetMessage.type != MessageType.Reply) return true
+        if(targetMessage.type != MessageType.ThreadStarterMessage) return true
+
         return false
     }
     return true
