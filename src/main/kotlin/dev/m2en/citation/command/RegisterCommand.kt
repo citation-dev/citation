@@ -42,7 +42,7 @@ object RegisterCommand: MessageCommandInterface {
             "help",
             "ヘルプを表示します"
         )
-        
+
         kord.createGuildMessageCommand(
             Snowflake(dotenv.get("GUILD_ID")),
             "Debug"
