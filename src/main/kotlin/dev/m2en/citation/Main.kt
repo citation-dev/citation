@@ -6,6 +6,7 @@ import dev.kord.core.Kord
 import dev.kord.core.behavior.interaction.response.respond
 import dev.kord.core.event.gateway.ReadyEvent
 import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
+import dev.kord.core.event.interaction.GuildMessageCommandInteractionCreateEvent
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.kordLogger
 import dev.kord.core.on
@@ -64,6 +65,12 @@ suspend fun main() {
 
         // 発行されたインタラクションについて報告する
         kordLogger.info("ログ: ${interaction.user.tag} が ${interaction.invokedCommandName}(${interaction.invokedCommandId}) を実行しました")
+    }
+
+    kord.on<GuildMessageCommandInteractionCreateEvent> {
+        when(interaction.invokedCommandName) {
+            "Debug" -> onDebugMessageCommand()
+        }
     }
 
     kord.login() {

@@ -6,7 +6,6 @@ import dev.kord.core.Kord
 import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Message
 import dev.kord.core.kordLogger
-import dev.kord.rest.builder.interaction.string
 import io.github.cdimascio.dotenv.dotenv
 
 object RegisterCommand: MessageCommandInterface {
@@ -15,7 +14,9 @@ object RegisterCommand: MessageCommandInterface {
 
     override suspend fun onCommand(message: Message) {
         val member = message.author?.id?.let { message.getGuild().getMemberOrNull(it) } ?: return
-        if(member.getPermissions().contains(Permission.ManageGuild)) {
+
+        val memberPermission = member.getPermissions()
+        if(memberPermission.contains(Permission.ManageGuild) || memberPermission.contains(Permission.Administrator)) {
             message.reply { content = "> **エラー:** 権限が足りません。このコマンドを実行するには **サーバーの管理権限(`ManageGuild`)** が必要です。" }
             return
         }
@@ -25,7 +26,7 @@ object RegisterCommand: MessageCommandInterface {
             kordLogger.info("Application Commandの登録を開始します....")
             message.reply { content = "Application Commandの登録を開始します...." }
 
-            registerSlashCommand(kord)
+            registerApplicationCommand(kord)
 
             kordLogger.info("Application Commandの登録に成功しました")
             message.reply { content = "Application Commandの登録に成功しました\n(コマンドが反映していない場合はDiscordクライアントの再起動をしてください)" }
@@ -35,7 +36,7 @@ object RegisterCommand: MessageCommandInterface {
         }
     }
 
-    private suspend fun registerSlashCommand(kord: Kord) {
+    private suspend fun registerApplicationCommand(kord: Kord) {
         // /help
         kord.createGuildChatInputCommand(
             Snowflake(dotenv.get("GUILD_ID")),
@@ -43,15 +44,9 @@ object RegisterCommand: MessageCommandInterface {
             "ヘルプを表示します"
         )
 
-        // /debug <messageId>
-        kord.createGuildChatInputCommand(
+        kord.createGuildMessageCommand(
             Snowflake(dotenv.get("GUILD_ID")),
-            "debug",
-            "メッセージをデバックします"
-        ) {
-            string("target", "メッセージIDを指定してください") {
-                required = true
-            }
-        }
+            "Debug"
+        )
     }
 }
