@@ -6,7 +6,6 @@ import dev.kord.core.Kord
 import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Message
 import dev.kord.core.kordLogger
-import dev.kord.rest.builder.interaction.string
 import io.github.cdimascio.dotenv.dotenv
 
 object RegisterCommand: MessageCommandInterface {
@@ -27,7 +26,7 @@ object RegisterCommand: MessageCommandInterface {
             kordLogger.info("Application Commandの登録を開始します....")
             message.reply { content = "Application Commandの登録を開始します...." }
 
-            registerSlashCommand(kord)
+            registerApplicationCommand(kord)
 
             kordLogger.info("Application Commandの登録に成功しました")
             message.reply { content = "Application Commandの登録に成功しました\n(コマンドが反映していない場合はDiscordクライアントの再起動をしてください)" }
@@ -37,7 +36,7 @@ object RegisterCommand: MessageCommandInterface {
         }
     }
 
-    private suspend fun registerSlashCommand(kord: Kord) {
+    private suspend fun registerApplicationCommand(kord: Kord) {
         // /help
         kord.createGuildChatInputCommand(
             Snowflake(dotenv.get("GUILD_ID")),
