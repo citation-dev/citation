@@ -1,6 +1,7 @@
 package dev.m2en.citation
 
 import dev.kord.common.Color
+import dev.kord.common.entity.MessageType
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Message
@@ -41,6 +42,10 @@ suspend fun MessageCreateEvent.onQuote() {
         kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: メッセージが見つかりません。")
         return
     }
+    if(!(checkMessageType(targetMessage))) {
+        kordLogger.warn("警告: 通常メッセージではないため、引用をキャンセルしました。: ${targetMessage.type}")
+        return
+    }
 
     val targetUser = targetMessage.author
     if(targetUser == null) {
@@ -73,4 +78,11 @@ private fun buildEmbed(targetMessage: Message, targetUser: User): EmbedBuilder {
     embed.timestamp = targetMessage.timestamp
 
     return embed
+}
+
+private fun checkMessageType(targetMessage: Message): Boolean {
+    if(targetMessage.type != MessageType.Default) {
+        return false
+    }
+    return true
 }
