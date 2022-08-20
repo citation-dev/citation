@@ -31,5 +31,4 @@ citationは[Application Commands](https://discord.com/developers/docs/interactio
 | value                | description                                                                                                                               |
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | `CITATION_BOT_TOKEN` | citationが接続するDiscord Botのトークン ([発行方法](https://github.com/m2en/citation/blob/main/docs/getting-started.md#bot%E3%81%AE%E7%99%BB%E9%8C%B2)) |
-| `CLIENT_ID`          | Commandを登録するDiscord BotのユーザーID                                                                                                            | 
 | `GUILD_ID`           | Commandを登録したいサーバーのギルドID                                                                                                                   |

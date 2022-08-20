@@ -66,10 +66,14 @@ GUILD_ID=
 以下のコマンドを実行します。
 
 ```shell
-docker run --env-file .env citation
+docker run --env-file .env -d citation
 ```
 
 `citation is ready!` と表示されたら起動に成功しています、お疲れ様でした。
+
+その他のDocker runのオプションについては公式ドキュメントを参照してください。
+
+[docker docs - docker run](https://docs.docker.com/engine/reference/commandline/run/)
 
 ## コマンドの登録
 

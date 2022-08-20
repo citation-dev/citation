@@ -1,4 +1,10 @@
-# Commands Details
+# コマンドの詳細
+
+| Command                        | Description               | Types       |
+|--------------------------------|---------------------------|-------------|
+| `!interaction`                 | ApplicationCommands を登録する | Message     |
+| `/debug <messageId> [channel]` | メッセージをデバッグする              | Interaction |
+| `/help`                        | ヘルプを表示する                  | Interaction |
 
 ## `!register`
 
