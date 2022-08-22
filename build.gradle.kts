@@ -15,7 +15,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation("dev.kord:kord-core:0.8.0-M15")
-    implementation("org.slf4j:slf4j-simple:2.0.0-beta1")
+    implementation("org.slf4j:slf4j-simple:2.0.0")
     implementation("io.github.cdimascio:dotenv-kotlin:6.3.1")
 }
 
