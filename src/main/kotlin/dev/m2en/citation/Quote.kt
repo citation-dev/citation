@@ -4,6 +4,7 @@ import dev.kord.common.Color
 import dev.kord.common.entity.MessageType
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.reply
+import dev.kord.core.entity.Icon
 import dev.kord.core.entity.Message
 import dev.kord.core.entity.User
 import dev.kord.core.entity.channel.GuildMessageChannel
@@ -47,18 +48,23 @@ suspend fun MessageCreateEvent.onQuote() {
         return
     }
 
-    val targetUser = targetMessage.author
-    if(targetUser == null) {
-        message.reply { content = "> **エラー:** ユーザーが見つかりません。" }
-        kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: メッセージのユーザーを取得することが出来ませんでした。")
+    if(targetMessage.embeds.isNotEmpty() && targetMessage.content.isEmpty()) {
+        kordLogger.warn("警告: メッセージ内容が空で、Embedのみだったため引用をキャンセルしました。")
         return
     }
 
-    message.reply { embeds.add(buildEmbed(targetMessage, targetUser)) }
+    val targetUser = targetMessage.author
+    val targetUserName = if(targetMessage.author == null) {
+        "不明"
+    } else {
+        targetMessage.author!!.username
+    }
+
+    message.reply { embeds.add(buildEmbed(targetMessage, targetUserName, targetUser?.avatar)) }
     kordLogger.info("引用: ${message.author?.tag} の引用に成功しました: ID - ${targetMessage.id}")
 }
 
-private fun buildEmbed(targetMessage: Message, targetUser: User): EmbedBuilder {
+private fun buildEmbed(targetMessage: Message, targetUserName: String, targetUserAvatar: Icon?): EmbedBuilder {
     val embed = EmbedBuilder()
 
     // 添付ファイルの確認
@@ -67,10 +73,10 @@ private fun buildEmbed(targetMessage: Message, targetUser: User): EmbedBuilder {
     }
 
     // アバターが存在するかどうか (存在するなら、authorに設定する)
-    if(targetUser.avatar == null) {
-        embed.author { name = targetUser.username }
+    if(targetUserAvatar == null) {
+        embed.author { name = targetUserName }
     } else {
-        embed.author { name = targetUser.username; icon = targetUser.avatar!!.url }
+        embed.author { name = targetUserName; icon = targetUserAvatar.url }
     }
 
     embed.description = targetMessage.content
