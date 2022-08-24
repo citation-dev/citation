@@ -2,13 +2,15 @@ name: Build
 
 on:
   pull_request:
-    paths:
-      - 'src/**/**/**/**/**/**/**.kt'
+    paths-ignore:
+      - '**.md'
+      - '**.yml'
   push:
     branches:
       - main
-    paths:
-      - 'src/**/**/**/**/**/**/**.kt'
+    paths-ignore:
+      - '**.md'
+      - '**.yml'
 
 jobs:
   build:
