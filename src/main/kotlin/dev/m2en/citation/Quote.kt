@@ -48,6 +48,11 @@ suspend fun MessageCreateEvent.onQuote() {
         return
     }
 
+    if(targetMessage.embeds.isNotEmpty() && targetMessage.content.isEmpty()) {
+        kordLogger.warn("警告: メッセージ内容が空で、Embedのみだったため引用をキャンセルしました。")
+        return
+    }
+
     val targetUser = targetMessage.author
     val targetUserName = if(targetMessage.author == null) {
         "不明"
