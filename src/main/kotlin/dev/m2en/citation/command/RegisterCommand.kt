@@ -16,8 +16,8 @@ object RegisterCommand: MessageCommandInterface {
         val member = message.author?.id?.let { message.getGuild().getMemberOrNull(it) } ?: return
 
         val memberPermission = member.getPermissions()
-        if(memberPermission.contains(Permission.ManageGuild) || memberPermission.contains(Permission.Administrator)) {
-            message.reply { content = "> **エラー:** 権限が足りません。このコマンドを実行するには **サーバーの管理権限(`ManageGuild`)** が必要です。" }
+        if(!(memberPermission.contains(Permission.ManageGuild)) || !(memberPermission.contains(Permission.Administrator))) {
+            message.reply { content = "> **エラー:** 権限が足りません。このコマンドを実行するには **サーバーの管理権限(`ManageGuild`) または 管理者権限(`Administrator`)** が必要です。" }
             return
         }
 
