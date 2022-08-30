@@ -26,7 +26,6 @@ suspend fun main() {
 
     val interactionMap = mutableMapOf<String, InteractionCommandInterface>()
     interactionMap["help"] = HelpCommand
-    interactionMap["debug"] = DebugCommand
 
     kord.on<ReadyEvent> {
         println("citation is ready!")
