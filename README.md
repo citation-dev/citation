@@ -1,5 +1,9 @@
 # citation
 
+[![Build](https://github.com/m2en/citation/actions/workflows/build.yml/badge.svg)](https://github.com/m2en/citation/actions/workflows/build.yml)
+[![release](https://github.com/m2en/citation/actions/workflows/release.yml/badge.svg)](https://github.com/m2en/citation/actions/workflows/release.yml)
+
+
 メッセージリンクのプレビューをEmbedで表示するDiscord Botです。
 
 ## Usage
