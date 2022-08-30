@@ -1,6 +1,7 @@
 package dev.m2en.citation
 
 import dev.kord.common.Color
+import dev.kord.common.entity.ChannelType
 import dev.kord.common.entity.MessageType
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.reply
@@ -8,6 +9,8 @@ import dev.kord.core.entity.Icon
 import dev.kord.core.entity.Message
 import dev.kord.core.entity.User
 import dev.kord.core.entity.channel.GuildMessageChannel
+import dev.kord.core.entity.channel.MessageChannel
+import dev.kord.core.entity.channel.TextChannel
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.EmbedBuilder
@@ -35,7 +38,11 @@ suspend fun MessageCreateEvent.onQuote() {
         kordLogger.error("> **エラー:** ${message.author?.tag} の引用に失敗しました: チャンネルが見つかりません。")
         return
     }
-    targetChannel as GuildMessageChannel
+    targetChannel as TextChannel
+    if(targetChannel.isNsfw) {
+        kordLogger.error("> **エラー:** ${message.author?.tag} の引用に失敗しました: NSFWとして指定されているチャンネルのメッセージです。")
+        return
+    }
 
     val targetMessage = targetChannel.getMessageOrNull(Snowflake(matches.groupValues[3]))
     if(targetMessage == null) {
