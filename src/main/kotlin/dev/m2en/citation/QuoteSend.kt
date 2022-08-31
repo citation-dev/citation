@@ -1,13 +1,16 @@
 package dev.m2en.citation
 
 import dev.kord.common.Color
+import dev.kord.common.entity.ChannelType
 import dev.kord.common.entity.MessageType
 import dev.kord.common.entity.Snowflake
+import dev.kord.core.behavior.getChannelOfOrNull
 import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Icon
 import dev.kord.core.entity.Message
 import dev.kord.core.entity.ReactionEmoji
-import dev.kord.core.entity.channel.TextChannel
+import dev.kord.core.entity.channel.*
+import dev.kord.core.entity.channel.thread.ThreadChannel
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.EmbedBuilder
@@ -30,14 +33,14 @@ suspend fun MessageCreateEvent.onQuoteSend(reactionEmoji: ReactionEmoji.Unicode)
         return
     }
 
-    val targetChannel = message.getGuild().getChannelOrNull(Snowflake(matches.groupValues[2]))
+    val targetChannel = message.getGuild().getChannelOfOrNull<GuildMessageChannel>(Snowflake(matches.groupValues[2]))
     if(targetChannel == null) {
-        kordLogger.error("> **エラー:** ${message.author?.tag} の引用に失敗しました: チャンネルが見つかりません。")
+        kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: チャンネルが見つかりません。")
         return
     }
-    targetChannel as TextChannel
-    if(targetChannel.isNsfw) {
-        kordLogger.error("> **エラー:** ${message.author?.tag} の引用に失敗しました: NSFWとして指定されているチャンネルのメッセージです。")
+
+    if(targetChannel.data.nsfw.discordBoolean) {
+        kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: NSFWとして指定されているチャンネルのメッセージです。")
         return
     }
 
