@@ -15,17 +15,19 @@ object HelpCommand: InteractionCommandInterface {
         embed.color
         embed.field("引用") {
             "citationに閲覧権限が付与されているチャンネル内でメッセージリンクを送信すると、そのメッセージリンクのレビューをEmbedとして送信します。\n" +
-            "(スレッド内でも、プライベートで招待されていないなどの一連の条件を除き、自動で引用します)"
+            "(スレッド内でも、プライベートで招待されていないなどの一連の条件を除き、自動で引用します)\n" +
+            "[詳しくはこちら](https://github.com/m2en/citation/blob/main/docs/function/quote.md)"
         }
         embed.field("引用スキップ") {
             "リンクを `<>` で囲うと引用をスキップします"
         }
         embed.field("メッセージデバック") {
-            "/debugで指定したメッセージをコードブロックとして送信します。指定したメッセージがあるチャンネル内で実行する必要があります。"
+            "メッセージを右クリックして出てくるメニュー(モバイル版はメッセージ長押し)からメッセージをコードブロックとして表示するデバック機能を利用できます。\n" +
+            "[詳しくはこちら](https://github.com/m2en/citation/blob/main/docs/function/debug.md)"
         }
         embed.field("リンク") {
             "・[リポジトリ](https://github.com/m2en/citation)\n" +
-            "・[公式ドキュメント](https://github.com/m2en/citation/tree/main/docs)"
+            "・[公式ドキュメント](https://github.com/m2en/citation/blob/main/docs/README.md)"
         }
         embed.footer{
             text = "${interaction.user.username} - citation by m2en"
