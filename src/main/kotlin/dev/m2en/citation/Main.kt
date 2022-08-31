@@ -12,6 +12,7 @@ import dev.kord.core.kordLogger
 import dev.kord.core.on
 import dev.kord.gateway.Intent
 import dev.kord.gateway.Intents
+import dev.kord.core.event.message.ReactionAddEvent
 import dev.kord.gateway.PrivilegedIntent
 import dev.m2en.citation.command.*
 import io.github.cdimascio.dotenv.dotenv
@@ -38,8 +39,12 @@ suspend fun main() {
                 messageMap["!register"]?.onCommand(message)
             }
 
-            else -> onQuote()
+            else -> onQuoteSend()
         }
+    }
+
+    kord.on<ReactionAddEvent> {
+        onQuoteDelete(kord.selfId)
     }
 
     kord.on<GuildChatInputCommandInteractionCreateEvent> {
@@ -73,7 +78,7 @@ suspend fun main() {
     }
 
     kord.login() {
-        intents = Intents(Intent.Guilds, Intent.GuildMessages, Intent.MessageContent)
+        intents = Intents(Intent.Guilds, Intent.GuildMessages, Intent.MessageContent, Intent.GuildMessageReactions, Intent.GuildEmojis)
     }
 }
 
