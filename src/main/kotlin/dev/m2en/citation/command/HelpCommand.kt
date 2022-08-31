@@ -25,7 +25,7 @@ object HelpCommand: InteractionCommandInterface {
         }
         embed.field("リンク") {
             "・[リポジトリ](https://github.com/m2en/citation)\n" +
-            "・[公式ドキュメント](https://github.com/m2en/citation/tree/main/docs)"
+            "・[公式ドキュメント](https://github.com/m2en/citation/blob/main/docs/README.md)"
         }
         embed.footer{
             text = "${interaction.user.username} - citation by m2en"
