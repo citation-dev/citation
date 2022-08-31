@@ -6,12 +6,13 @@ import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Icon
 import dev.kord.core.entity.Message
+import dev.kord.core.entity.ReactionEmoji
 import dev.kord.core.entity.channel.TextChannel
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.EmbedBuilder
 
-suspend fun MessageCreateEvent.onQuoteSend() {
+suspend fun MessageCreateEvent.onQuoteSend(reactionEmoji: ReactionEmoji.Unicode) {
     // GuildId/ChannelId/MessageId
     val linkRegex = Regex("""https://(?:ptb\.|canary\.)?discord(?:app)?.com/channels/(\d+)/(\d+)/(\d+)""")
     // <...GuildId/ChannelId/MessageId>
@@ -63,7 +64,8 @@ suspend fun MessageCreateEvent.onQuoteSend() {
         targetMessage.author!!.username
     }
 
-    message.reply { embeds.add(buildEmbed(targetMessage, targetUserName, targetUser?.avatar)) }
+    val replyMessage = message.reply { embeds.add(buildEmbed(targetMessage, targetUserName, targetUser?.avatar)) }
+    replyMessage.addReaction(reactionEmoji)
     kordLogger.info("引用: ${message.author?.tag} の引用に成功しました: ID - ${targetMessage.id}")
 }
 
