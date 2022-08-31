@@ -3,16 +3,17 @@ package dev.m2en.citation
 import dev.kord.common.Color
 import dev.kord.common.entity.MessageType
 import dev.kord.common.entity.Snowflake
+import dev.kord.core.behavior.getChannelOfOrNull
 import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Icon
 import dev.kord.core.entity.Message
-import dev.kord.core.entity.User
-import dev.kord.core.entity.channel.GuildMessageChannel
+import dev.kord.core.entity.ReactionEmoji
+import dev.kord.core.entity.channel.*
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.EmbedBuilder
 
-suspend fun MessageCreateEvent.onQuote() {
+suspend fun MessageCreateEvent.onQuoteSend(reactionEmoji: ReactionEmoji.Unicode) {
     // GuildId/ChannelId/MessageId
     val linkRegex = Regex("""https://(?:ptb\.|canary\.)?discord(?:app)?.com/channels/(\d+)/(\d+)/(\d+)""")
     // <...GuildId/ChannelId/MessageId>
@@ -30,12 +31,16 @@ suspend fun MessageCreateEvent.onQuote() {
         return
     }
 
-    val targetChannel = message.getGuild().getChannelOrNull(Snowflake(matches.groupValues[2]))
+    val targetChannel = message.getGuild().getChannelOfOrNull<GuildMessageChannel>(Snowflake(matches.groupValues[2]))
     if(targetChannel == null) {
-        kordLogger.error("> **エラー:** ${message.author?.tag} の引用に失敗しました: チャンネルが見つかりません。")
+        kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: チャンネルが見つかりません。")
         return
     }
-    targetChannel as GuildMessageChannel
+
+    if(targetChannel.data.nsfw.discordBoolean) {
+        kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: NSFWとして指定されているチャンネルのメッセージです。")
+        return
+    }
 
     val targetMessage = targetChannel.getMessageOrNull(Snowflake(matches.groupValues[3]))
     if(targetMessage == null) {
@@ -60,7 +65,8 @@ suspend fun MessageCreateEvent.onQuote() {
         targetMessage.author!!.username
     }
 
-    message.reply { embeds.add(buildEmbed(targetMessage, targetUserName, targetUser?.avatar)) }
+    val replyMessage = message.reply { embeds.add(buildEmbed(targetMessage, targetUserName, targetUser?.avatar)) }
+    replyMessage.addReaction(reactionEmoji)
     kordLogger.info("引用: ${message.author?.tag} の引用に成功しました: ID - ${targetMessage.id}")
 }
 
