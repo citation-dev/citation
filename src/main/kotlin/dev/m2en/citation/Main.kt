@@ -4,6 +4,7 @@ package dev.m2en.citation
 
 import dev.kord.core.Kord
 import dev.kord.core.behavior.interaction.response.respond
+import dev.kord.core.entity.ReactionEmoji
 import dev.kord.core.event.gateway.ReadyEvent
 import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
 import dev.kord.core.event.interaction.GuildMessageCommandInteractionCreateEvent
@@ -22,11 +23,10 @@ suspend fun main() {
     val dotenv = dotenv()
     val kord = Kord(dotenv.get("CITATION_BOT_TOKEN"))
 
-    val messageMap = mutableMapOf<String, MessageCommandInterface>()
-    messageMap["!register"] = RegisterCommand
-
     val interactionMap = mutableMapOf<String, InteractionCommandInterface>()
     interactionMap["help"] = HelpCommand
+
+    val reactionEmoji = ReactionEmoji.Unicode("\uD83D\uDDD1")
 
     kord.on<ReadyEvent> {
         println("citation is ready!")
@@ -34,13 +34,9 @@ suspend fun main() {
 
     kord.on<MessageCreateEvent> {
         if(message.author?.isBot == true || message.getGuildOrNull() == null) return@on
-        when(message.content) {
-            "!register" -> {
-                messageMap["!register"]?.onCommand(message)
-            }
 
-            else -> onQuoteSend()
-        }
+        onRegister(reactionEmoji)
+        onQuoteSend(reactionEmoji)
     }
 
     kord.on<ReactionAddEvent> {
@@ -77,7 +73,7 @@ suspend fun main() {
         }
     }
 
-    kord.login() {
+    kord.login {
         intents = Intents(Intent.Guilds, Intent.GuildMessages, Intent.MessageContent, Intent.GuildMessageReactions, Intent.GuildEmojis)
     }
 }
