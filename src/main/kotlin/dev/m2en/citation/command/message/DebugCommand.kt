@@ -1,4 +1,4 @@
-package dev.m2en.citation.command
+package dev.m2en.citation.command.message
 
 import dev.kord.core.behavior.interaction.response.respond
 import dev.kord.core.event.interaction.GuildMessageCommandInteractionCreateEvent

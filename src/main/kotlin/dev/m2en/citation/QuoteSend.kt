@@ -1,7 +1,6 @@
 package dev.m2en.citation
 
 import dev.kord.common.Color
-import dev.kord.common.entity.ChannelType
 import dev.kord.common.entity.MessageType
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.getChannelOfOrNull
@@ -10,7 +9,6 @@ import dev.kord.core.entity.Icon
 import dev.kord.core.entity.Message
 import dev.kord.core.entity.ReactionEmoji
 import dev.kord.core.entity.channel.*
-import dev.kord.core.entity.channel.thread.ThreadChannel
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.EmbedBuilder
