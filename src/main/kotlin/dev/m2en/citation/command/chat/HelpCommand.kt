@@ -1,9 +1,10 @@
-package dev.m2en.citation.command
+package dev.m2en.citation.command.chat
 
 import dev.kord.core.behavior.interaction.response.DeferredEphemeralMessageInteractionResponseBehavior
 import dev.kord.core.behavior.interaction.response.respond
 import dev.kord.core.entity.interaction.GuildChatInputCommandInteraction
 import dev.kord.rest.builder.message.EmbedBuilder
+import dev.m2en.citation.command.InteractionCommandInterface
 
 object HelpCommand: InteractionCommandInterface {
 
