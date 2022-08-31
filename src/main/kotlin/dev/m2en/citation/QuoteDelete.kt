@@ -7,7 +7,11 @@ import dev.kord.core.kordLogger
 suspend fun ReactionAddEvent.onQuoteDelete(selfId: Snowflake) {
     val message = message.fetchMessage()
 
-    if(message.author?.id != selfId) {
+    if(user.id == selfId) {
+        return
+    }
+
+    if(message.author?.id != selfId && emoji.name != ":wastebasket:") {
         return
     }
 
