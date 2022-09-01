@@ -18,10 +18,11 @@ suspend fun ReactionAddEvent.onQuoteDelete(selfId: Snowflake) {
 
     val targetMessageReply = targetMessageReference.message?.id?.let { channel.getMessageOrNull(it) } ?: return
     if(user.id != targetMessageReply.author?.id) {
+        kordLogger.warn("警告: ${user.asUser().tag} は引用者(${targetMessageReply.author?.tag})ではないため、削除リクエストを却下しました")
         return
     }
 
     // メッセージ送信者自身のメッセージを本人が削除してもDiscordの仕様上監査ログには記録されないため、理由は指定しない
     targetMessage.delete()
-    kordLogger.info("削除リクエストにより、citationのメッセージを削除しました。")
+    kordLogger.info("削除: ${user.asUser().tag} の削除リクエストを受理しました")
 }
