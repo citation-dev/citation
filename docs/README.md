@@ -6,3 +6,4 @@
 - [コマンドの削除](./commands/remove.md)
 - [メッセージデバック](./function/debug.md)
 - [メッセージの引用](./function/quote.md)
+- [エラーの対処方法](./error-info.md)
