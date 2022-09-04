@@ -3,9 +3,6 @@
 - [ビルド済みイメージの取得](#ビルド済みイメージの取得)
 - [Botの登録](#Botの登録)
 - [コマンドの登録](#コマンドの登録)
-- [コマンドの削除](#コマンドの削除)
-- [コマンドのアップデート](#コマンドのアップデート)
-
 ## ビルド済みイメージの取得
 
 次のコマンドを実行し、ビルド済みイメージを取得してください。
@@ -26,16 +23,23 @@ docker pull ghcr.io/m2en/citation:<任意のバージョン>
 2. `New Application`をクリックする
 3. `name` にBotの名前を入力する
 4. 次に `Bots` タブへ移動し、 `New bot` をクリックしBotを作成する
-5. ~~`PRESENCE INTENT`, `SERVER MEMBERS INTENT`~~ `MESSAGE CONTENT INTENT` をそれぞれONにする
+5. `MESSAGE CONTENT INTENT` をそれぞれONにする
 6. `Reset token` からトークンを取得する
 7. `OAuth2` タブに移動し、 `URL Generator` をクリックする
 8. `SCOPES` から以下のScopeを選択する
-    - `bot`
-    - `applications.commands`
+   - `bot`
+   - ~~`applications.commands`~~
+
+> **Note**
+>
+> 2022/08/23 から、デフォルトで `applications.commands` が付与されるようになっています。
+> 別途で付与する必要はありません。
+
 9. `BOT PERMISSIONS` から以下の権限を選択する
-    - `Send Messages`
-    - `Send Messages in Threads`
-    - `Read Messages / View Channels`
+   - `Send Messages`
+   - `Send Messages in Threads`
+   - `Read Messages / View Channels`
+   - `Add Reactions`
 10. 生成されたURLからBotを招待する
 
 ## `.env` を用意する
@@ -57,7 +61,6 @@ vim .emv
 
 ```dotenv
 CITATION_BOT_TOKEN=
-CLIENT_ID=
 GUILD_ID=
 ```
 
@@ -69,7 +72,7 @@ GUILD_ID=
 docker run --env-file .env -d citation
 ```
 
-`citation is ready!` と表示されたら起動に成功しています、お疲れ様でした。
+`citation is ready! - 実行中バージョン:<バージョン>(<コミットハッシュ>)` と表示されたら起動に成功しています、お疲れ様でした。
 
 その他のDocker runのオプションについては公式ドキュメントを参照してください。
 
@@ -81,5 +84,4 @@ docker run --env-file .env -d citation
 
 次の環境変数を登録し、 `!register` を実行します。
 
-- `CLIENT_ID`
 - `GUILD_ID`

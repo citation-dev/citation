@@ -3,10 +3,15 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.7.10"
     id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("com.palantir.git-version") version "0.15.0"
 }
 
 group = "dev.m2en"
-version = "1.0-SNAPSHOT"
+
+val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
+val details = versionDetails()
+version = details.lastTag.substring(1)
+val implementationVersion = "$version(${details.gitHash})"
 
 repositories {
     mavenCentral()
@@ -37,9 +42,9 @@ tasks {
     shadowJar {
         manifest {
             attributes("Main-Class" to "dev.m2en.citation.MainKt")
+            attributes("Implementation-Version" to implementationVersion)
         }
 
         archiveFileName.set("citation.jar")
     }
 }
-

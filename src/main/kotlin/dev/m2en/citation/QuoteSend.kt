@@ -1,14 +1,17 @@
 package dev.m2en.citation
 
 import dev.kord.common.Color
+import dev.kord.common.entity.ChannelType
 import dev.kord.common.entity.MessageType
 import dev.kord.common.entity.Snowflake
+import dev.kord.core.behavior.getChannelOf
 import dev.kord.core.behavior.getChannelOfOrNull
 import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Icon
 import dev.kord.core.entity.Message
 import dev.kord.core.entity.ReactionEmoji
 import dev.kord.core.entity.channel.*
+import dev.kord.core.entity.channel.thread.ThreadChannel
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.EmbedBuilder
@@ -32,12 +35,12 @@ suspend fun MessageCreateEvent.onQuoteSend(reactionEmoji: ReactionEmoji.Unicode)
     }
 
     val targetChannel = message.getGuild().getChannelOfOrNull<GuildMessageChannel>(Snowflake(matches.groupValues[2]))
+    val messageChannelData = message.getGuild().getChannelOf<GuildMessageChannel>(message.channelId)
     if(targetChannel == null) {
         kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: チャンネルが見つかりません。")
         return
     }
-
-    if(targetChannel.data.nsfw.discordBoolean) {
+    if(isChannelNsfw(targetChannel, messageChannelData)) {
         kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: NSFWとして指定されているチャンネルのメッセージです。")
         return
     }
@@ -70,6 +73,11 @@ suspend fun MessageCreateEvent.onQuoteSend(reactionEmoji: ReactionEmoji.Unicode)
     kordLogger.info("引用: ${message.author?.tag} の引用に成功しました: ID - ${targetMessage.id}")
 }
 
+/**
+ * 埋め込みを生成する
+ *
+ * @return 引用結果(Embed)を返す。
+ */
 private fun buildEmbed(targetMessage: Message, targetUserName: String, targetUserAvatar: Icon?): EmbedBuilder {
     val embed = EmbedBuilder()
 
@@ -92,6 +100,11 @@ private fun buildEmbed(targetMessage: Message, targetUserName: String, targetUse
     return embed
 }
 
+/**
+ * メッセージタイプを確認する。
+ *
+ * @return citationが引用できるメッセージタイプであればTrue, なければFalse
+ */
 private fun checkMessageType(targetMessage: Message): Boolean {
     if(targetMessage.type != MessageType.Default) {
         if(targetMessage.type != MessageType.Reply) return true
@@ -100,4 +113,30 @@ private fun checkMessageType(targetMessage: Message): Boolean {
         return false
     }
     return true
+}
+
+/**
+ * 引数て指定されたGuildMessageChannelがNSFWではないかの確認を行う。
+ * (同時に引用が行われたチャンネルも確認し、NSFWでなければFalseを戻す)
+ *
+ * @return NSFWであればTrue, なければFalse
+ */
+private suspend fun isChannelNsfw(targetChannel: GuildMessageChannel, messageChannel: GuildMessageChannel): Boolean {
+    if(messageChannel.data.nsfw.discordBoolean) {
+        return false
+    }
+
+    if(targetChannel.type == ChannelType.PublicGuildThread || targetChannel.type == ChannelType.PrivateThread || targetChannel.type == ChannelType.PublicNewsThread) {
+        targetChannel as ThreadChannel
+        val parentChannel = targetChannel.getParent()
+        if(parentChannel.data.nsfw.discordBoolean) {
+            return true
+        }
+    }
+
+    if (targetChannel.data.nsfw.discordBoolean) {
+        return true
+    }
+
+    return false
 }

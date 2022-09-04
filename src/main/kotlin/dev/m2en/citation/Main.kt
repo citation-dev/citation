@@ -32,7 +32,7 @@ suspend fun main() {
     val reactionEmoji = ReactionEmoji.Unicode("\uD83D\uDDD1")
 
     kord.on<ReadyEvent> {
-        println("citation is ready!")
+        println("citation is ready! \n 実行中バージョン: " + getCitationVersion())
     }
 
     kord.on<MessageCreateEvent> {
@@ -79,5 +79,15 @@ suspend fun main() {
     kord.login {
         intents = Intents(Intent.Guilds, Intent.GuildMessages, Intent.MessageContent, Intent.GuildMessageReactions, Intent.GuildEmojis)
     }
+}
+
+/**
+ * citationのバージョンとコミットハッシュをbuild.gradle.ktsから取得する
+ *
+ * @return バージョンとコミットハッシュ(implementationVersion)
+ */
+fun getCitationVersion(): String? {
+    val clazz = object{}.javaClass
+    return clazz.`package`.implementationVersion
 }
 

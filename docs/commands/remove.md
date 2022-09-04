@@ -32,3 +32,7 @@ Example `https://discord.com/api/applications/586824421470109716/guilds/68393986
 | `{application.id}` | そのBotのアプリケーションID                     |
 | `{guild.id}`       | ギルドID                                |
 | `{command.id}`     | コマンドID (コマンドIDはギルド内連携サービスからコピーできます。) |
+
+また削除にはBotのトークンが必要です。アプリケーション **Postman** を使ったAPI操作については以下のワークスペースを使うことで簡単に操作可能です。
+
+[awoocado - Postman](https://www.postman.com/awoocado/workspace/discord-api-v9/request/16601672-5b87784e-4544-4529-825e-f8530611689f)

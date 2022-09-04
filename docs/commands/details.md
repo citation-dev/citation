@@ -1,10 +1,10 @@
 # コマンドの詳細
 
-| Command                        | Description               | Types                |
-|--------------------------------|---------------------------|----------------------|
-| `!interaction`                 | ApplicationCommands を登録する | Message              |
-| `/debug <messageId> [channel]` | メッセージをデバッグする              | Interaction(Message) |
-| `/help`                        | ヘルプを表示する                  | Interaction(Slash)   |
+| Command        | Description               | Types                |
+|----------------|---------------------------|----------------------|
+| `!interaction` | ApplicationCommands を登録する | Message              |
+| `Debug`        | メッセージをデバッグする              | Interaction(Message) |
+| `/help`        | ヘルプを表示する                  | Interaction(Slash)   |
 
 ## `!register`
 
