@@ -71,6 +71,11 @@ suspend fun MessageCreateEvent.onQuoteSend(reactionEmoji: ReactionEmoji.Unicode)
     kordLogger.info("引用: ${message.author?.tag} の引用に成功しました: ID - ${targetMessage.id}")
 }
 
+/**
+ * 埋め込みを生成する
+ *
+ * @return 引用結果(Embed)を返す。
+ */
 private fun buildEmbed(targetMessage: Message, targetUserName: String, targetUserAvatar: Icon?): EmbedBuilder {
     val embed = EmbedBuilder()
 
@@ -93,6 +98,11 @@ private fun buildEmbed(targetMessage: Message, targetUserName: String, targetUse
     return embed
 }
 
+/**
+ * メッセージタイプを確認する。
+ *
+ * @return citationが引用できるメッセージタイプであればTrue, なければFalse
+ */
 private fun checkMessageType(targetMessage: Message): Boolean {
     if(targetMessage.type != MessageType.Default) {
         if(targetMessage.type != MessageType.Reply) return true
@@ -103,6 +113,11 @@ private fun checkMessageType(targetMessage: Message): Boolean {
     return true
 }
 
+/**
+ * 引数て指定されたGuildMessageChannelがNSFWではないかの確認を行う。
+ *
+ * @return NSFWであればTrue, なければFalse
+ */
 private suspend fun isChannelNsfw(targetChannel: GuildMessageChannel): Boolean {
     if(targetChannel.type == ChannelType.PublicGuildThread || targetChannel.type == ChannelType.PrivateThread || targetChannel.type == ChannelType.PublicNewsThread) {
         targetChannel as ThreadChannel
