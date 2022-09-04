@@ -12,7 +12,7 @@ object HelpCommand: InteractionCommandInterface {
     override suspend fun onCommand(interaction: GuildChatInputCommandInteraction, responseBehavior: DeferredEphemeralMessageInteractionResponseBehavior) {
         val embed = EmbedBuilder().apply {
             title = "ヘルプ - v${getCitationVersion()}"
-            url = "https://github.com/m2en/citation"
+            url = "https://github.com/m2en/citation/releases/latest"
             description = "citationはメッセージリンクのプレビューを表示するDiscord Botです"
             field {
                 name = "引用"
