@@ -1,6 +1,7 @@
 package dev.m2en.citation
 
 import dev.kord.common.Color
+import dev.kord.common.entity.ChannelType
 import dev.kord.common.entity.MessageType
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.getChannelOfOrNull
@@ -9,6 +10,7 @@ import dev.kord.core.entity.Icon
 import dev.kord.core.entity.Message
 import dev.kord.core.entity.ReactionEmoji
 import dev.kord.core.entity.channel.*
+import dev.kord.core.entity.channel.thread.ThreadChannel
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.EmbedBuilder
@@ -36,8 +38,7 @@ suspend fun MessageCreateEvent.onQuoteSend(reactionEmoji: ReactionEmoji.Unicode)
         kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: チャンネルが見つかりません。")
         return
     }
-
-    if(targetChannel.data.nsfw.discordBoolean) {
+    if(isChannelNsfw(targetChannel)) {
         kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: NSFWとして指定されているチャンネルのメッセージです。")
         return
     }
@@ -100,4 +101,20 @@ private fun checkMessageType(targetMessage: Message): Boolean {
         return false
     }
     return true
+}
+
+private suspend fun isChannelNsfw(targetChannel: GuildMessageChannel): Boolean {
+    if(targetChannel.type == ChannelType.PublicGuildThread || targetChannel.type == ChannelType.PrivateThread || targetChannel.type == ChannelType.PublicNewsThread) {
+        targetChannel as ThreadChannel
+        val parentChannel = targetChannel.getParent()
+        if(parentChannel.data.nsfw.discordBoolean) {
+            return true
+        }
+    }
+
+    if (targetChannel.data.nsfw.discordBoolean) {
+        return true
+    }
+
+    return false
 }
