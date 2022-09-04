@@ -81,6 +81,11 @@ suspend fun main() {
     }
 }
 
+/**
+ * citationのバージョンとコミットハッシュをbuild.gradle.ktsから取得する
+ *
+ * @return バージョンとコミットハッシュ(implementationVersion)
+ */
 fun getCitationVersion(): String? {
     val clazz = object{}.javaClass
     return clazz.`package`.implementationVersion
