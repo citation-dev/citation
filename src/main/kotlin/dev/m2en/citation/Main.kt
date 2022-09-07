@@ -90,4 +90,3 @@ fun getCitationVersion(): String? {
     val clazz = object{}.javaClass
     return clazz.`package`.implementationVersion
 }
-
