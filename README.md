@@ -6,6 +6,8 @@
 
 メッセージリンクのプレビューをEmbedで表示するDiscord Botです。
 
+- [citation docs (ドキュメント)](https://github.com/m2en/citation-docs)
+
 ## Usage
 
 citationはDockerをサポートしています。次のコマンドを使用することでビルド済みイメージを利用することができます。
@@ -18,17 +20,11 @@ docker pull ghcr.io/m2en/citation:latest
 docker pull ghcr.io/m2en/citation:<任意のバージョン>
 ```
 
-利用可能なイメージは [packages](https://github.com/m2en/citation/pkgs/container/citation) ページで確認することが出来ます。 (できるかぎり、最新のイメージを使用してください。)
+利用可能なイメージは[ここから](https://github.com/m2en/citation/pkgs/container/citation/versions)確認することが出来ます。 (できるかぎり、最新のイメージを使用してください。)
 
-- [利用可能なイメージ(バージョン一覧)](https://github.com/m2en/citation/pkgs/container/citation/versions)
+詳しいセットアップ方法はcitation docsで確認してください。
 
-## Register Commands
-
-citationは[Application Commands](https://discord.com/developers/docs/interactions/application-commands)をサポートしています。
-
-`/debug`などのコマンド類を使用するには登録が必要です。
-
-登録方法については [citation docs](https://github.com/m2en/citation/blob/main/docs/README.md) を参照してください。
+[Getting started - citation docs](https://citation.m2en.dev/getting-started/)
 
 ## Environment variables
 
