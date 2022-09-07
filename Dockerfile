@@ -11,6 +11,7 @@ FROM openjdk:17-oracle as Run
 RUN mkdir /app
 COPY --from=Build build/libs/citation.jar /app/citation.jar
 COPY --from=Build .env.example /app/.env
+COPY --from=Build .git .
 
 WORKDIR /app
 LABEL org.opencontainers.image.source=https://github.com/m2en/citation
