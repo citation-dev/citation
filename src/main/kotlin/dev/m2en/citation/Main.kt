@@ -32,7 +32,7 @@ suspend fun main() {
     val reactionEmoji = ReactionEmoji.Unicode("\uD83D\uDDD1")
 
     kord.on<ReadyEvent> {
-        println("citation is ready! \n 実行中バージョン: " + getCitationVersion())
+        println("citation is ready!\n実行中バージョン: v" + getCitationVersion())
     }
 
     kord.on<MessageCreateEvent> {
