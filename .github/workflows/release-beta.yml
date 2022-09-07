@@ -1,12 +1,12 @@
-name: release
+name: release beta
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version Tag'
+        description: 'Version Tag (Beta)'
         required: true
-        default: 'v'
+        default: 'v-rc'
 
 jobs:
   release:
@@ -27,11 +27,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: docker/build-push-action@v3
+        if: github.ref_name != 'main'
         with:
           context: .
           push: true
           labels: |
             org.opencontainers.image.source = https://github.com/${{ github.repository }}
           tags: |
-            ghcr.io/${{ github.actor }}/citation:latest
             ghcr.io/${{ github.actor }}/citation:${{ github.event.inputs.version }}
