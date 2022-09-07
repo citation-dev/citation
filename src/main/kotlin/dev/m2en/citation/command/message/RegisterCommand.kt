@@ -37,7 +37,7 @@ suspend fun MessageCreateEvent.onRegister(reactionEmoji: ReactionEmoji.Unicode) 
         statusMessage.edit { content = "Application Commandの登録に成功しました\n(コマンドが反映していない場合はDiscordクライアントの再起動をしてください)" }
     } catch (e: Exception) {
         kordLogger.error("Application Commandの登録に失敗しました。", e)
-        statusMessage.edit { content = "Application Commandの登録に失敗しました。詳細はログを参照してください。\n登録方法が正しいかcitation docsを参照することもお勧めします。\n<https://github.com/m2en/citation/blob/main/docs/getting-started.md>" }
+        statusMessage.edit { content = "Application Commandの登録に失敗しました。詳細はログを参照してください。\n登録方法が正しいかcitation docsを参照することもお勧めします。\n<https://citation.m2en.dev/getting-started/>" }
     }
 
 }
