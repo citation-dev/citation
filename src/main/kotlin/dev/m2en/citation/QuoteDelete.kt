@@ -1,5 +1,6 @@
 package dev.m2en.citation
 
+import dev.kord.common.entity.Permission
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.event.message.ReactionAddEvent
 import dev.kord.core.kordLogger
@@ -18,6 +19,10 @@ suspend fun ReactionAddEvent.onQuoteDelete(selfId: Snowflake) {
 
     val targetMessageReply = targetMessageReference.message?.id?.let { channel.getMessageOrNull(it) } ?: return
     if(user.id != targetMessageReply.author?.id) {
+        if(guild?.getMember(userId)?.getPermissions()?.contains(Permission.ManageMessages) == true) {
+            targetMessage.delete()
+            kordLogger.info("削除: メッセージ管理権限を所持しているため、${user.asUser().tag} の削除リクエストを受理しました")
+        }
         kordLogger.warn("警告: ${user.asUser().tag} は引用者(${targetMessageReply.author?.tag})ではないため、削除リクエストを却下しました")
         return
     }
