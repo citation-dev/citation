@@ -9,7 +9,7 @@ suspend fun ReactionAddEvent.onQuoteDelete(selfId: Snowflake) {
     val targetMessage = message.fetchMessage() // 削除対象のメッセージ
     val targetMessageReference = targetMessage.messageReference ?: return
 
-    if(user.id == selfId) {
+    if(userId == selfId) {
         return
     }
 
@@ -18,7 +18,7 @@ suspend fun ReactionAddEvent.onQuoteDelete(selfId: Snowflake) {
     }
 
     val targetMessageReply = targetMessageReference.message?.id?.let { channel.getMessageOrNull(it) } ?: return
-    if(user.id != targetMessageReply.author?.id) {
+    if(userId != targetMessageReply.author?.id) {
         if(guild?.getMember(userId)?.getPermissions()?.contains(Permission.ManageMessages) == true) {
             targetMessage.delete()
             kordLogger.info("削除: メッセージ管理権限を所持しているため、${user.asUser().tag} の削除リクエストを受理しました")
