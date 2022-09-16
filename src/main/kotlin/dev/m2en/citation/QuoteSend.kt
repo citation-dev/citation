@@ -10,6 +10,7 @@ import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Icon
 import dev.kord.core.entity.Message
 import dev.kord.core.entity.ReactionEmoji
+import dev.kord.core.entity.User
 import dev.kord.core.entity.channel.*
 import dev.kord.core.entity.channel.thread.ThreadChannel
 import dev.kord.core.event.message.MessageCreateEvent
@@ -68,7 +69,8 @@ suspend fun MessageCreateEvent.onQuoteSend(reactionEmoji: ReactionEmoji.Unicode)
         targetMessage.author!!.username
     }
 
-    val replyMessage = message.reply { embeds.add(buildEmbed(targetMessage, targetUserName, targetUser?.avatar)) }
+
+    val replyMessage = message.reply { embeds.add(buildEmbed(targetMessage, targetUserName, targetUser?.avatar, message.author)) }
     replyMessage.addReaction(reactionEmoji)
     kordLogger.info("引用: ${message.author?.tag} の引用に成功しました: ID - ${targetMessage.id}")
 }
@@ -78,24 +80,30 @@ suspend fun MessageCreateEvent.onQuoteSend(reactionEmoji: ReactionEmoji.Unicode)
  *
  * @return 引用結果(Embed)を返す。
  */
-private fun buildEmbed(targetMessage: Message, targetUserName: String, targetUserAvatar: Icon?): EmbedBuilder {
-    val embed = EmbedBuilder()
+private fun buildEmbed(targetMessage: Message, targetUserName: String, targetUserAvatar: Icon?, quoteOwner: User?): EmbedBuilder {
+    val embed = EmbedBuilder().apply {
+        if(targetMessage.attachments.isNotEmpty()) {
+            targetMessage.attachments.forEach{ attachment -> image = attachment.url }
+        }
 
-    // 添付ファイルの確認
-    if(targetMessage.attachments.isNotEmpty()) {
-        targetMessage.attachments.forEach{ attachment -> embed.image = attachment.url }
+        if(targetUserAvatar == null) {
+            author { name = targetUserName }
+        } else {
+            author { name = targetUserName; icon = targetUserAvatar.url }
+        }
+
+        if (quoteOwner != null) {
+            if(quoteOwner.avatar == null) {
+                footer { text = quoteOwner.username; }
+            } else {
+                footer { text = quoteOwner.username; icon = quoteOwner.avatar!!.url }
+            }
+        }
+
+        description = targetMessage.content
+        color = Color(160, 232, 210) // 薄緑色
+        timestamp = targetMessage.timestamp
     }
-
-    // アバターが存在するかどうか (存在するなら、authorに設定する)
-    if(targetUserAvatar == null) {
-        embed.author { name = targetUserName }
-    } else {
-        embed.author { name = targetUserName; icon = targetUserAvatar.url }
-    }
-
-    embed.description = targetMessage.content
-    embed.color = Color(160, 232, 210) // 薄緑色
-    embed.timestamp = targetMessage.timestamp
 
     return embed
 }
