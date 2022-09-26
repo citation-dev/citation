@@ -7,6 +7,7 @@ on:
     branches: [ "main" ]
   schedule:
     - cron: "0 3 * * 6" # At 12:00 on Saturday (JST)
+  workflow_dispatch: # Manual trigger
 
 env:
   DETEKT_RELEASE_TAG: v1.15.0
