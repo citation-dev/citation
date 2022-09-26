@@ -15,7 +15,6 @@ import dev.kord.gateway.Intent
 import dev.kord.gateway.Intents
 import dev.kord.core.event.message.ReactionAddEvent
 import dev.kord.gateway.PrivilegedIntent
-import dev.m2en.citation.command.*
 import dev.m2en.citation.command.chat.HelpCommand
 import dev.m2en.citation.command.message.onDebugMessageCommand
 import dev.m2en.citation.command.message.onRegister
