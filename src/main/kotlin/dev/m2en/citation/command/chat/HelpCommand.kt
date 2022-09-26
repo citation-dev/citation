@@ -4,7 +4,7 @@ import dev.kord.core.behavior.interaction.response.DeferredEphemeralMessageInter
 import dev.kord.core.behavior.interaction.response.respond
 import dev.kord.core.entity.interaction.GuildChatInputCommandInteraction
 import dev.kord.rest.builder.message.EmbedBuilder
-import dev.m2en.citation.command.InteractionCommandInterface
+import dev.m2en.citation.handler.InteractionCommandInterface
 import dev.m2en.citation.getCitationVersion
 
 object HelpCommand: InteractionCommandInterface {

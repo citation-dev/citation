@@ -4,7 +4,6 @@ package dev.m2en.citation
 
 import dev.kord.core.Kord
 import dev.kord.core.behavior.interaction.response.respond
-import dev.kord.core.entity.ReactionEmoji
 import dev.kord.core.event.gateway.ReadyEvent
 import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
 import dev.kord.core.event.interaction.GuildMessageCommandInteractionCreateEvent
@@ -15,10 +14,12 @@ import dev.kord.gateway.Intent
 import dev.kord.gateway.Intents
 import dev.kord.core.event.message.ReactionAddEvent
 import dev.kord.gateway.PrivilegedIntent
-import dev.m2en.citation.command.*
 import dev.m2en.citation.command.chat.HelpCommand
+import dev.m2en.citation.command.message.chat.RegisterCommand
 import dev.m2en.citation.command.message.onDebugMessageCommand
-import dev.m2en.citation.command.message.onRegister
+import dev.m2en.citation.handler.InteractionCommandInterface
+import dev.m2en.citation.message.QuoteDeleteListener
+import dev.m2en.citation.message.QuoteSendListener
 import io.github.cdimascio.dotenv.dotenv
 
 @OptIn(PrivilegedIntent::class)
@@ -29,21 +30,21 @@ suspend fun main() {
     val interactionMap = mutableMapOf<String, InteractionCommandInterface>()
     interactionMap["help"] = HelpCommand
 
-    val reactionEmoji = ReactionEmoji.Unicode("\uD83D\uDDD1")
-
     kord.on<ReadyEvent> {
         println("citation is ready!\n実行中バージョン: v" + getCitationVersion())
     }
 
     kord.on<MessageCreateEvent> {
-        if(message.author?.isBot == true || message.getGuildOrNull() == null) return@on
+        if(message.getGuildOrNull() == null) return@on
 
-        onRegister(reactionEmoji)
-        onQuoteSend(reactionEmoji)
+        RegisterCommand.messageHandle(message)
+        QuoteSendListener.messageHandle(message)
     }
 
     kord.on<ReactionAddEvent> {
-        onQuoteDelete(kord.selfId)
+        if(guild == null) return@on
+
+        QuoteDeleteListener(kord.selfId, userId).reactionHandle(message, emoji)
     }
 
     kord.on<GuildChatInputCommandInteractionCreateEvent> {
