@@ -1,4 +1,4 @@
-package dev.m2en.citation.message.quote
+package dev.m2en.citation.message
 
 import dev.kord.common.entity.Permission
 import dev.kord.common.entity.Snowflake

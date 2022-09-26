@@ -1,4 +1,4 @@
-package dev.m2en.citation.message.quote
+package dev.m2en.citation.message
 
 import dev.kord.common.Color
 import dev.kord.common.entity.ChannelType

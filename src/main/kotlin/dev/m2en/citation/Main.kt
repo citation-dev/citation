@@ -19,8 +19,8 @@ import dev.m2en.citation.command.*
 import dev.m2en.citation.command.chat.HelpCommand
 import dev.m2en.citation.command.message.onDebugMessageCommand
 import dev.m2en.citation.command.message.onRegister
-import dev.m2en.citation.message.quote.QuoteSendListener
-import dev.m2en.citation.message.quote.onQuoteDelete
+import dev.m2en.citation.message.QuoteSendListener
+import dev.m2en.citation.message.onQuoteDelete
 import io.github.cdimascio.dotenv.dotenv
 
 @OptIn(PrivilegedIntent::class)
