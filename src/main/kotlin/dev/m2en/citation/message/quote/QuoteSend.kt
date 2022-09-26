@@ -15,7 +15,7 @@ import dev.kord.core.entity.channel.*
 import dev.kord.core.entity.channel.thread.ThreadChannel
 import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.EmbedBuilder
-import dev.m2en.citation.message.MessageHandler
+import dev.m2en.citation.handler.MessageHandler
 
 object QuoteSendListener : MessageHandler {
     override suspend fun canProcess(message: Message): Boolean = message.author?.isBot == false

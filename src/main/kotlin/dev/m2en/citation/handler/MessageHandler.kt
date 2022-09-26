@@ -1,4 +1,4 @@
-package dev.m2en.citation.message
+package dev.m2en.citation.handler
 
 import dev.kord.core.entity.Message
 
