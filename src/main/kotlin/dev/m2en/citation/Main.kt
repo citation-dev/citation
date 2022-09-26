@@ -19,8 +19,8 @@ import dev.m2en.citation.command.*
 import dev.m2en.citation.command.chat.HelpCommand
 import dev.m2en.citation.command.message.onDebugMessageCommand
 import dev.m2en.citation.command.message.onRegister
+import dev.m2en.citation.message.QuoteDeleteListener
 import dev.m2en.citation.message.QuoteSendListener
-import dev.m2en.citation.message.onQuoteDelete
 import io.github.cdimascio.dotenv.dotenv
 
 @OptIn(PrivilegedIntent::class)
@@ -45,7 +45,9 @@ suspend fun main() {
     }
 
     kord.on<ReactionAddEvent> {
-        onQuoteDelete(kord.selfId)
+        if(guild == null) return@on
+
+        QuoteDeleteListener(kord.selfId, userId).reactionHandle(message, emoji)
     }
 
     kord.on<GuildChatInputCommandInteractionCreateEvent> {
