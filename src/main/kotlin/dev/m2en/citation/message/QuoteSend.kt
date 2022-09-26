@@ -13,9 +13,9 @@ import dev.kord.core.entity.ReactionEmoji
 import dev.kord.core.entity.User
 import dev.kord.core.entity.channel.*
 import dev.kord.core.entity.channel.thread.ThreadChannel
-import dev.kord.core.kordLogger
 import dev.kord.rest.builder.message.EmbedBuilder
 import dev.m2en.citation.handler.MessageHandler
+import dev.m2en.citation.utils.Logger
 
 object QuoteSendListener : MessageHandler {
     override suspend fun canProcess(message: Message): Boolean = message.author?.isBot == false
@@ -34,34 +34,33 @@ object QuoteSendListener : MessageHandler {
 
         val matches = linkRegex.find(str) ?: return
         if(Snowflake(matches.groupValues[1]) != message.getGuild().id) {
-            kordLogger.warn("警告: ${message.author?.tag} の引用をスキップしました: ギルドが一致しません。")
+            Logger.sendKWarn("${message.author?.tag} の引用をスキップしました: ギルドが一致しません。")
             return
         }
 
         val targetChannel = message.getGuild().getChannelOfOrNull<GuildMessageChannel>(Snowflake(matches.groupValues[2]))
         val messageChannelData = message.getGuild().getChannelOf<GuildMessageChannel>(message.channelId)
         if(targetChannel == null) {
-            kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: チャンネルが見つかりません。")
+            Logger.sendError("${message.author?.tag} の引用に失敗しました: チャンネルが見つかりません。")
             return
         }
         if(isChannelNsfw(targetChannel, messageChannelData)) {
-            kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: NSFWとして指定されているチャンネルのメッセージです。")
+            Logger.sendError("${message.author?.tag} の引用に失敗しました: NSFWとして指定されているチャンネルのメッセージです。")
             return
         }
 
         val targetMessage = targetChannel.getMessageOrNull(Snowflake(matches.groupValues[3]))
         if(targetMessage == null) {
-            message.reply { content = "> **エラー:** メッセージが見つかりません。" }
-            kordLogger.error("エラー: ${message.author?.tag} の引用に失敗しました: メッセージが見つかりません。")
+            Logger.sendError("${message.author?.tag} の引用に失敗しました: メッセージが見つかりません。")
             return
         }
         if(!(checkMessageType(targetMessage))) {
-            kordLogger.warn("警告: 通常メッセージではないため、引用をキャンセルしました。: ${targetMessage.type}")
+            Logger.sendKWarn("通常メッセージではないため、引用をキャンセルしました。: ${targetMessage.type}")
             return
         }
 
         if(targetMessage.embeds.isNotEmpty() && targetMessage.content.isEmpty()) {
-            kordLogger.warn("警告: メッセージ内容が空で、Embedのみだったため引用をキャンセルしました。")
+            Logger.sendKWarn("メッセージ内容が空で、Embedのみだったため引用をキャンセルしました。")
             return
         }
 
@@ -75,7 +74,7 @@ object QuoteSendListener : MessageHandler {
 
         val replyMessage = message.reply { embeds.add(buildEmbed(targetMessage, targetUserName, targetUser?.avatar, message.author)) }
         replyMessage.addReaction(ReactionEmoji.Unicode("\uD83D\uDDD1"))
-        kordLogger.info("引用: ${message.author?.tag} の引用に成功しました: ID - ${targetMessage.id}")
+        Logger.sendInfo("${message.author?.tag} の引用に成功しました: ID - ${targetMessage.id}")
 
     }
 

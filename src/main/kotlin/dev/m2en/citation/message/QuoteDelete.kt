@@ -5,9 +5,9 @@ import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.MessageBehavior
 import dev.kord.core.behavior.reply
 import dev.kord.core.entity.ReactionEmoji
-import dev.kord.core.kordLogger
 import dev.m2en.citation.handler.ReactionHandler
 import dev.m2en.citation.utils.ErrorEmbed
+import dev.m2en.citation.utils.Logger
 
 class QuoteDeleteListener(private val selfId: Snowflake, private val userId: Snowflake) : ReactionHandler {
 
@@ -35,16 +35,16 @@ class QuoteDeleteListener(private val selfId: Snowflake, private val userId: Sno
         val guild = targetMessage.getGuild()
         if(guild.getMember(userId).getPermissions().contains(Permission.ManageMessages)) {
             targetMessage.delete()
-            kordLogger.info("削除: メッセージ管理権限を所持しているため、削除リクエストを受理しました")
+            Logger.sendInfo("メッセージ管理権限を所持しているため、削除リクエストを受理しました")
             return
         }
 
         if(userId != targetMessageReply.fetchMessage().author?.id) {
-            kordLogger.warn("警告: 引用者ではないため、削除リクエストを却下しました")
+            Logger.sendInfo("引用者ではないため、削除リクエストを却下しました")
             return
         }
 
         targetMessage.delete("引用メッセージの削除")
-        kordLogger.info("削除: 削除リクエストを受理しました")
+        Logger.sendInfo("削除: 削除リクエストを受理しました")
     }
 }
