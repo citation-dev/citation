@@ -7,7 +7,7 @@ import dev.kord.rest.builder.message.EmbedBuilder
 suspend fun GuildMessageCommandInteractionCreateEvent.onDebugMessageCommand() {
     val targetMessage = interaction.channel.getMessage(interaction.target.id)
 
-    interaction.deferEphemeralResponse().respond { embeds = MutableList(1) { buildEmbed(targetMessage.content) } }
+    interaction.deferEphemeralResponse().respond { embeds?.add(buildEmbed(targetMessage.content)) }
 }
 
 private fun buildEmbed(targetContent: String): EmbedBuilder {

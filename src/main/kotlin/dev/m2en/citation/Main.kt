@@ -4,21 +4,23 @@ package dev.m2en.citation
 
 import dev.kord.core.Kord
 import dev.kord.core.behavior.interaction.response.respond
-import dev.kord.core.entity.ReactionEmoji
 import dev.kord.core.event.gateway.ReadyEvent
 import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
 import dev.kord.core.event.interaction.GuildMessageCommandInteractionCreateEvent
 import dev.kord.core.event.message.MessageCreateEvent
-import dev.kord.core.kordLogger
 import dev.kord.core.on
 import dev.kord.gateway.Intent
 import dev.kord.gateway.Intents
 import dev.kord.core.event.message.ReactionAddEvent
 import dev.kord.gateway.PrivilegedIntent
-import dev.m2en.citation.command.*
 import dev.m2en.citation.command.chat.HelpCommand
+import dev.m2en.citation.command.message.chat.RegisterCommand
 import dev.m2en.citation.command.message.onDebugMessageCommand
-import dev.m2en.citation.command.message.onRegister
+import dev.m2en.citation.handler.InteractionCommandInterface
+import dev.m2en.citation.message.QuoteDeleteListener
+import dev.m2en.citation.message.QuoteSendListener
+import dev.m2en.citation.utils.ErrorEmbed
+import dev.m2en.citation.utils.Logger
 import io.github.cdimascio.dotenv.dotenv
 
 @OptIn(PrivilegedIntent::class)
@@ -29,28 +31,32 @@ suspend fun main() {
     val interactionMap = mutableMapOf<String, InteractionCommandInterface>()
     interactionMap["help"] = HelpCommand
 
-    val reactionEmoji = ReactionEmoji.Unicode("\uD83D\uDDD1")
-
     kord.on<ReadyEvent> {
-        println("citation is ready!\n実行中バージョン: v" + getCitationVersion())
+        Logger.sendReadyInfo(getCitationVersion())
     }
 
     kord.on<MessageCreateEvent> {
-        if(message.author?.isBot == true || message.getGuildOrNull() == null) return@on
+        if(message.getGuildOrNull() == null) return@on
 
-        onRegister(reactionEmoji)
-        onQuoteSend(reactionEmoji)
+        RegisterCommand.messageHandle(message)
+        QuoteSendListener.messageHandle(message)
     }
 
     kord.on<ReactionAddEvent> {
-        onQuoteDelete(kord.selfId)
+        if(guild == null) return@on
+
+        QuoteDeleteListener(kord.selfId, userId).reactionHandle(message, emoji)
     }
 
     kord.on<GuildChatInputCommandInteractionCreateEvent> {
         val responseBehavior = interaction.deferEphemeralResponse()
 
         if(interaction.getGuildOrNull() == null) {
-            responseBehavior.respond { content = "> **エラー:** ギルド以外から発行されたインタラクションには応答できません" }
+            responseBehavior.respond { embeds?.add(ErrorEmbed.buildErrorEmbed(
+                "インタラクションに返信できません",
+                "ギルド以外で発行されたインタラクションは利用できません。",
+                "ギルド内で使用してください。"
+            )) }
             return@on
         }
 
@@ -60,14 +66,17 @@ suspend fun main() {
             "debug" -> interactionMap["debug"]?.onCommand(interaction, responseBehavior)
 
             else -> {
-                responseBehavior.respond { content = "> **エラー:** このインタラクションはcitationで本来想定されていません" }
-                kordLogger.warn("警告: citationで本来想定されていない不正なインタラクションを受信しました。レスポンスは返さず無視します")
+                responseBehavior.respond { embeds?.add(ErrorEmbed.buildErrorEmbed(
+                    "インタラクションに返信できません",
+                    "本来想定されていないインタラクションです。利用できません。"
+                )) }
+                Logger.sendKWarn("citationで本来想定されていない不正なインタラクションを受信しました。レスポンスは返さず無視します")
                 return@on
             }
         }
 
         // 発行されたインタラクションについて報告する
-        kordLogger.info("ログ: ${interaction.user.tag} が ${interaction.invokedCommandName}(${interaction.invokedCommandId}) を実行しました")
+        Logger.sendKInfo("${interaction.user.tag} が ${interaction.invokedCommandName}(${interaction.invokedCommandId}) を実行しました")
     }
 
     kord.on<GuildMessageCommandInteractionCreateEvent> {

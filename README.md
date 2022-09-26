@@ -3,6 +3,10 @@
 [![Build](https://github.com/m2en/citation/actions/workflows/build.yml/badge.svg)](https://github.com/m2en/citation/actions/workflows/build.yml)
 [![release](https://github.com/m2en/citation/actions/workflows/release.yml/badge.svg)](https://github.com/m2en/citation/actions/workflows/release.yml)
 
+----
+
+- [Security Policy](https://citation.m2en.dev/security-policy/)
+- [citation docs](https://citation.m2en.dev)
 
 メッセージリンクのプレビューをEmbedで表示するDiscord Botです。
 
@@ -30,8 +34,3 @@ docker pull ghcr.io/m2en/citation:<任意のバージョン>
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | `CITATION_BOT_TOKEN` | citationが接続するDiscord Botのトークン ([発行方法](https://github.com/m2en/citation/blob/main/docs/getting-started.md#bot%E3%81%AE%E7%99%BB%E9%8C%B2)) |
 | `GUILD_ID`           | Commandを登録したいサーバーのギルドID                                                                                                                   |
-
-----
-
-- [Security Policy](./SECURITY.md)
-- [citation docs](https://citation.dev)
