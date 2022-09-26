@@ -19,8 +19,8 @@ import dev.m2en.citation.command.*
 import dev.m2en.citation.command.chat.HelpCommand
 import dev.m2en.citation.command.message.onDebugMessageCommand
 import dev.m2en.citation.command.message.onRegister
+import dev.m2en.citation.message.quote.QuoteSendListener
 import dev.m2en.citation.message.quote.onQuoteDelete
-import dev.m2en.citation.message.quote.onQuoteSend
 import io.github.cdimascio.dotenv.dotenv
 
 @OptIn(PrivilegedIntent::class)
@@ -38,10 +38,10 @@ suspend fun main() {
     }
 
     kord.on<MessageCreateEvent> {
-        if(message.author?.isBot == true || message.getGuildOrNull() == null) return@on
+        if(message.getGuildOrNull() == null) return@on
 
         onRegister(reactionEmoji)
-        onQuoteSend(reactionEmoji)
+        QuoteSendListener.messageHandle(message)
     }
 
     kord.on<ReactionAddEvent> {
