@@ -76,7 +76,7 @@ suspend fun main() {
         }
 
         // 発行されたインタラクションについて報告する
-        Logger.sendKInfo("${interaction.user.tag} が ${interaction.invokedCommandName}(${interaction.invokedCommandId}) を実行しました")
+        Logger.sendInfo("${interaction.user.tag} が ${interaction.invokedCommandName}(${interaction.invokedCommandId}) を実行しました")
     }
 
     kord.on<GuildMessageCommandInteractionCreateEvent> {
