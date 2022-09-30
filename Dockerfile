@@ -1,12 +1,11 @@
-FROM openjdk:17-oracle as Build
+FROM amazoncorretto:17.0.4-alpine3.16 as Build
 
 COPY . .
 
 RUN chmod +x ./gradlew
-RUN microdnf install findutils
 RUN ./gradlew --no-daemon shadowJar
 
-FROM openjdk:17-oracle as Run
+FROM amazoncorretto:17.0.4-alpine3.16 as Run
 
 RUN mkdir /app
 COPY --from=Build build/libs/citation.jar /app/citation.jar
