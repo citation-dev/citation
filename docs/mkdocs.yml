@@ -1,0 +1,41 @@
+site_name: citation docs
+repo_url: https://github.com/m2en/citation
+repo_name: m2en/citation
+edit_uri: https://github.com/m2en/citation/edit/main/docs/docs
+theme:
+  name: material
+  logo: assets/images/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
+      primary: deep purple
+      accent: blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      primary: deep purple
+      accent: light blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - header.autohide
+    - navigation.indexes
+    - navigation.expand
+    - navigation.top
+    - navigation.sections
+    - content.tabs.link
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
