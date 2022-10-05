@@ -156,10 +156,7 @@ object QuoteSendListener : MessageHandler {
             }
 
             if(message.editedTimestamp !== null) {
-                field {
-                    name = "編集"
-                    value = message.editedTimestamp.toString()
-                }
+                timestamp = message.editedTimestamp
             }
 
             if(messageAuthor.avatar !== null) {
