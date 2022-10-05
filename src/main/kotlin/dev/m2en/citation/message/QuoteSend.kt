@@ -17,7 +17,6 @@ object QuoteSendListener : MessageHandler {
     override suspend fun canProcess(message: Message): Boolean = message.author?.isBot == false
 
     override suspend fun messageHandle(message: Message) {
-        val requester = message.author?.fetchMember(message.getGuild().id) ?: throw Error("リクエスト送信者を見つけることができませんでした。")
 
         /**
          * メッセージリンクを取り出す正規表現
@@ -36,6 +35,8 @@ object QuoteSendListener : MessageHandler {
         if(!(linkRegex.containsMatchIn(content))) {
             return
         }
+
+        val requester = message.author?.fetchMember(message.getGuild().id) ?: throw Error("リクエスト送信者を見つけることができませんでした。")
 
         val quoteMessage = getQuoteMessage(message, linkRegex, requester)
 
