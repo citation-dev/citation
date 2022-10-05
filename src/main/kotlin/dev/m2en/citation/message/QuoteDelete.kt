@@ -18,7 +18,7 @@ class QuoteDeleteListener(private val selfId: Snowflake, private val userId: Sno
         val targetMessage = message.fetchMessage() // 削除対象のメッセージ
         val targetMessageReference = targetMessage.messageReference ?: return
 
-        if(selfId == userId && targetMessage.author?.id != selfId) {
+        if(selfId == userId || targetMessage.author?.id != selfId) {
             return
         }
 
