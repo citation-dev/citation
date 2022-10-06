@@ -9,6 +9,7 @@ citation は Kotlin で書かれたメッセージリンクのプレビュー表
 
 ギルドに送信されたメッセージリンクからメッセージを取得し、埋め込みメッセージとして表示します。
 
+- [Getting Started](./resources/getting-started.md)
 - [Security Policy](./resources/security-policy.md)
 - [Contributing Guide](./resources/contributing.md)
 
@@ -20,7 +21,7 @@ citation を使用するには Docker が必要です。
 
 !!! note
 
-    Dockerを使用しないセットアップも可能です。それらの方法も [Getting Started](getting-started.md) に記載しています。
+    Dockerを使用しないセットアップも可能です。それらの方法も [Getting Started](./resources/getting-started.md) に記載しています。
 
 ```shell
 docker pull ghcr.io/m2en/citation:latest
