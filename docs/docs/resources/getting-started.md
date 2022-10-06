@@ -1,5 +1,7 @@
 # Getting Started
 
+## セットアップ
+
 citation は以下の方法で利用できます。
 
 1. ghcr.io(Github Packages)で公開されているビルド済みの Docker Image を使用する (推奨)
