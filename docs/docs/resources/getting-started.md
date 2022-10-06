@@ -6,7 +6,35 @@ citation は以下の方法で利用できます。
 2. 自分自身でビルドし、jar ファイルを実行する
 3. 配布されている jar ファイルを直接実行する
 
-=== "ghcr.io を使用する(Docker Compose)"
+### 1. Bot を作成する
+
+[Discord Developer Portal](https://discord.com/developers/applications) にアクセスし、新しいアプリケーションを作成します。
+
+`New Application` をクリックし、アプリケーション名を入力し作成したら、`Bot` をクリックし、`Add Bot` をクリックします。
+
+Bot を作成したら、`Reset Token` をクリックし、トークンを生成します。
+
+!!! warning
+
+    トークンは機密情報です。誰にも教えないでください。
+
+### 2. Privileged Gateway Intents を有効にする
+
+次に `Privileged Gateway Intents` を有効にします。
+
+`Bot` メニューから `Privileged Gateway Intents` の欄にある、`MESSAGE CONTENT INTENT` を有効にします。
+
+### 3. Bot をサーバーに招待する
+
+OAuth2 の `URL Generator` から サーバーの招待リンクを生成します。
+
+`SCOPES` に `bot` を追加し、`BOT PERMISSIONS` に適切な権限を設定します。citation に必要な権限は [citation に必要な権限](#citation-に必要な権限) を参照してください。
+
+生成されたリンクから Bot をサーバーに招待します。
+
+### 4. citation を入手する
+
+=== "ghcr.io (Docker Compose)"
 
     ここではghcr.io(GitHub Packages)にプッシュされているビルド済みイメージを **Docker Compose** で利用する方法を紹介します。
 
