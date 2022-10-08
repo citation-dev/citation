@@ -5,8 +5,8 @@
 
 ----
 
-- [Security Policy](https://citation.m2en.dev/security-policy/)
-- [citation docs](https://citation.m2en.dev)
+- [Documents](https://citation.m2en.dev)
+- [Security Policy](https://citation.m2en.dev/resources/security-policy/)
 
 メッセージリンクのプレビューをEmbedで表示するDiscord Botです。
 
@@ -26,7 +26,7 @@ docker pull ghcr.io/m2en/citation:<任意のバージョン>
 
 詳しいセットアップ方法はcitation docsで確認してください。
 
-[Getting started - citation docs](https://citation.m2en.dev/getting-started/)
+[Getting started - citation docs](https://citation.m2en.dev/resources/getting-started/)
 
 ## Environment variables
 
