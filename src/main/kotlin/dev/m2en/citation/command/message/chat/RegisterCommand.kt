@@ -29,30 +29,29 @@ class RegisterCommand(private val guildId: Snowflake) : MessageHandler {
             return
         }
 
-        val statusMessage = message.reply { content = "Application Commandの登録を開始します...." }
+        val statusMessage = message.reply { content = "Application Commandの登録を開始します.... (実行結果はコンソールを確認してください)" }
         statusMessage.addReaction(ReactionEmoji.Unicode("\uD83D\uDDD1"))
 
-        val kord = message.kord
+        registerApplicationCommand(message.kord, guildId)
+
+        statusMessage.edit { content = "Application Commandの登録が完了しました。" }
+
+    }
+
+    suspend fun registerApplicationCommand(kord: Kord, guildId: Snowflake) {
+
         try {
             Logger.sendInfo("Application Commandの登録を開始します....")
 
-            registerApplicationCommand(kord, guildId)
+            targetApplicationCommand(kord, guildId)
 
             Logger.sendInfo("Application Commandの登録に成功しました")
-            statusMessage.edit {
-                content =
-                    "Application Commandの登録に成功しました\n(コマンドが反映していない場合はDiscordクライアントの再起動をしてください)"
-            }
         } catch (e: Exception) {
             Logger.sendError("Application Commandの登録に失敗しました。", e)
-            statusMessage.edit {
-                content =
-                    "Application Commandの登録に失敗しました。詳細はログを参照してください。\n登録方法が正しいかcitation docsを参照することもお勧めします。\n<https://citation.m2en.dev/getting-started/>"
-            }
         }
     }
 
-    private suspend fun registerApplicationCommand(kord: Kord, guildId: Snowflake) {
+    private suspend fun targetApplicationCommand(kord: Kord, guildId: Snowflake) {
         kord.createGuildChatInputCommand(
             guildId,
             "help",
