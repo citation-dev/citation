@@ -16,12 +16,11 @@ class RegisterCommand(private val guildId: Snowflake) : MessageHandler {
     override suspend fun canProcess(message: Message): Boolean = message.author?.isBot == false
 
     override suspend fun messageHandle(message: Message) {
-        // <メンション> register
-        if (message.content !== "<@${message.kord.selfId}> register") {
+        if (message.content !== "!register") {
             return
         }
 
-        val member = message.author?.id?.let { message.getGuild().getMemberOrNull(it) } ?: return
+        val member = message.getGuild().getMember(message.author!!.id)
 
         if (Permission.isDangerPermission(member.getPermissions())) {
             message.reply {
