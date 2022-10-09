@@ -16,6 +16,7 @@ import dev.kord.gateway.Intents
 import dev.kord.core.event.message.ReactionAddEvent
 import dev.kord.gateway.PrivilegedIntent
 import dev.m2en.citation.command.chat.HelpCommand
+import dev.m2en.citation.command.chat.PurgeCommand
 import dev.m2en.citation.command.message.chat.RegisterCommand
 import dev.m2en.citation.command.message.onDebugMessageCommand
 import dev.m2en.citation.handler.InteractionCommandInterface
@@ -33,6 +34,7 @@ suspend fun main() {
 
     val interactionMap = mutableMapOf<String, InteractionCommandInterface>()
     interactionMap["help"] = HelpCommand
+    interactionMap["purge"] = PurgeCommand
 
     kord.on<ReadyEvent> {
         Logger.sendReadyInfo(getCitationVersion())
@@ -65,6 +67,7 @@ suspend fun main() {
         when(interaction.invokedCommandName) {
             "help" -> interactionMap["help"]?.onCommand(interaction, responseBehavior)
             "debug" -> interactionMap["debug"]?.onCommand(interaction, responseBehavior)
+            "purge" -> interactionMap["purge"]?.onCommand(interaction, responseBehavior)
 
             else -> {
                 responseBehavior.respond { embeds?.add(ErrorEmbed.buildErrorEmbed(
