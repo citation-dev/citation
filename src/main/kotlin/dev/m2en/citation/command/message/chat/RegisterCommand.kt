@@ -24,7 +24,7 @@ class RegisterCommand(private val guildId: Snowflake) : MessageHandler {
 
         val member = message.getGuild().getMember(message.author!!.id)
 
-        if (Permission.isDangerPermission(member.getPermissions())) {
+        if (!Permission.isDangerPermission(member.getPermissions())) {
             message.reply {
                 embeds.add(ErrorEmbed.buildErrorEmbed(
                     "権限不足エラー",
@@ -77,7 +77,7 @@ class RegisterCommand(private val guildId: Snowflake) : MessageHandler {
             user("target", "削除対象の引用リクエスト送信者を指定してください。") {
                 required = true
             }
-            int("count", "削除する引用の数を指定してください。") {
+            int("count", "削除する引用の数を指定してください。(1~100)") {
                 required = true
             }
         }
