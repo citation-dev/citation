@@ -2,8 +2,10 @@
 
 package dev.m2en.citation
 
+import dev.kord.common.entity.Snowflake
 import dev.kord.core.Kord
 import dev.kord.core.behavior.interaction.response.respond
+import dev.kord.core.entity.Guild
 import dev.kord.core.event.gateway.ReadyEvent
 import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
 import dev.kord.core.event.interaction.GuildMessageCommandInteractionCreateEvent
@@ -27,6 +29,7 @@ import io.github.cdimascio.dotenv.dotenv
 suspend fun main() {
     val dotenv = dotenv()
     val kord = Kord(dotenv.get("CITATION_BOT_TOKEN"))
+    val guild = getGuild(kord, Snowflake(dotenv.get("GUILD_ID")))
 
     val interactionMap = mutableMapOf<String, InteractionCommandInterface>()
     interactionMap["help"] = HelpCommand
@@ -38,13 +41,11 @@ suspend fun main() {
     kord.on<MessageCreateEvent> {
         if(message.getGuildOrNull() == null) return@on
 
-        RegisterCommand.messageHandle(message)
+        RegisterCommand(guild.id).messageHandle(message)
         QuoteSendListener.messageHandle(message)
     }
 
     kord.on<ReactionAddEvent> {
-        if(guild == null) return@on
-
         QuoteDeleteListener(kord.selfId, userId).reactionHandle(message, emoji)
     }
 
@@ -88,6 +89,11 @@ suspend fun main() {
     kord.login {
         intents = Intents(Intent.Guilds, Intent.GuildMessages, Intent.MessageContent, Intent.GuildMessageReactions, Intent.GuildEmojis)
     }
+}
+
+suspend fun getGuild(kord: Kord, guildId: Snowflake): Guild {
+    return kord.getGuild(guildId)
+        ?: throw Error("環境変数で指定されたIDのギルドを発見することができません。起動に失敗しました。")
 }
 
 /**
