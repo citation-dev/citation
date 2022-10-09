@@ -16,7 +16,7 @@ class RegisterCommand(private val guildId: Snowflake) : MessageHandler {
     override suspend fun canProcess(message: Message): Boolean = message.author?.isBot == false
 
     override suspend fun messageHandle(message: Message) {
-        if (message.content !== "!register") {
+        if (message.content != "!register") {
             return
         }
 
@@ -25,7 +25,7 @@ class RegisterCommand(private val guildId: Snowflake) : MessageHandler {
         if (Permission.isDangerPermission(member.getPermissions())) {
             message.reply {
                 embeds.add(ErrorEmbed.buildErrorEmbed(
-                    "あなたはこのコマンドを実行する権限を持っていません。",
+                    "権限不足エラー",
                     "このコマンドを実行するには `Administrator`(管理者権限) または `ManageGuild`(ギルドの管理権限) が必要です。",
                     "ギルドの管理者に連絡してください。"))
             }
