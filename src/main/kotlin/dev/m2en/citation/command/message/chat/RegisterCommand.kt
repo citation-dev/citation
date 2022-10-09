@@ -7,6 +7,8 @@ import dev.kord.core.behavior.edit
 import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Message
 import dev.kord.core.entity.ReactionEmoji
+import dev.kord.rest.builder.interaction.int
+import dev.kord.rest.builder.interaction.user
 import dev.m2en.citation.handler.MessageHandler
 import dev.m2en.citation.utils.ErrorEmbed
 import dev.m2en.citation.utils.Logger
@@ -66,5 +68,18 @@ class RegisterCommand(private val guildId: Snowflake) : MessageHandler {
             guildId,
             "Debug"
         )
+
+        kord.createGuildChatInputCommand(
+            guildId,
+            "purge",
+            "引用を一斉削除します。"
+        ) {
+            user("target", "削除対象の引用リクエスト送信者を指定してください。") {
+                required = true
+            }
+            int("count", "削除する引用の数を指定してください。") {
+                required = true
+            }
+        }
     }
 }
