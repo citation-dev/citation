@@ -8,7 +8,9 @@ import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Message
 import dev.kord.core.entity.ReactionEmoji
 import dev.m2en.citation.handler.MessageHandler
+import dev.m2en.citation.utils.ErrorEmbed
 import dev.m2en.citation.utils.Logger
+import dev.m2en.citation.utils.Utils
 
 class RegisterCommand(private val guildId: Snowflake) : MessageHandler {
     override suspend fun canProcess(message: Message): Boolean = message.author?.isBot == false
@@ -23,9 +25,12 @@ class RegisterCommand(private val guildId: Snowflake) : MessageHandler {
 
         if (Permission.isDangerPermission(member.getPermissions())) {
             message.reply {
-                content =
-                    "> **エラー:** 権限が足りません。このコマンドを実行するには **サーバーの管理権限(`ManageGuild`) または 管理者権限(`Administrator`)** が必要です。"
+                embeds.add(ErrorEmbed.buildErrorEmbed(
+                    "あなたはこのコマンドを実行する権限を持っていません。",
+                    "このコマンドを実行するには `Administrator`(管理者権限) または `ManageGuild`(ギルドの管理権限) が必要です。",
+                    "ギルドの管理者に連絡してください。"))
             }
+            Logger.sendWarn("権限がないユーザーがApplication Command登録コマンドを実行しました。: ${Utils.createUserDisplayName(member.username, member.id)}")
             return
         }
 
