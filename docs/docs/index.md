@@ -29,6 +29,8 @@ citation は Kotlin で書かれたメッセージリンクのプレビュー表
 
 ギルドに送信されたメッセージリンクからメッセージを取得し、埋め込みメッセージとして表示します。
 
+----
+
 - [Getting Started](./resources/getting-started.md)
 - [Security Policy](./resources/security-policy.md)
 - [Contributing Guide](./resources/contributing.md)
