@@ -1,11 +1,11 @@
-FROM amazoncorretto:17.0.4-alpine3.16 as Build
+FROM amazoncorretto:19.0.0-alpine3.16 as Build
 
 COPY . .
 
 RUN chmod +x ./gradlew
 RUN ./gradlew --no-daemon shadowJar
 
-FROM amazoncorretto:17.0.4-alpine3.16 as Run
+FROM amazoncorretto:19.0.0-alpine3.16 as Run
 
 RUN mkdir /app
 COPY --from=Build build/libs/citation.jar /app/citation.jar
