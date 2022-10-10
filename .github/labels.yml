@@ -48,3 +48,5 @@
 - name: '🌂good first issue'
   description: '君でもできる!さあやろう!'
   color: '69f5a8'
+- name: '💖release'
+  color: '97b6f0'

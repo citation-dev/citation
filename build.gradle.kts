@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.7.20"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("com.palantir.git-version") version "0.15.0"
 }
@@ -20,7 +20,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation("dev.kord:kord-core:0.8.0-M16")
-    implementation("org.slf4j:slf4j-simple:2.0.2")
+    implementation("org.slf4j:slf4j-simple:2.0.3")
     implementation("io.github.cdimascio:dotenv-kotlin:6.3.1")
 }
 
