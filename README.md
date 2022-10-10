@@ -1,36 +1,58 @@
-# citation
+<h1 align="center"> citation v2 </h1> <br>
 
-[![Build](https://github.com/m2en/citation/actions/workflows/build.yml/badge.svg)](https://github.com/m2en/citation/actions/workflows/build.yml)
+<p align="center"> Discord Bot to show MessageLink's preview </p>
+
+<p align="center">
+
+[![build](https://github.com/m2en/citation/actions/workflows/build.yml/badge.svg)](https://github.com/m2en/citation/actions/workflows/build.yml)
 [![release](https://github.com/m2en/citation/actions/workflows/release.yml/badge.svg)](https://github.com/m2en/citation/actions/workflows/release.yml)
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsor-m2en-ff69b4)](https://github.com/sponsors/m2en)
+
+</p>
+
+## 🚀 Usage
+
+citation は Docker をサポートしており、簡単に導入することができます。
+
+GitHub Container Registry(ghcr.io) からイメージを取得することができます。
+
+```shell
+docker pull ghcr.io/m2en/citation:latest
+docker run -d --env-file .env citation
+```
+
+Docker を使用しないセットアップ方法も存在します。(非推奨)
+
+詳しいセットアップ方法は [ドキュメントの Getting Started ページ](https://citation.m2en.dev/resources/getting-started/) を確認してください。
+
+## ✨ Demo
+
+// todo: demoを追加する
+
+## 🙌 Contributing
+
+Contributions, issues など大歓迎です。
+
+citation の開発に貢献したい場合は [citation Contributing Guide](https://citation.m2en.dev/resources/contributing/) ([GitHub ver](https://github.com/m2en/citation/blob/main/.github/CONTRIBUTING.md)) を確認してください。
+
+## 🕊️ Community
+
+citation に関する質問やフィードバックは [GitHub Discussions](https://github.com/m2en/citation/discussions) をご利用ください。
+
+## ❤️ Support
+
+[m2en](https://github.com/sponsors/m2en) のGitHub Sponsorからサポートすることができます。
+
+## 📝 License
+
+Copyright @ 2022 [m2en](https://github.com/m2en)
+
+citation - [Apache 2.0 License](https://github.com/m2en/citation/blob/main/LICENSE)
 
 ----
 
-- [Documents](https://citation.m2en.dev)
-- [Security Policy](https://citation.m2en.dev/resources/security-policy/)
+These are the people who contributed to citation. Thank you.  ❤️ 
 
-メッセージリンクのプレビューをEmbedで表示するDiscord Botです。
-
-## Usage
-
-citationはDockerをサポートしています。次のコマンドを使用することでビルド済みイメージを利用することができます。
-
-```shell
-# 最新版
-docker pull ghcr.io/m2en/citation:latest
-
-# バージョン指定
-docker pull ghcr.io/m2en/citation:<任意のバージョン>
-```
-
-利用可能なイメージは[ここから](https://github.com/m2en/citation/pkgs/container/citation/versions)確認することが出来ます。 (できるかぎり、最新のイメージを使用してください。)
-
-詳しいセットアップ方法はcitation docsで確認してください。
-
-[Getting started - citation docs](https://citation.m2en.dev/resources/getting-started/)
-
-## Environment variables
-
-| value                | description                                                                                                                               |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| `CITATION_BOT_TOKEN` | citationが接続するDiscord Botのトークン ([発行方法](https://github.com/m2en/citation/blob/main/docs/getting-started.md#bot%E3%81%AE%E7%99%BB%E9%8C%B2)) |
-| `GUILD_ID`           | Commandを登録したいサーバーのギルドID                                                                                                                   |
+<a href="https://github.com/m2en/citation/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=m2en/citation" />
+</a>
