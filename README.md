@@ -16,17 +16,7 @@
   </a>
 </p>
 
-----
-
-- [Usage](#🚀-usage)
-- [Demo](#✨-demo)
-- [Contributing](#🙌-contributing)
-- [Community](#🕊️-community)
-- [Support](#❤️-support)
-- [License](#📝-license)
-
 - [Documents](https://citation.m2en.dev/)
-
 
 ## 🚀 Usage
 
