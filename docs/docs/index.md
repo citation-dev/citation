@@ -22,7 +22,7 @@
 
     早急に`v2`への移行をお願いします。
 
-    移行に関するガイドは [Migration v1 to v2](./resources/getting-started.md) を参照してください。
+    移行に関するガイドは [Migration v1 to v2](./resources/migration-v1-to-v2.md) を参照してください。
 
 
 citation は Kotlin で書かれたメッセージリンクのプレビュー表示を行う Discord Bot です。
