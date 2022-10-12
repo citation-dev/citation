@@ -3,16 +3,16 @@
 <p align="center"> Discord Bot to show MessageLink's preview </p>
 
 <p align="center">
-  <img src="https://github.com/m2en/citation/actions/workflows/build.yml/badge.svg" />
-  <img src="https://github.com/m2en/citation/actions/workflows/release.yml/badge.svg" />
+  <img alt="ci: build" src="https://github.com/m2en/citation/actions/workflows/build.yml/badge.svg" />
+  <img alt="ci: release" src="https://github.com/m2en/citation/actions/workflows/release.yml/badge.svg" />
   <a href="https://github.com/m2en/citation/pkgs/container/citation">
-    <img alt="downloads" src="https://img.shields.io/badge/ghcr.io-citation-blue.svg" target="_blank" />
+    <img alt="citation ghcr.io" src="https://img.shields.io/badge/ghcr.io-citation-blue.svg" target="_blank" />
   </a>
   <a href="https://github.com/m2en/citation/blob/main/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/badge/license-Apache_2.0-green.svg" target="_blank" />
+    <img alt="License: Apache 2.0" src="https://img.shields.io/badge/license-Apache_2.0-green.svg" target="_blank" />
   </a>
   <a href="https://github.com/sponsors/m2en">
-    <img alt="License: MIT" src="https://img.shields.io/badge/GitHub_Sponsor-m2en-pink.svg" target="_blank" />
+    <img alt="GitHub Sponsors" src="https://img.shields.io/badge/GitHub_Sponsor-m2en-pink.svg" target="_blank" />
   </a>
   <a href="https://wakatime.com/badge/github/m2en/citation">
     <img alt="wakatime" src="https://wakatime.com/badge/github/m2en/citation.svg" target="_blank" />
