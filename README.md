@@ -14,6 +14,9 @@
   <a href="https://github.com/sponsors/m2en">
     <img alt="License: MIT" src="https://img.shields.io/badge/GitHub_Sponsor-m2en-pink.svg" target="_blank" />
   </a>
+  <a href="https://wakatime.com/badge/github/m2en/citation">
+    <img alt="wakatime" src="https://wakatime.com/badge/github/m2en/citation.svg" target="_blank" />
+  </a>
 </p>
 
 - [Documents](https://citation.m2en.dev/)
