@@ -2,15 +2,16 @@
 
 package dev.m2en.citation
 
-import dev.m2en.citation.event.ReadyEvent
 import dev.m2en.citation.utils.Utils
+import javax.security.auth.login.LoginException
 
 fun main() {
-    val jda = Client.createClient(Utils.getEnv("CITATION_BOT_TOKEN"), getCitationVersion())
-
-    jda.addEventListeners(ReadyEvent(getCitationVersion()))
-
-    jda.build()
+    try {
+        val jda = Client.createClient(Utils.getEnv("CITATION_BOT_TOKEN"), getCitationVersion())
+        jda.build()
+    } catch (e: LoginException) {
+        e.printStackTrace()
+    }
 }
 
 /**

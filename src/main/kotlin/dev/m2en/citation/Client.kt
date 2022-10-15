@@ -1,5 +1,7 @@
 package dev.m2en.citation
 
+import dev.m2en.citation.event.ReadyEvent
+import dev.m2en.citation.event.RequestCreateEvent
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
@@ -38,6 +40,8 @@ class Client {
                     GatewayIntent.GUILD_EMOJIS_AND_STICKERS,
                     GatewayIntent.MESSAGE_CONTENT,
                 )
+                .addEventListeners(ReadyEvent(tag))
+                .addEventListeners(RequestCreateEvent())
         }
     }
 }
