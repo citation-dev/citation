@@ -1,0 +1,35 @@
+package dev.m2en.citation
+
+import net.dv8tion.jda.api.JDABuilder
+import net.dv8tion.jda.api.entities.Activity
+import net.dv8tion.jda.api.requests.GatewayIntent
+import net.dv8tion.jda.api.utils.cache.CacheFlag
+
+class Client {
+
+    companion object {
+        /**
+         * 初期設定を行ったクライアントを返します。
+         * メインスレッド上で .build() する必要があります。
+         *
+         * @param token 接続を行うBotのトークン
+         * @param tag citationのバージョン
+         * @return クライアント
+         */
+        fun createClient(token: String, tag: String): JDABuilder {
+            return JDABuilder
+                .createDefault(token)
+                .setActivity(Activity.playing("/help | $tag"))
+                .disableCache(
+                    CacheFlag.VOICE_STATE,
+                )
+                .setEnabledIntents(
+                    GatewayIntent.GUILD_MEMBERS,
+                    GatewayIntent.GUILD_MESSAGES,
+                    GatewayIntent.GUILD_MESSAGE_REACTIONS,
+                    GatewayIntent.GUILD_EMOJIS_AND_STICKERS,
+                    GatewayIntent.MESSAGE_CONTENT,
+                )
+        }
+    }
+}
