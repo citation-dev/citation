@@ -1,6 +1,7 @@
 package dev.m2en.citation.utils
 
 import io.github.cdimascio.dotenv.dotenv
+import java.awt.Color
 
 class Utils {
 
@@ -16,6 +17,34 @@ class Utils {
          */
         fun getEnv(key: String): String {
             return dotenv.get(key) ?: throw Error("次の環境変数が指定されていません: $key")
+        }
+
+        /**
+         * HSBカラーコードをランダムに返します。
+         *
+         * @return ランダムに選択されたHSBカラー
+         */
+        @Deprecated("v2.0.0から導入されましたが不具合により、現在は使用されていません。今後不具合が修正されない場合は削除されます。")
+        fun randomColor(): Color {
+            val h = (0..0.999.toInt()).random().toFloat()
+            val s = (0..1).random().toFloat()
+            val b = (0..1).random().toFloat()
+
+            return Color.getHSBColor(h, s, b)
+        }
+
+        /**
+         * 文字数の確認を行います。
+         *
+         * @param target 検査対象の文字列
+         * @param limit 検査対象の文字数
+         * @return 検査結果
+         */
+        fun checkLimit(target: String, limit: Int): Boolean {
+            if(target.length <= limit) {
+                return false
+            }
+            return true
         }
     }
 }
