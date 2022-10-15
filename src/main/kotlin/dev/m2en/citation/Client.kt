@@ -20,8 +20,16 @@ class Client {
             return JDABuilder
                 .createDefault(token)
                 .setActivity(Activity.playing("/help | $tag"))
+                .setBulkDeleteSplittingEnabled(true)
+                .setAutoReconnect(true)
                 .disableCache(
                     CacheFlag.VOICE_STATE,
+                    CacheFlag.ROLE_TAGS,
+                )
+                .setDisabledIntents(
+                    GatewayIntent.GUILD_BANS,
+                    GatewayIntent.GUILD_WEBHOOKS,
+                    GatewayIntent.GUILD_MESSAGE_TYPING,
                 )
                 .setEnabledIntents(
                     GatewayIntent.GUILD_MEMBERS,
