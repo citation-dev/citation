@@ -38,7 +38,9 @@ Docker を使用しないセットアップ方法も存在します。(非推奨
 
 ## ✨ Demo
 
-// todo: demoを追加する
+![引用する様子](./docs/docs/version2/image/gif/quote.gif)
+
+### 
 
 ## 🙌 Contributing
 
