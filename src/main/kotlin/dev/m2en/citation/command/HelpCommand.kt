@@ -14,7 +14,7 @@ private const val docs = "https://citation.m2en.dev"
 class HelpCommand(private val tag: String) : ListenerAdapter() {
 
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
-        if(event.name != "help") return
+        if (event.name != "help") return
 
         event.interaction
             .replyEmbeds(buildHelpEmbed(tag))

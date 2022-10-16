@@ -19,13 +19,14 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.components.buttons.Button
 import net.dv8tion.jda.internal.utils.PermissionUtil
 
-class RequestCreateEvent: ListenerAdapter() {
+class RequestCreateEvent : ListenerAdapter() {
 
     /**
      * メッセージリンクを取り出す正規表現
      * GuildId/ChannelId/MessageId
      */
-    private val linkRegex = Regex("""https://(?:ptb\.|canary\.)?discord(?:app)?.com/channels/(\d+)/(\d+)/(\d+)""")
+    private val linkRegex =
+        Regex("""https://(?:ptb\.|canary\.)?discord(?:app)?.com/channels/(\d+)/(\d+)/(\d+)""")
 
     /**
      * スキップ対象のメッセージリンクを取り出す正規表現
@@ -37,16 +38,16 @@ class RequestCreateEvent: ListenerAdapter() {
         val message = event.message
         var content = message.contentRaw
         content = content.replace(skipRegex, "")
-        if(!linkRegex.containsMatchIn(content)) return
+        if (!linkRegex.containsMatchIn(content)) return
 
         val guild = message.guild
         val snowflake = getId(linkRegex.find(message.contentRaw) ?: return)
 
         // リクエスト元ギルドと引用ギルドが一致しているかどうか確認
-        if(guild.id != snowflake.first) return
+        if (guild.id != snowflake.first) return
 
         val targetChannel = getChannel(guild, snowflake.second)
-        if(isNSFW(targetChannel)) return
+        if (isNSFW(targetChannel)) return
 
         val targetMessage = getMessage(targetChannel, snowflake.third)
 
@@ -90,7 +91,7 @@ private fun getChannel(guild: Guild, id: String): GuildMessageChannel {
     val channel = guild.getGuildChannelById(id)
         ?: throw IllegalArgumentException("チャンネルを取得することができませんでした")
 
-    if(!checkChannelType(channel)) {
+    if (!checkChannelType(channel)) {
         throw RuntimeException("チャンネルタイプが不正です")
     }
 
@@ -104,7 +105,7 @@ private fun getChannel(guild: Guild, id: String): GuildMessageChannel {
  * @return チャンネル
  */
 private fun checkChannelType(channel: GuildChannel): Boolean {
-    return when(channel) {
+    return when (channel) {
         is TextChannel, is ThreadChannel, is ForumChannel, is VoiceChannel -> true
         else -> false
     }
@@ -136,7 +137,7 @@ private fun getMessage(channel: GuildMessageChannel, id: String): Message {
     val message = channel.retrieveMessageById(id).complete()
         ?: throw IllegalArgumentException("メッセージを取得することができませんでした")
 
-    if(!checkMessageType(message)) {
+    if (!checkMessageType(message)) {
         throw RuntimeException("メッセージタイプが不正です")
     }
 
@@ -144,12 +145,13 @@ private fun getMessage(channel: GuildMessageChannel, id: String): Message {
 }
 
 private fun checkMessageType(message: Message): Boolean {
-    if(message.embeds.isNotEmpty() && message.contentRaw.isEmpty()) return false
-    return when(message.type) {
+    if (message.embeds.isNotEmpty() && message.contentRaw.isEmpty()) return false
+    return when (message.type) {
         // 通常メッセージ、返信、スラッシュコマンド、コンテキストメニュー、スレッドの初期メッセージのみを受け入れる
         MessageType.DEFAULT, MessageType.INLINE_REPLY,
         MessageType.SLASH_COMMAND, MessageType.THREAD_STARTER_MESSAGE,
         MessageType.CONTEXT_COMMAND -> true
+
         else -> false
     }
 }

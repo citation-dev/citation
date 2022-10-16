@@ -20,7 +20,7 @@ class Logger {
          * @param throwable エラーの例外
          */
         fun sendError(message: String, throwable: Throwable? = null) {
-            if(throwable == null) {
+            if (throwable == null) {
                 println { "[ERROR] $message" }
             } else {
                 println { "[ERROR] $message \n $throwable" }

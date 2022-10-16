@@ -20,7 +20,7 @@ fun main() {
  * @return バージョンとコミットハッシュ(implementationVersion)
  */
 private fun getCitationVersion(): String {
-    val clazz = object{}.javaClass
+    val clazz = object {}.javaClass
     val tag = clazz.`package`.implementationVersion ?: return "バージョン取得に失敗"
     return "v$tag"
 }

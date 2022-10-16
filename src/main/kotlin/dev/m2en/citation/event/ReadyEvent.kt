@@ -5,17 +5,16 @@ import dev.m2en.citation.utils.Utils
 import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
-import net.dv8tion.jda.api.interactions.commands.Command
 import net.dv8tion.jda.api.interactions.commands.OptionType
 import net.dv8tion.jda.api.interactions.commands.build.Commands
 
-class ReadyEvent(private val tag: String?): ListenerAdapter() {
+class ReadyEvent(private val tag: String?) : ListenerAdapter() {
 
     override fun onReady(event: ReadyEvent) {
         super.onReady(event)
         Logger.sendInfo("======================")
         Logger.sendInfo("citationを起動します。")
-        if(tag == null) {
+        if (tag == null) {
             Logger.sendWarn("バージョン情報が取得できませんでした。")
         } else {
             Logger.sendInfo("起動バージョン: $tag")
@@ -33,7 +32,9 @@ class ReadyEvent(private val tag: String?): ListenerAdapter() {
         Logger.sendInfo("起動完了しました。")
         Logger.sendInfo("======================")
 
-        val guild = event.jda.getGuildById(Utils.getEnv("GUILD_ID")) ?: throw NumberFormatException("ギルドを取得することができませんでした。")
+        val guild = event.jda.getGuildById(Utils.getEnv("GUILD_ID")) ?: throw NumberFormatException(
+            "ギルドを取得することができませんでした。"
+        )
         registerCommand(guild)
     }
 

@@ -21,15 +21,15 @@ class BuildEmbed {
                 setTimestamp(message.timeCreated)
             }
 
-            if(message.isEdited) {
+            if (message.isEdited) {
                 embed.setTimestamp(message.timeEdited)
             }
 
-            if(message.isPinned) {
+            if (message.isPinned) {
                 embed.addField("ピン留め", "このメッセージはピン留めされています。", true)
             }
 
-            if(message.attachments.size == 1) {
+            if (message.attachments.size == 1) {
                 setAttachment(message.attachments, embed)
             }
 
@@ -43,7 +43,7 @@ class BuildEmbed {
          * @param message 説明
          */
         fun buildEmbed(name: String, message: String): MessageEmbed {
-            if(Utils.checkLimit(name, 256) || Utils.checkLimit(message, 4096)) {
+            if (Utils.checkLimit(name, 256) || Utils.checkLimit(message, 4096)) {
                 throw RuntimeException("Embedの作成に失敗")
             }
 
@@ -63,7 +63,7 @@ class BuildEmbed {
          * @return 作成した埋め込み
          */
         fun buildErrorEmbed(name: String, message: String): MessageEmbed {
-            if(Utils.checkLimit(name, 256) || Utils.checkLimit(message, 4096)) {
+            if (Utils.checkLimit(name, 256) || Utils.checkLimit(message, 4096)) {
                 throw RuntimeException("Embedの作成に失敗")
             }
 
@@ -81,21 +81,21 @@ class BuildEmbed {
                 val fileUrl = _attachment.url
                 // Embedの値の文字制限に引っかからないための確認処理
                 // 参考: https://discord.com/developers/docs/resources/channel#embed-object-embed-limits
-                if(Utils.checkLimit(fileName, 240)) {
+                if (Utils.checkLimit(fileName, 240)) {
                     embed.setImage(fileUrl)
                     return@forEach
                 }
 
                 val alt = _attachment.description
-                if(alt !== null && !Utils.checkLimit(alt, 1024)) {
+                if (alt !== null && !Utils.checkLimit(alt, 1024)) {
                     embed.addField("ALT", alt.toString(), true)
                 }
 
-                if(_attachment.isVideo) {
+                if (_attachment.isVideo) {
                     embed.addField("ビデオファイル", "[$fileName]($fileUrl)", true)
                     return@forEach
                 }
-                if(_attachment.isSpoiler) {
+                if (_attachment.isSpoiler) {
                     embed.addField("スポイラー済みの添付ファイル", "[$fileName]($fileUrl)", true)
                     return@forEach
                 }

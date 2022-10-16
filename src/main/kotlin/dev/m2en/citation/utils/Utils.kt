@@ -41,7 +41,7 @@ class Utils {
          * @return 検査結果
          */
         fun checkLimit(target: String, limit: Int): Boolean {
-            if(target.length <= limit) {
+            if (target.length <= limit) {
                 return false
             }
             return true

@@ -10,21 +10,23 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.commands.SlashCommandInteraction
 import net.dv8tion.jda.api.interactions.components.buttons.Button
 
-object ShutdownCommand: ListenerAdapter() {
+object ShutdownCommand : ListenerAdapter() {
 
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
-        if(event.name != "shutdown") return
+        if (event.name != "shutdown") return
 
-        if(Utils.getEnv("SHUTDOWN_USER_ID") != event.user.id) {
-            event.interaction.replyEmbeds(BuildEmbed.buildErrorEmbed(
-                "貴方はこのコマンドを実行できません。",
-                "このコマンドを実行できる人は限られています。"
-            )).setEphemeral(true).queue()
+        if (Utils.getEnv("SHUTDOWN_USER_ID") != event.user.id) {
+            event.interaction.replyEmbeds(
+                BuildEmbed.buildErrorEmbed(
+                    "貴方はこのコマンドを実行できません。",
+                    "このコマンドを実行できる人は限られています。"
+                )
+            ).setEphemeral(true).queue()
             return
         }
 
         val interaction = event.interaction
-        when(event.getOption("force")!!.asBoolean) {
+        when (event.getOption("force")!!.asBoolean) {
             true -> {
                 confirmation(
                     interaction,
@@ -34,7 +36,12 @@ object ShutdownCommand: ListenerAdapter() {
             }
 
             else -> {
-                interaction.replyEmbeds(BuildEmbed.buildEmbed("プロセスを終了しました。", "プロセスの再開は手動で行う必要があります。"))
+                interaction.replyEmbeds(
+                    BuildEmbed.buildEmbed(
+                        "プロセスを終了しました。",
+                        "プロセスの再開は手動で行う必要があります。"
+                    )
+                )
                     .setEphemeral(true).queue()
                 event.jda.shutdown()
             }
@@ -42,7 +49,7 @@ object ShutdownCommand: ListenerAdapter() {
     }
 
     override fun onButtonInteraction(event: ButtonInteractionEvent) {
-        if(event.interaction.componentId == "shutdown-yes") event.jda.shutdownNow()
+        if (event.interaction.componentId == "shutdown-yes") event.jda.shutdownNow()
     }
 }
 

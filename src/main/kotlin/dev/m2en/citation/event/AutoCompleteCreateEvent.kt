@@ -3,7 +3,7 @@ package dev.m2en.citation.event
 import net.dv8tion.jda.api.events.interaction.command.CommandAutoCompleteInteractionEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
-class AutoCompleteCreateEvent: ListenerAdapter() {
+class AutoCompleteCreateEvent : ListenerAdapter() {
 
     private val docsQuery = arrayOf(
         "resources",
@@ -26,14 +26,15 @@ class AutoCompleteCreateEvent: ListenerAdapter() {
     )
 
     override fun onCommandAutoCompleteInteraction(event: CommandAutoCompleteInteractionEvent) {
-        if(event.focusedOption.name != "query") return
+        if (event.focusedOption.name != "query") return
 
-        when(event.name) {
+        when (event.name) {
             "docs" -> {
                 event.replyChoiceStrings(docsQuery.filter {
                     it.startsWith(event.focusedOption.value)
                 }).queue()
             }
+
             "github" -> {
                 event.replyChoiceStrings(githubQuery.filter {
                     it.startsWith(event.focusedOption.value)

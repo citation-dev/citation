@@ -9,13 +9,13 @@ import net.dv8tion.jda.api.interactions.components.buttons.Button
 private const val docsLink = "https://citation.m2en.dev"
 private const val githubLink = "https://github.com/m2en/citation"
 
-object QueryCommand: ListenerAdapter() {
+object QueryCommand : ListenerAdapter() {
 
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
         val option = event.getOption("query")!!.asString
         val interaction = event.interaction
 
-        when(event.name) {
+        when (event.name) {
             "docs" -> searchDocs(interaction, option)
             "github" -> searchGitHub(interaction, option)
         }
@@ -23,13 +23,15 @@ object QueryCommand: ListenerAdapter() {
 }
 
 private fun searchDocs(interaction: SlashCommandInteraction, query: String) {
-    when(query) {
+    when (query) {
         "version1", "version2" -> {
             replyRecruit(interaction, query, "$docsLink/$query")
         }
+
         "resource" -> {
             replyRecruit(interaction, query, "$docsLink/$query")
         }
+
         else -> {
             replyRecruit(interaction, query, "$docsLink/resource/$query")
         }
@@ -37,7 +39,7 @@ private fun searchDocs(interaction: SlashCommandInteraction, query: String) {
 }
 
 private fun searchGitHub(interaction: SlashCommandInteraction, query: String) {
-    when(query) {
+    when (query) {
         "code" -> replyRecruit(interaction, "Code", "$githubLink/$query")
         "issues" -> replyRecruit(interaction, "Issues", "$githubLink/$query")
         "pulls" -> replyRecruit(interaction, "Pull requests", "$githubLink/$query")
