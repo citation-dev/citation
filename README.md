@@ -66,7 +66,7 @@ Copyright @ 2022 [m2en](https://github.com/m2en)
 
 citation - [Apache 2.0 License](https://github.com/m2en/citation/blob/main/LICENSE)
 
-----
+
 
 These are the people who contributed to citation. Thank you.  ❤️ 
 
