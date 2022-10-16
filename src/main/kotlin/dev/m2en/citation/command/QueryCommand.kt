@@ -28,7 +28,7 @@ private fun searchDocs(interaction: SlashCommandInteraction, query: String) {
             replyRecruit(interaction, query, "$docsLink/$query")
         }
 
-        "resource" -> {
+        "resources" -> {
             replyRecruit(interaction, query, "$docsLink/$query")
         }
 
