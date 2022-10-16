@@ -36,6 +36,45 @@ class BuildEmbed {
             return embed.build()
         }
 
+        /**
+         * 埋め込みを作成します。
+         *
+         * @param name 名前
+         * @param message 説明
+         */
+        fun buildEmbed(name: String, message: String): MessageEmbed {
+            if(Utils.checkLimit(name, 256) || Utils.checkLimit(message, 4096)) {
+                throw RuntimeException("Embedの作成に失敗")
+            }
+
+            return EmbedBuilder().apply {
+                setTitle(name)
+                setDescription(message)
+                setColor(0x7e56c2)
+                setAuthor("citation")
+            }.build()
+        }
+
+        /**
+         * エラーの埋め込みを作成します。
+         *
+         * @param name エラーの名前
+         * @param message エラーの説明
+         * @return 作成した埋め込み
+         */
+        fun buildErrorEmbed(name: String, message: String): MessageEmbed {
+            if(Utils.checkLimit(name, 256) || Utils.checkLimit(message, 4096)) {
+                throw RuntimeException("Embedの作成に失敗")
+            }
+
+            return EmbedBuilder().apply {
+                setTitle(name)
+                setDescription(message)
+                setColor(0xeb0915)
+                setAuthor("citation - エラー")
+            }.build()
+        }
+
         private fun setAttachment(attachment: List<Attachment>, embed: EmbedBuilder) {
             attachment.forEach { _attachment ->
                 val fileName = _attachment.fileName
