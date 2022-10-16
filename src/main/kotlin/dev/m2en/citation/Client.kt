@@ -2,7 +2,6 @@ package dev.m2en.citation
 
 import dev.m2en.citation.command.HelpCommand
 import dev.m2en.citation.command.QueryCommand
-import dev.m2en.citation.command.ShutdownCommand
 import dev.m2en.citation.event.AutoCompleteCreateEvent
 import dev.m2en.citation.event.ReadyEvent
 import dev.m2en.citation.event.RequestCreateEvent
@@ -51,7 +50,6 @@ class Client {
                     // Command:
                     AutoCompleteCreateEvent(),
                     HelpCommand(tag),
-                    ShutdownCommand,
                     QueryCommand
                 )
 
