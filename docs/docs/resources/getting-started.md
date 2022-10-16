@@ -6,7 +6,7 @@ citation は以下の方法で利用できます。
 
 1. ghcr.io(Github Packages)で公開されているビルド済みの Docker Image を使用する (推奨)
 2. 自分自身でビルドし、jar ファイルを実行する
-3. 配布されている jar ファイルを直接実行する
+3. 配布されている jar ファイルを直接実行する (非推奨)
 
 ### 1. Bot を作成する
 
@@ -20,11 +20,15 @@ Bot を作成したら、`Reset Token` をクリックし、トークンを生�
 
     トークンは機密情報です。誰にも教えないでください。
 
+![Application画面](./images/110005.png)
+
 ### 2. Privileged Gateway Intents を有効にする
 
 次に `Privileged Gateway Intents` を有効にします。
 
 `Bot` メニューから `Privileged Gateway Intents` の欄にある、`MESSAGE CONTENT INTENT` を有効にします。
+
+![Privileged Gateway Intents](./images/103852.png)
 
 ### 3. Bot をサーバーに招待する
 
@@ -34,9 +38,11 @@ OAuth2 の `URL Generator` から サーバーの招待リンクを生成しま�
 
 生成されたリンクから Bot をサーバーに招待します。
 
+![設定例](./images/105855.png)
+
 ### 4. citation を入手する
 
-=== "ghcr.io (Docker Compose)"
+=== "ghcr.io (Docker Compose) (推奨)"
 
     ここではghcr.io(GitHub Packages)にプッシュされているビルド済みイメージを **Docker Compose** で利用する方法を紹介します。
 
@@ -60,9 +66,18 @@ OAuth2 の `URL Generator` から サーバーの招待リンクを生成しま�
     # citationが接続するクライアントユーザーのトークン (Required)
     CITATION_BOT_TOKEN=
 
-    # citationのコマンドを登録するギルドのID (Optional)
+    # citationのコマンドを登録するギルドのID (Required)
     GUILD_ID=
+
+    # /shutdown を実行できるユーザーのID (Required)
+    SHUTDOWN_USER_ID=
     ```
+
+    !!! warning "`SHUTDOWN_USER_ID` について"
+
+        /shutdownはcitationのアクティブなプロセスを殺すコマンドです。
+
+        当然実行されるとcitaionは停止します。この環境変数に指定するユーザーはcitationを再起動することができるユーザーに指定することをオススメします。
 
     **4. docker-compose.ymlを作成する**
 
@@ -121,9 +136,18 @@ OAuth2 の `URL Generator` から サーバーの招待リンクを生成しま�
     # citationが接続するクライアントユーザーのトークン (Required)
     CITATION_BOT_TOKEN=
 
-    # citationのコマンドを登録するギルドのID (Optional)
+    # citationのコマンドを登録するギルドのID (Required)
     GUILD_ID=
+
+    # /shutdown を実行できるユーザーのID (Required)
+    SHUTDOWN_USER_ID=
     ```
+
+    !!! warning "`SHUTDOWN_USER_ID` について"
+
+        /shutdownはcitationのアクティブなプロセスを殺すコマンドです。
+
+        当然実行されるとcitaionは停止します。この環境変数に指定するユーザーはcitationを再起動することができるユーザーに指定することをオススメします。
 
     **4. コンテナを起動する**
 
@@ -136,7 +160,7 @@ OAuth2 の `URL Generator` から サーバーの招待リンクを生成しま�
 
     しばらくするとcitationが起動します。
 
-=== "自分自身でビルドする"
+=== "自分自身でビルドする(非推奨)"
 
     !!! warning "必要要件"
 
@@ -166,9 +190,18 @@ OAuth2 の `URL Generator` から サーバーの招待リンクを生成しま�
     # citationが接続するクライアントユーザーのトークン (Required)
     CITATION_BOT_TOKEN=
 
-    # citationのコマンドを登録するギルドのID (Optional)
+    # citationのコマンドを登録するギルドのID (Required)
     GUILD_ID=
+
+    # /shutdown を実行できるユーザーのID (Required)
+    SHUTDOWN_USER_ID=
     ```
+
+    !!! warning "`SHUTDOWN_USER_ID` について"
+
+        /shutdownはcitationのアクティブなプロセスを殺すコマンドです。
+
+        当然実行されるとcitaionは停止します。この環境変数に指定するユーザーはcitationを再起動することができるユーザーに指定することをオススメします。
 
     `.env` をcitationのルートディレクトリ上に設置し、次のコマンドを実行します。
 
@@ -178,54 +211,7 @@ OAuth2 の `URL Generator` から サーバーの招待リンクを生成しま�
 
     `citation ready!` と表示されたら成功です。
 
-=== "配布されている jar ファイルを使用する"
-
-    !!! warning
-
-        この方法が使用できるのは `v1.4.0` 以降のバージョンです。
-        また、この方法は安定しないため、可能な限り他の方法を使用してください。
-
-    [Release]() ページから最新の `citation.jar` をダウンロードしてください。
-
-    適当なディレクトリを作成し `.env` ファイルを作成し、 [GitHubの `.env.example` ファイル](https://github.com/m2en/citation/blob/main/.env.example) を参考に環境変数を設定してください。
-
-    ```.env
-    # citationが接続するクライアントユーザーのトークン (Required)
-    CITATION_BOT_TOKEN=
-
-    # citationのコマンドを登録するギルドのID (Optional)
-    GUILD_ID=
-    ```
-
-    `.env` をcitationのルートディレクトリ上に設置し、次のコマンドを実行します。
-
-    ```bash
-    java -jar citation.jar
-    ```
-
-    `citation ready!` と表示されたら成功です。
-
 ---
-
-## コマンドの登録
-
-citation の引用機能は起動するだけで利用可能ですが、ヘルプコマンドなどの拡張機能を使う場合はコマンド作成が必要です。
-
-`.env` にて `GUILD_ID` をパスとしてギルド ID を登録してください。
-
-登録したら、 Bot を起動して登録したギルドで `!register` を実行します。
-
-!!! info "!register を実行できるメンバー"
-
-    `!register` を実行できるメンバーは以下の権限を取得しておく必要があります。
-
-    - `ManageServer` (サーバーの管理権限)
-
-    または
-
-    - `Administrator` (管理権限)
-
-    サーバー所有者であっても、 上記権限を持っていないと実行できません。
 
 ## citation に必要な権限
 
@@ -234,7 +220,13 @@ citation が接続するクライアントユーザーに必要な権限は以�
 - `Send_Messages` (メッセージの送信権限)
 - `Send_Messages_in_Threads` (スレッドでのメッセージ送信権限)
 - `Embeds_Links` (リンクの埋め込み権限)
-- `Add_Reactions` (リアクション付与権限)
+- `Attach Files` (添付ファイル送信権限)
+- `Read Messages / View Channels` (メッセージ、チャンネルの閲覧権限)
+
+以下の権限はなくても使えますが、つけれるならつけておくと得な権限です。
+
+- `Use External Emojis` (別鯖の絵文字使用権限)
+- `Use External Sticker` (別鯖のステッカー使用権限)
 
 !!! warning "Administator 権限は付与しないでください"
 

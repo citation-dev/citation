@@ -8,9 +8,12 @@ citationは、GitHub Packages Registry(ghcr.io)にて、ビルド済みイメー
 
 以下の表は現在コントリビューターがサポートしているcitationのバージョン一覧となります。
 
+// TODO: テーブルを更新
+
 | Version                    | Status     | Support Start Date                                                 | Support End Date                                                       |
 |----------------------------|------------|--------------------------------------------------------------------|------------------------------------------------------------------------|
-| v1 (`v1.0.0`～)             | `Active`   | [2022/08/21](https://github.com/m2en/citation/releases/tag/v1.0.0) | 現在サポート中                                                                |
+| v2 (`v2.0.0`～)             | `Active`   | [2022/10/16](https://github.com/m2en/citation/releases/tag/v2.0.0) | 現在サポート中                                                                |
+| v1 (`v1.0.0`～)             | `Inactive` | [2022/08/21](https://github.com/m2en/citation/releases/tag/v1.0.0) | [2022/10/16](https://github.com/m2en/citation/releases/tag/v1.4.0)     |
 | v0 (`v0.1.0`～`v1.0.0-rc1`) | `Inactive` | [2022/08/15](https://github.com/m2en/citation/releases/tag/v0.1.0) | [2022/08/19](https://github.com/m2en/citation/releases/tag/v1.0.0-rc1) |
 
 `Status` が `Inactive` となっているバージョンは、サポート対象外となります。 セキュリティパッチは例外を除いて配信されません。
@@ -42,7 +45,7 @@ citationに関する脆弱性を発見した際はDiscordやTwitter、Issue、Di
 
 鍵指紋: `AE38 53E8 164B E486 98A3 674B 2837 1F95 3122 F360`
 
-[pgp_keys.asc](https://keybase.io/m2en/pgp_keys.asc)
+[pgp_keys.asc](https://keybase.io/m2en/pgp_keys.asc?fingerprint=ae3853e8164be48698a3674b28371f953122f360)
 
 ----
 

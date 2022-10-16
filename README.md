@@ -1,36 +1,75 @@
-# citation
+<h1 align="center"> citation </h1> <br>
 
-[![Build](https://github.com/m2en/citation/actions/workflows/build.yml/badge.svg)](https://github.com/m2en/citation/actions/workflows/build.yml)
-[![release](https://github.com/m2en/citation/actions/workflows/release.yml/badge.svg)](https://github.com/m2en/citation/actions/workflows/release.yml)
+<p align="center"> Discord Bot to show MessageLink's preview </p>
 
-----
+<p align="center">
+  <img alt="ci: build" src="https://github.com/m2en/citation/actions/workflows/build.yml/badge.svg" />
+  <img alt="ci: release" src="https://github.com/m2en/citation/actions/workflows/release.yml/badge.svg" />
+  <a href="https://github.com/m2en/citation/pkgs/container/citation">
+    <img alt="citation ghcr.io" src="https://img.shields.io/badge/ghcr.io-citation-blue.svg" target="_blank" />
+  </a>
+  <a href="https://github.com/m2en/citation/blob/main/LICENSE">
+    <img alt="License: Apache 2.0" src="https://img.shields.io/badge/license-Apache_2.0-green.svg" target="_blank" />
+  </a>
+  <a href="https://github.com/sponsors/m2en">
+    <img alt="GitHub Sponsors" src="https://img.shields.io/badge/GitHub_Sponsor-m2en-pink.svg" target="_blank" />
+  </a>
+  <a href="https://wakatime.com/badge/github/m2en/citation">
+    <img alt="wakatime" src="https://wakatime.com/badge/github/m2en/citation.svg" target="_blank" />
+  </a>
+</p>
 
-- [Documents](https://citation.m2en.dev)
-- [Security Policy](https://citation.m2en.dev/resources/security-policy/)
+- [Documents](https://citation.m2en.dev/)
 
-メッセージリンクのプレビューをEmbedで表示するDiscord Botです。
+## 🚀 Usage
 
-## Usage
+citation は Docker をサポートしており、簡単に導入することができます。
 
-citationはDockerをサポートしています。次のコマンドを使用することでビルド済みイメージを利用することができます。
+GitHub Container Registry(ghcr.io) からイメージを取得することができます。
 
 ```shell
-# 最新版
 docker pull ghcr.io/m2en/citation:latest
-
-# バージョン指定
-docker pull ghcr.io/m2en/citation:<任意のバージョン>
+docker run -d --env-file .env citation
 ```
 
-利用可能なイメージは[ここから](https://github.com/m2en/citation/pkgs/container/citation/versions)確認することが出来ます。 (できるかぎり、最新のイメージを使用してください。)
+Docker を使用しないセットアップ方法も存在します。(非推奨)
 
-詳しいセットアップ方法はcitation docsで確認してください。
+詳しいセットアップ方法は [ドキュメントの Getting Started ページ](https://citation.m2en.dev/resources/getting-started/) を確認してください。
 
-[Getting started - citation docs](https://citation.m2en.dev/resources/getting-started/)
+## ✨ Demo
 
-## Environment variables
+![引用する様子](./docs/docs/version2/image/gif/quote.gif)
 
-| value                | description                                                                                                                               |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| `CITATION_BOT_TOKEN` | citationが接続するDiscord Botのトークン ([発行方法](https://github.com/m2en/citation/blob/main/docs/getting-started.md#bot%E3%81%AE%E7%99%BB%E9%8C%B2)) |
-| `GUILD_ID`           | Commandを登録したいサーバーのギルドID                                                                                                                   |
+## 🙌 Contributing
+
+Contributions, issues など大歓迎です。
+
+citation の開発に貢献したい場合は [citation Contributing Guide](https://citation.m2en.dev/resources/contributing/) ([GitHub ver](https://github.com/m2en/citation/blob/main/.github/CONTRIBUTING.md)) を確認してください。
+
+## 🕊️ Community
+
+citation に関する質問やフィードバックは [GitHub Discussions](https://github.com/m2en/citation/discussions) をご利用ください。
+
+## 🛡️ Security
+
+セキュリティに関する不具合を見つけた場合は Issue などでは報告せず、正しい方法で報告を行ってください。
+
+詳しくは [citation Security Policy](https://citation.m2en.dev/resources/security-policy/) を確認してください。
+
+## ❤️ Support
+
+[m2en](https://github.com/sponsors/m2en) のGitHub Sponsorからサポートすることができます。
+
+## 📝 License
+
+Copyright @ 2022 [m2en](https://github.com/m2en)
+
+citation - [Apache 2.0 License](https://github.com/m2en/citation/blob/main/LICENSE)
+
+
+
+These are the people who contributed to citation. Thank you.  ❤️ 
+
+<a href="https://github.com/m2en/citation/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=m2en/citation" />
+</a>
