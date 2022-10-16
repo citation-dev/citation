@@ -40,8 +40,6 @@ Docker を使用しないセットアップ方法も存在します。(非推奨
 
 ![引用する様子](./docs/docs/version2/image/gif/quote.gif)
 
-### 
-
 ## 🙌 Contributing
 
 Contributions, issues など大歓迎です。
@@ -51,6 +49,12 @@ citation の開発に貢献したい場合は [citation Contributing Guide](http
 ## 🕊️ Community
 
 citation に関する質問やフィードバックは [GitHub Discussions](https://github.com/m2en/citation/discussions) をご利用ください。
+
+## 🛡️ Security
+
+セキュリティに関する不具合を見つけた場合は Issue などでは報告せず、正しい方法で報告を行ってください。
+
+詳しくは [citation Security Policy](https://citation.m2en.dev/resources/security-policy/) を確認してください。
 
 ## ❤️ Support
 

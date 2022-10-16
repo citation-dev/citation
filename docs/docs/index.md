@@ -60,6 +60,12 @@ citation の開発に貢献したい場合は [citation Contributing Guide](http
 
 citation に関する質問やフィードバックは [GitHub Discussions](https://github.com/m2en/citation/discussions) をご利用ください。
 
+## 🛡️ Security
+
+セキュリティに関する不具合を見つけた場合は Issue などでは報告せず、正しい方法で報告を行ってください。
+
+詳しくは [citation Security Policy](https://citation.m2en.dev/resources/security-policy/) を確認してください。
+
 ### ❤️ Support
 
 [m2en](https://github.com/sponsors/m2en) のGitHub Sponsorからサポートすることができます。
