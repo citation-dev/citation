@@ -1,4 +1,4 @@
-<h1 align="center"> citation v2 </h1> <br>
+<h1 align="center"> citation </h1> <br>
 
 <p align="center"> Discord Bot to show MessageLink's preview </p>
 
