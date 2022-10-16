@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 class AutoCompleteCreateEvent: ListenerAdapter() {
 
     private val docsQuery = arrayOf(
-        "resource",
+        "resources",
         "security-policy",
         "getting-started",
         "troubleshooting",
