@@ -36,6 +36,9 @@ class RequestCreateEvent : ListenerAdapter() {
 
     override fun onMessageReceived(event: MessageReceivedEvent) {
         val message = event.message
+        val author = message.author
+        if (author.isSystem || author.isBot) return
+
         var content = message.contentRaw
         content = content.replace(skipRegex, "")
         if (!linkRegex.containsMatchIn(content)) return

@@ -47,9 +47,7 @@ private fun registerCommand(guild: Guild) {
             Commands.slash("docs", "ドキュメントを開く")
                 .addOption(OptionType.STRING, "query", "指定したページまでのリンクを表示します", true, true),
             Commands.slash("github", "GitHubを開く")
-                .addOption(OptionType.STRING, "query", "指定したメニューまでのリンクを表示します", true, true),
-            Commands.slash("shutdown", "アクティブなcitationのプロセスを終了します。")
-                .addOption(OptionType.BOOLEAN, "force", "強制終了を行いますか?", true)
+                .addOption(OptionType.STRING, "query", "指定したメニューまでのリンクを表示します", true, true)
         ).queue()
     } catch (e: IllegalArgumentException) {
         e.printStackTrace()

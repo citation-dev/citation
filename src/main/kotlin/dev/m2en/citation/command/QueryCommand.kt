@@ -28,7 +28,7 @@ private fun searchDocs(interaction: SlashCommandInteraction, query: String) {
             replyRecruit(interaction, query, "$docsLink/$query")
         }
 
-        "resource" -> {
+        "resources" -> {
             replyRecruit(interaction, query, "$docsLink/$query")
         }
 
@@ -40,7 +40,7 @@ private fun searchDocs(interaction: SlashCommandInteraction, query: String) {
 
 private fun searchGitHub(interaction: SlashCommandInteraction, query: String) {
     when (query) {
-        "code" -> replyRecruit(interaction, "Code", "$githubLink/$query")
+        "code" -> replyRecruit(interaction, "Code", githubLink)
         "issues" -> replyRecruit(interaction, "Issues", "$githubLink/$query")
         "pulls" -> replyRecruit(interaction, "Pull requests", "$githubLink/$query")
         "discussions" -> replyRecruit(interaction, "Discussions", "$githubLink/$query")
