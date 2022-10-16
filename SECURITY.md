@@ -12,8 +12,8 @@ citationは、GitHub Packages Registry(ghcr.io)にて、ビルド済みイメー
 
 | Version                    | Status     | Support Start Date                                                 | Support End Date                                                       |
 |----------------------------|------------|--------------------------------------------------------------------|------------------------------------------------------------------------|
-| v2 (`v2.0.0`～)             | `Active`   |  | 現在サポート中                                                                |
-| v1 (`v1.0.0`～)             | `Inactive` | [2022/08/21](https://github.com/m2en/citation/releases/tag/v1.0.0) |                                                             |
+| v2 (`v2.0.0`～)             | `Active`   | [2022/10/16](https://github.com/m2en/citation/releases/tag/v2.0.0) | 現在サポート中                                                                |
+| v1 (`v1.0.0`～)             | `Inactive` | [2022/08/21](https://github.com/m2en/citation/releases/tag/v1.0.0) | [2022/10/16](https://github.com/m2en/citation/releases/tag/v1.4.0)     |
 | v0 (`v0.1.0`～`v1.0.0-rc1`) | `Inactive` | [2022/08/15](https://github.com/m2en/citation/releases/tag/v0.1.0) | [2022/08/19](https://github.com/m2en/citation/releases/tag/v1.0.0-rc1) |
 
 `Status` が `Inactive` となっているバージョンは、サポート対象外となります。 セキュリティパッチは例外を除いて配信されません。
