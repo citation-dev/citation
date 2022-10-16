@@ -46,5 +46,16 @@ class Utils {
             }
             return true
         }
+
+        /**
+         * 埋め込み上で使えるマークダウンリンクを作成します。
+         *
+         * @param url URL
+         * @param name マークダウンリンクの名前
+         * @return マークダウンリンク
+         */
+        fun markdownLink(url: String, name: String): String {
+            return "[$name]($url)"
+        }
     }
 }
