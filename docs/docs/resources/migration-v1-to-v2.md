@@ -11,18 +11,9 @@ v2 以降からはDockerでのセットアップのみを推奨しています�
 
 以下のコマンドを実行して v2 をインストールしてください。
 
-!!! note
-
-    v2からはメジャーバージョン, マイナーバージョン, パッチバージョンそれぞれ、ghcr.ioにプッシュされるようになりました。
-
-    つまり、利用者自身が利用したいバージョンを選択できるようになっています。
-
 ```shell
 # latest タグからプルする
 docker pull ghcr.io/m2en/citation:latest
-
-# v2 タグからプルする
-docker pull ghcr.io/m2en/citation:v2
 
 # v2.0.0 タグからプルする
 docker pull ghcr.io/m2en/citation:v2.0.0
@@ -63,40 +54,31 @@ DELETE /applications/{application.id}/guilds/{guild.id}/commands/{command.id}
 
 v2 で推奨されているコマンドを再登録します。
 
-#### 起動時に登録する
+起動時に再登録されますので、そのまま起動してください。
 
-設定ファイル `config.yml` の `register-ready` を `true` に設定します。
+### 4. コマンドが再登録されているかどうか確認する
 
-この設定の値が `true` になっている場合、起動時にコマンドが自動的に登録されます。
+起動が完了すると以下の情報がコンソールに表示されます。
 
-```yaml
-register-ready: true
-```
+![起動情報](./images/104515.png)
 
-!!! warning
+正しく起動できなかった場合は [Troubleshooting](./troubleshooting.md) ページを参照してください。
 
-    複数回再起動されるような環境でcitationを利用する場合、コマンドの再登録が複数回行われる可能性があります。
-    
-    複数回連続したリクエストがDiscord APIに送られる場合レート制限に引っかかる可能性があります。
+## テストする
 
-    そのような場合は `register-ready` を `false` で利用することを推奨します。
+citation v2が正しく動作するかの確認を行ってください。
 
-#### 起動中に登録する
+以下はチェックリストです。
 
-`!register` コマンドを実行することで、起動中にコマンドを登録することができます。(v1と同様)
+!!! example テストする内容
 
-!!! warning
-    
-    `!register` コマンドは `register-ready` が `true` の場合は利用できません。
+    1. メッセージリンクを送信しEmbedが返ってくるか
+    2. <>をつけて、Embedが返ってこなくなっているか
+    3. /help でEmbedが返ってくるか
+    4. /shutdownで正しく停止するか
+    5. /docs, /githubで正しく検索できるか
+    6. /docs, /githubの値補完(AutoComplete)が正しく動作するか
 
-!!! note
-    
-    `!register` を実行できるメンバーは以下の権限を取得しておく必要があります。
+v2 がリリースされてからしばらくはベータ版として配信します。
 
-    - `ManageServer` (サーバーの管理権限)
-
-    または
-
-    - `Administrator` (管理権限)
-
-    サーバー所有者であっても、 上記権限を持っていないと実行できません。
+不具合を見つけた場合は [GitHub Issues](https://github.com/m2en/citation/issues/new) から報告してください。
