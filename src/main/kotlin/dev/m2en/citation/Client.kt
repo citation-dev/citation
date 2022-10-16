@@ -1,5 +1,9 @@
 package dev.m2en.citation
 
+import dev.m2en.citation.command.HelpCommand
+import dev.m2en.citation.command.QueryCommand
+import dev.m2en.citation.command.ShutdownCommand
+import dev.m2en.citation.event.AutoCompleteCreateEvent
 import dev.m2en.citation.event.ReadyEvent
 import dev.m2en.citation.event.RequestCreateEvent
 import net.dv8tion.jda.api.JDABuilder
@@ -40,8 +44,17 @@ class Client {
                     GatewayIntent.GUILD_EMOJIS_AND_STICKERS,
                     GatewayIntent.MESSAGE_CONTENT,
                 )
-                .addEventListeners(ReadyEvent(tag))
-                .addEventListeners(RequestCreateEvent())
+                .addEventListeners(
+                    // Event:
+                    ReadyEvent(tag),
+                    RequestCreateEvent(),
+                    // Command:
+                    AutoCompleteCreateEvent(),
+                    HelpCommand(tag),
+                    ShutdownCommand,
+                    QueryCommand
+                )
+
         }
     }
 }

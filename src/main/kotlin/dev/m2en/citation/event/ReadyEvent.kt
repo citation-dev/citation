@@ -1,8 +1,13 @@
 package dev.m2en.citation.event
 
 import dev.m2en.citation.utils.Logger
+import dev.m2en.citation.utils.Utils
+import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
+import net.dv8tion.jda.api.interactions.commands.Command
+import net.dv8tion.jda.api.interactions.commands.OptionType
+import net.dv8tion.jda.api.interactions.commands.build.Commands
 
 class ReadyEvent(private val tag: String?): ListenerAdapter() {
 
@@ -27,6 +32,25 @@ class ReadyEvent(private val tag: String?): ListenerAdapter() {
         Logger.sendInfo("======================")
         Logger.sendInfo("起動完了しました。")
         Logger.sendInfo("======================")
+
+        val guild = event.jda.getGuildById(Utils.getEnv("GUILD_ID")) ?: throw NumberFormatException("ギルドを取得することができませんでした。")
+        registerCommand(guild)
     }
 
+}
+
+private fun registerCommand(guild: Guild) {
+    try {
+        guild.updateCommands().addCommands(
+            Commands.slash("help", "ヘルプを開く"),
+            Commands.slash("docs", "ドキュメントを開く")
+                .addOption(OptionType.STRING, "query", "指定したページまでのリンクを表示します", true, true),
+            Commands.slash("github", "GitHubを開く")
+                .addOption(OptionType.STRING, "query", "指定したメニューまでのリンクを表示します", true, true),
+            Commands.slash("shutdown", "アクティブなcitationのプロセスを終了します。")
+                .addOption(OptionType.BOOLEAN, "force", "強制終了を行いますか?", true)
+        ).queue()
+    } catch (e: IllegalArgumentException) {
+        e.printStackTrace()
+    }
 }
