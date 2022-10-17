@@ -68,16 +68,7 @@ OAuth2 の `URL Generator` から サーバーの招待リンクを生成しま�
 
     # citationのコマンドを登録するギルドのID (Required)
     GUILD_ID=
-
-    # /shutdown を実行できるユーザーのID (Required)
-    SHUTDOWN_USER_ID=
     ```
-
-    !!! warning "`SHUTDOWN_USER_ID` について"
-
-        /shutdownはcitationのアクティブなプロセスを殺すコマンドです。
-
-        当然実行されるとcitaionは停止します。この環境変数に指定するユーザーはcitationを再起動することができるユーザーに指定することをオススメします。
 
     **4. docker-compose.ymlを作成する**
 
@@ -139,15 +130,7 @@ OAuth2 の `URL Generator` から サーバーの招待リンクを生成しま�
     # citationのコマンドを登録するギルドのID (Required)
     GUILD_ID=
 
-    # /shutdown を実行できるユーザーのID (Required)
-    SHUTDOWN_USER_ID=
     ```
-
-    !!! warning "`SHUTDOWN_USER_ID` について"
-
-        /shutdownはcitationのアクティブなプロセスを殺すコマンドです。
-
-        当然実行されるとcitaionは停止します。この環境変数に指定するユーザーはcitationを再起動することができるユーザーに指定することをオススメします。
 
     **4. コンテナを起動する**
 
@@ -192,16 +175,7 @@ OAuth2 の `URL Generator` から サーバーの招待リンクを生成しま�
 
     # citationのコマンドを登録するギルドのID (Required)
     GUILD_ID=
-
-    # /shutdown を実行できるユーザーのID (Required)
-    SHUTDOWN_USER_ID=
     ```
-
-    !!! warning "`SHUTDOWN_USER_ID` について"
-
-        /shutdownはcitationのアクティブなプロセスを殺すコマンドです。
-
-        当然実行されるとcitaionは停止します。この環境変数に指定するユーザーはcitationを再起動することができるユーザーに指定することをオススメします。
 
     `.env` をcitationのルートディレクトリ上に設置し、次のコマンドを実行します。
 
