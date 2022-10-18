@@ -4,6 +4,8 @@ import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.Message.Attachment
 import net.dv8tion.jda.api.entities.MessageEmbed
+import net.dv8tion.jda.api.entities.sticker.Sticker
+import net.dv8tion.jda.api.entities.sticker.StickerItem
 
 class BuildEmbed {
 
@@ -31,6 +33,10 @@ class BuildEmbed {
 
             if (message.attachments.size == 1) {
                 setAttachment(message.attachments, embed)
+            }
+
+            if(message.stickers.size == 1) {
+                setSticker(message.stickers, embed)
             }
 
             return embed.build()
@@ -102,6 +108,24 @@ class BuildEmbed {
 
                 embed.addField("添付ファイル", fileName, true)
                 embed.setImage(fileUrl)
+            }
+        }
+
+        private fun setSticker(sticker: MutableList<StickerItem>, embed: EmbedBuilder) {
+            sticker.forEach { _stickerItem ->
+                val stickerName = _stickerItem.name
+                val stickerType = _stickerItem.formatType
+                val stickerUrl = _stickerItem.iconUrl
+
+                embed.addField("スタンプ", stickerName, true)
+
+                when(stickerType) {
+                    Sticker.StickerFormat.PNG, Sticker.StickerFormat.APNG -> {
+                        embed.setThumbnail(stickerUrl)
+                    }
+
+                    else -> return@forEach
+                }
             }
         }
     }
