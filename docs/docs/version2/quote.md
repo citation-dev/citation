@@ -96,14 +96,14 @@ citation が引用できるコンテンツは以下のとおりです。
 - メッセージ内容
 - 添付ファイル (画像・映像)
 - コードブロック
+- Nitro Sticker (スタンプ)
+- Guild Sticker (ギルドスタンプ)
 
 以下のコンテンツは citation が引用できません。
 
 - Ephemeral Message
 - システムメッセージ
 - GIF (URLのみが表示されます。)
-- Nitro Sticker (スタンプ)
-- Guild Sticker (ギルドスタンプ)
 
 !!! note "Ephemeral Messageとは"
 
