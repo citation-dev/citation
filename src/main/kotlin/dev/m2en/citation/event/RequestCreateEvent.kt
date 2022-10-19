@@ -1,6 +1,6 @@
 package dev.m2en.citation.event
 
-import dev.m2en.citation.utils.BuildEmbed
+import dev.m2en.citation.utils.EmbedBuilder
 import dev.m2en.citation.utils.Logger
 import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.entities.Message
@@ -53,7 +53,7 @@ class RequestCreateEvent : ListenerAdapter() {
 
         val authorName = message.author.name
 
-        message.replyEmbeds(BuildEmbed.buildQuoteEmbed(targetMessage, authorName)).addActionRow(
+        message.replyEmbeds(EmbedBuilder.buildQuoteEmbed(targetMessage, authorName)).addActionRow(
             Button.link(targetMessage.jumpUrl, Emoji.fromUnicode("\uD83D\uDCAC")), // メッセージへのジャンプボタン
             Button.link(targetChannel.jumpUrl, Emoji.fromUnicode("#️⃣")) // チャンネルへのジャンプボタン
         ).queue()
