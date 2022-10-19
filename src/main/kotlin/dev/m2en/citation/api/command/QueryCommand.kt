@@ -1,4 +1,4 @@
-package dev.m2en.citation.command
+package dev.m2en.citation.api.command
 
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
