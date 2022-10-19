@@ -1,4 +1,4 @@
-package dev.m2en.citation.event
+package dev.m2en.citation.api.event
 
 import net.dv8tion.jda.api.events.interaction.command.CommandAutoCompleteInteractionEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter

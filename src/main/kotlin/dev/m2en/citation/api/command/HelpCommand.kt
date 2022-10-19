@@ -1,6 +1,6 @@
-package dev.m2en.citation.command
+package dev.m2en.citation.api.command
 
-import dev.m2en.citation.utils.Utils
+import dev.m2en.citation.internal.utils.Utils
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent

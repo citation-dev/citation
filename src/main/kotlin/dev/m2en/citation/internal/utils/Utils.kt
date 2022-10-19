@@ -1,4 +1,4 @@
-package dev.m2en.citation.utils
+package dev.m2en.citation.internal.utils
 
 import io.github.cdimascio.dotenv.dotenv
 import java.awt.Color

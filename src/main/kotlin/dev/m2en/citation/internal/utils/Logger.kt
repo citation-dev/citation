@@ -1,4 +1,4 @@
-package dev.m2en.citation.utils
+package dev.m2en.citation.internal.utils
 
 class Logger {
 

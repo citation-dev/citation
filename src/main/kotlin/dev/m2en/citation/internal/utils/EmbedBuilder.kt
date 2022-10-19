@@ -1,4 +1,4 @@
-package dev.m2en.citation.utils
+package dev.m2en.citation.internal.utils
 
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.Message
