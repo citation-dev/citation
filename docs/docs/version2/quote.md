@@ -112,3 +112,7 @@ citation が引用できるコンテンツは以下のとおりです。
     詳しくは公式ヘルプ記事を御覧ください。
 
     [Ephemeral Messages FAQ - Discord ヘルプセンター](https://support.discord.com/hc/ja/articles/1500000580222)
+
+!!! warning "一部のステッカーの挙動について"
+
+    ステッカーの種類によってはDiscord APIから画像のURLが帰ってこない(JSON方式で返ってくる)ため、citationが引用できません。
