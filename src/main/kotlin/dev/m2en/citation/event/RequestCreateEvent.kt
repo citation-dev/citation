@@ -5,6 +5,7 @@ import dev.m2en.citation.utils.Logger
 import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageType
+import net.dv8tion.jda.api.entities.channel.ChannelType
 import net.dv8tion.jda.api.entities.channel.concrete.ForumChannel
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 import net.dv8tion.jda.api.entities.channel.concrete.ThreadChannel
@@ -121,8 +122,13 @@ private fun isNSFW(channel: GuildMessageChannel): Boolean {
     return when (channel) {
         is TextChannel -> channel.isNSFW
         is ForumChannel -> channel.isNSFW
-        is ThreadChannel -> channel.parentChannel.asTextChannel().isNSFW
         is VoiceChannel -> channel.isNSFW
+        is ThreadChannel -> {
+            if(channel.parentChannel.type == ChannelType.FORUM) {
+                return channel.parentChannel.asForumChannel().isNSFW
+            }
+            return channel.parentChannel.asTextChannel().isNSFW
+        }
         else -> false
     }
 }
