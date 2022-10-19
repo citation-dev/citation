@@ -2,10 +2,9 @@ package dev.m2en.citation.utils
 
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.Message
-import net.dv8tion.jda.api.entities.Message.Attachment
 import net.dv8tion.jda.api.entities.MessageEmbed
 
-class BuildEmbed {
+class EmbedBuilder {
 
     companion object {
 
@@ -30,7 +29,11 @@ class BuildEmbed {
             }
 
             if (message.attachments.size == 1) {
-                setAttachment(message.attachments, embed)
+                FileBuilder.setAttachment(message.attachments, embed)
+            }
+
+            if(message.stickers.size == 1) {
+                FileBuilder.setSticker(message.stickers, embed)
             }
 
             return embed.build()
@@ -73,36 +76,6 @@ class BuildEmbed {
                 setColor(0xeb0915)
                 setAuthor("citation - エラー")
             }.build()
-        }
-
-        private fun setAttachment(attachment: List<Attachment>, embed: EmbedBuilder) {
-            attachment.forEach { _attachment ->
-                val fileName = _attachment.fileName
-                val fileUrl = _attachment.url
-                // Embedの値の文字制限に引っかからないための確認処理
-                // 参考: https://discord.com/developers/docs/resources/channel#embed-object-embed-limits
-                if (Utils.checkLimit(fileName, 240)) {
-                    embed.setImage(fileUrl)
-                    return@forEach
-                }
-
-                val alt = _attachment.description
-                if (alt !== null && !Utils.checkLimit(alt, 1024)) {
-                    embed.addField("ALT", alt.toString(), true)
-                }
-
-                if (_attachment.isVideo) {
-                    embed.addField("ビデオファイル", "[$fileName]($fileUrl)", true)
-                    return@forEach
-                }
-                if (_attachment.isSpoiler) {
-                    embed.addField("スポイラー済みの添付ファイル", "[$fileName]($fileUrl)", true)
-                    return@forEach
-                }
-
-                embed.addField("添付ファイル", fileName, true)
-                embed.setImage(fileUrl)
-            }
         }
     }
 

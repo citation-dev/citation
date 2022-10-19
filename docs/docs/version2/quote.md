@@ -96,14 +96,14 @@ citation が引用できるコンテンツは以下のとおりです。
 - メッセージ内容
 - 添付ファイル (画像・映像)
 - コードブロック
+- Nitro Sticker (スタンプ)
+- Guild Sticker (ギルドスタンプ)
 
 以下のコンテンツは citation が引用できません。
 
 - Ephemeral Message
 - システムメッセージ
 - GIF (URLのみが表示されます。)
-- Nitro Sticker (スタンプ)
-- Guild Sticker (ギルドスタンプ)
 
 !!! note "Ephemeral Messageとは"
 
@@ -112,3 +112,7 @@ citation が引用できるコンテンツは以下のとおりです。
     詳しくは公式ヘルプ記事を御覧ください。
 
     [Ephemeral Messages FAQ - Discord ヘルプセンター](https://support.discord.com/hc/ja/articles/1500000580222)
+
+!!! warning "一部のステッカーの挙動について"
+
+    ステッカーの種類によってはDiscord APIから画像のURLが帰ってこない(JSON方式で返ってくる)ため、citationが引用できません。
