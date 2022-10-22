@@ -2,7 +2,6 @@ package dev.m2en.citation.api.event
 
 import dev.m2en.citation.internal.manager.ChannelManager
 import dev.m2en.citation.internal.manager.MessageManager
-import dev.m2en.citation.internal.utils.EmbedBuilder
 import dev.m2en.citation.internal.utils.FileBuilder
 import dev.m2en.citation.internal.utils.Logger
 import net.dv8tion.jda.api.entities.Message
@@ -36,15 +35,14 @@ class RequestCreateEvent : ListenerAdapter() {
         content = content.replace(skipRegex, "")
         if (!linkRegex.containsMatchIn(content)) return
 
-        val guild = message.guild
-        val snowflake = getId(linkRegex.find(message.contentRaw) ?: return)
+        val snowflakes = getId(linkRegex.find(message.contentRaw) ?: return)
 
         // リクエスト元ギルドと引用ギルドが一致しているかどうか確認
-        if (guild.id != snowflake.first) return
+        if (message.guild.id != snowflakes.first) return
 
-        val targetChannel = ChannelManager.getChannel(guild, snowflake.second)
+        val targetChannel = ChannelManager.getChannel(message.guild, snowflakes.second)
 
-        val targetMessage = MessageManager.getMessage(targetChannel, snowflake.third)
+        val targetMessage = MessageManager.getMessage(targetChannel, snowflakes.third)
 
         message.replyEmbeds(buildQuoteEmbed(targetMessage, message.author.id)).addActionRow(
             Button.danger(message.author.id, Emoji.fromUnicode("🗑️")), // 削除ボタン
