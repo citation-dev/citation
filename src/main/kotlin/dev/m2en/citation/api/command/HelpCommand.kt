@@ -27,8 +27,8 @@ class HelpCommand(private val tag: String) : ListenerAdapter() {
 }
 
 private fun buildHelpEmbed(tag: String): MessageEmbed {
-    val quote = Utils.markdownLink("$docs/version2/quote/", "詳しくはこちら")
-    val command = Utils.markdownLink("$docs/version2/command/", "詳しくはこちら")
+    val quote = markdownLink("$docs/version2/quote/", "詳しくはこちら")
+    val command = markdownLink("$docs/version2/command/", "詳しくはこちら")
     return EmbedBuilder().apply {
         setTitle("ヘルプ", github)
         setAuthor("$tag ($releseTag)")
@@ -49,4 +49,15 @@ private fun buildHelpEmbed(tag: String): MessageEmbed {
             false
         )
     }.build()
+}
+
+/**
+ * 埋め込み上で使えるマークダウンリンクを作成します。
+ *
+ * @param url URL
+ * @param name マークダウンリンクの名前
+ * @return マークダウンリンク
+ */
+private fun markdownLink(url: String, name: String): String {
+    return "[$name]($url)"
 }
