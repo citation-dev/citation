@@ -16,6 +16,7 @@ class RequestDeleteEvent : ListenerAdapter() {
 
         if(requester.user.isBot || requester.user.isSystem) return
         if(!requester.hasPermission(Permission.MESSAGE_MANAGE, Permission.ADMINISTRATOR) && event.componentId != requester.id) {
+            Logger.sendWarn("${requester.user.name} の削除リクエストを受理しました。")
             sendResult(event, "権限が不足しています。", true)
             return
         }
