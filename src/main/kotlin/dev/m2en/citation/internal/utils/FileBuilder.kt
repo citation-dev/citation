@@ -13,15 +13,9 @@ class FileBuilder {
             attachment.forEach { _attachment ->
                 val fileName = _attachment.fileName
                 val fileUrl = _attachment.url
-                // Embedの値の文字制限に引っかからないための確認処理
-                // 参考: https://discord.com/developers/docs/resources/channel#embed-object-embed-limits
-                if (Utils.checkLimit(fileName, 240)) {
-                    embed.setImage(fileUrl)
-                    return@forEach
-                }
 
                 val alt = _attachment.description
-                if (alt !== null && !Utils.checkLimit(alt, 1024)) {
+                if (alt !== null) {
                     embed.addField("ALT", alt.toString(), true)
                 }
 
