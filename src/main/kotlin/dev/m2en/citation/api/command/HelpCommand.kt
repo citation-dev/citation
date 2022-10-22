@@ -16,8 +16,7 @@ class HelpCommand(private val tag: String) : ListenerAdapter() {
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
         if (event.name != "help") return
 
-        event.interaction
-            .replyEmbeds(buildHelpEmbed(tag))
+        event.replyEmbeds(buildHelpEmbed(tag))
             .setActionRow(
                 Button.link(docs, "ドキュメント"),
                 Button.link("$github/issues/new/choose", "Issue"),

@@ -34,20 +34,6 @@ class Utils {
         }
 
         /**
-         * 文字数の確認を行います。
-         *
-         * @param target 検査対象の文字列
-         * @param limit 検査対象の文字数
-         * @return 検査結果
-         */
-        fun checkLimit(target: String, limit: Int): Boolean {
-            if (target.length <= limit) {
-                return false
-            }
-            return true
-        }
-
-        /**
          * 埋め込み上で使えるマークダウンリンクを作成します。
          *
          * @param url URL

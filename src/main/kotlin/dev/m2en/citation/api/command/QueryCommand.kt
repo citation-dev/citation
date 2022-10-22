@@ -13,11 +13,9 @@ object QueryCommand : ListenerAdapter() {
 
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
         val option = event.getOption("query")!!.asString
-        val interaction = event.interaction
-
         when (event.name) {
-            "docs" -> searchDocs(interaction, option)
-            "github" -> searchGitHub(interaction, option)
+            "docs" -> searchDocs(event, option)
+            "github" -> searchGitHub(event, option)
         }
     }
 }
