@@ -19,7 +19,6 @@ class EmbedBuilder {
                 setTitle(name)
                 setDescription(message ?: "")
                 setColor(0x7e56c2)
-                setAuthor("citation")
             }.build()
         }
 
@@ -35,7 +34,6 @@ class EmbedBuilder {
                 setTitle(name)
                 setDescription(message ?: "")
                 setColor(0xeb0915)
-                setAuthor("citation - エラー")
             }.build()
         }
     }
