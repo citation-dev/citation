@@ -44,7 +44,7 @@ class RequestCreateEvent : ListenerAdapter() {
 
         val targetMessage = MessageManager.getMessage(targetChannel, snowflakes.third)
 
-        message.replyEmbeds(buildQuoteEmbed(targetMessage, message.author.id)).addActionRow(
+        message.replyEmbeds(buildQuoteEmbed(targetMessage, message.author.name)).addActionRow(
             Button.danger(message.author.id, Emoji.fromUnicode("🗑️")), // 削除ボタン
             Button.link(targetMessage.jumpUrl, Emoji.fromUnicode("\uD83D\uDCAC")), // メッセージへのジャンプボタン
             Button.link(targetChannel.jumpUrl, Emoji.fromUnicode("#️⃣")) // チャンネルへのジャンプボタン
