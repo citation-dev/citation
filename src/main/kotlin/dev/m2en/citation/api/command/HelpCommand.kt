@@ -27,20 +27,18 @@ class HelpCommand(private val tag: String) : ListenerAdapter() {
 }
 
 private fun buildHelpEmbed(tag: String): MessageEmbed {
-    val quote = markdownLink("$docs/version2/quote/", "詳しくはこちら")
-    val command = markdownLink("$docs/version2/command/", "詳しくはこちら")
     return EmbedBuilder().apply {
         setTitle("ヘルプ", github)
         setAuthor("$tag ($releseTag)")
         setDescription("✨ Discord Bot to show MessageLink's preview")
         addField(
             "引用",
-            "メッセージリンクを送信するとそのメッセージをEmbedとして送信します。`<>` でリンクを囲えば、リンクだけを送ることができます。\n$quote",
+            "メッセージリンクを送信するとそのメッセージをEmbedとして送信します。`<>` でリンクを囲えば、リンクだけを送ることができます。\n${markdownLink("$docs/version2/quote/")}",
             false
         )
         addField(
             "コマンド",
-            "引用以外の機能はスラッシュコマンドで利用できます。\n$command",
+            "引用以外の機能はスラッシュコマンドで利用できます。\n${markdownLink("$docs/version2/command/")}",
             false
         )
         addField(
@@ -58,6 +56,6 @@ private fun buildHelpEmbed(tag: String): MessageEmbed {
  * @param name マークダウンリンクの名前
  * @return マークダウンリンク
  */
-private fun markdownLink(url: String, name: String): String {
-    return "[$name]($url)"
+private fun markdownLink(url: String): String {
+    return "[詳しくはこちら]($url)"
 }
