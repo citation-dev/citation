@@ -1,5 +1,5 @@
 ---
-name: Bug-report
+name: Bug-report-issue
 about: citationのバグを報告します。
 title: ''
 labels: 🐛bug
