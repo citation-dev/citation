@@ -1,4 +1,4 @@
-package dev.m2en.citation.command
+package dev.m2en.citation.api.command
 
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
@@ -13,11 +13,9 @@ object QueryCommand : ListenerAdapter() {
 
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
         val option = event.getOption("query")!!.asString
-        val interaction = event.interaction
-
         when (event.name) {
-            "docs" -> searchDocs(interaction, option)
-            "github" -> searchGitHub(interaction, option)
+            "docs" -> searchDocs(event, option)
+            "github" -> searchGitHub(event, option)
         }
     }
 }

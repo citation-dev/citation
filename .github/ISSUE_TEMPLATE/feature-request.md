@@ -1,5 +1,5 @@
 ---
-name: Feature-request
+name: Feature-request-issue
 about: citationに機能追加の要望を提出します。
 title: ''
 labels: ✨enhancement
