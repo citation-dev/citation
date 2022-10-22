@@ -46,6 +46,7 @@ class RequestCreateEvent : ListenerAdapter() {
         val authorName = message.author.name
 
         message.replyEmbeds(EmbedBuilder.buildQuoteEmbed(targetMessage, authorName)).addActionRow(
+            Button.danger("citation.message.delete", Emoji.fromUnicode("🗑️")), // 削除ボタン
             Button.link(targetMessage.jumpUrl, Emoji.fromUnicode("\uD83D\uDCAC")), // メッセージへのジャンプボタン
             Button.link(targetChannel.jumpUrl, Emoji.fromUnicode("#️⃣")) // チャンネルへのジャンプボタン
         ).queue()
