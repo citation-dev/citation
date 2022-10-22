@@ -1,5 +1,5 @@
 ---
-name: docs-issue
+name: Docs-issue
 about: ドキュメントに関するIssueを提出します。
 title: ""
 labels: ✨documentation

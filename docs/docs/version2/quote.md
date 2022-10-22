@@ -35,6 +35,18 @@
     <https://discord.com/channels/988823175699771402/1031026247163183135/1031028201977282631>
     ```
 
+## 引用を削除する
+
+![削除機能](./image/gif/quote-delete.gif)
+
+- `🗑️` のボタンを引用を削除することができます。
+
+!!! warning "引用を削除できる人"
+
+    引用を削除できる人はその引用を行った人(メッセージリンクを送信した人)のみです。
+
+    また、メッセージ管理権限または管理者権限を持つユーザーも削除することができます。
+
 ## ジャンプする
 
 ![ジャンプ機能](./image/gif/quote-jump.gif)
@@ -96,14 +108,14 @@ citation が引用できるコンテンツは以下のとおりです。
 - メッセージ内容
 - 添付ファイル (画像・映像)
 - コードブロック
+- Nitro Sticker (スタンプ)
+- Guild Sticker (ギルドスタンプ)
 
 以下のコンテンツは citation が引用できません。
 
 - Ephemeral Message
 - システムメッセージ
 - GIF (URLのみが表示されます。)
-- Nitro Sticker (スタンプ)
-- Guild Sticker (ギルドスタンプ)
 
 !!! note "Ephemeral Messageとは"
 
@@ -112,3 +124,7 @@ citation が引用できるコンテンツは以下のとおりです。
     詳しくは公式ヘルプ記事を御覧ください。
 
     [Ephemeral Messages FAQ - Discord ヘルプセンター](https://support.discord.com/hc/ja/articles/1500000580222)
+
+!!! warning "一部のステッカーの挙動について"
+
+    ステッカーの種類によってはDiscord APIから画像のURLが帰ってこない(JSON方式で返ってくる)ため、citationが引用できません。

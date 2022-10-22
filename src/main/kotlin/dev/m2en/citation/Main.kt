@@ -2,7 +2,7 @@
 
 package dev.m2en.citation
 
-import dev.m2en.citation.utils.Utils
+import dev.m2en.citation.internal.utils.Utils
 import javax.security.auth.login.LoginException
 
 fun main() {

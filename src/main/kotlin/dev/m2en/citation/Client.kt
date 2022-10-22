@@ -1,10 +1,11 @@
 package dev.m2en.citation
 
-import dev.m2en.citation.command.HelpCommand
-import dev.m2en.citation.command.QueryCommand
-import dev.m2en.citation.event.AutoCompleteCreateEvent
-import dev.m2en.citation.event.ReadyEvent
-import dev.m2en.citation.event.RequestCreateEvent
+import dev.m2en.citation.api.command.HelpCommand
+import dev.m2en.citation.api.command.QueryCommand
+import dev.m2en.citation.api.event.AutoCompleteCreateEvent
+import dev.m2en.citation.api.event.ReadyEvent
+import dev.m2en.citation.api.event.RequestCreateEvent
+import dev.m2en.citation.api.event.RequestDeleteEvent
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
@@ -50,7 +51,9 @@ class Client {
                     // Command:
                     AutoCompleteCreateEvent(),
                     HelpCommand(tag),
-                    QueryCommand
+                    QueryCommand,
+                    // Button:
+                    RequestDeleteEvent()
                 )
 
         }

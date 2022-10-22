@@ -1,7 +1,7 @@
-package dev.m2en.citation.event
+package dev.m2en.citation.api.event
 
-import dev.m2en.citation.utils.Logger
-import dev.m2en.citation.utils.Utils
+import dev.m2en.citation.internal.utils.Logger
+import dev.m2en.citation.internal.utils.Utils
 import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter

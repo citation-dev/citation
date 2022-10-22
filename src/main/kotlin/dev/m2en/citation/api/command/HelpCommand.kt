@@ -1,6 +1,6 @@
-package dev.m2en.citation.command
+package dev.m2en.citation.api.command
 
-import dev.m2en.citation.utils.Utils
+import dev.m2en.citation.internal.utils.Utils
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
@@ -16,8 +16,7 @@ class HelpCommand(private val tag: String) : ListenerAdapter() {
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
         if (event.name != "help") return
 
-        event.interaction
-            .replyEmbeds(buildHelpEmbed(tag))
+        event.replyEmbeds(buildHelpEmbed(tag))
             .setActionRow(
                 Button.link(docs, "ドキュメント"),
                 Button.link("$github/issues/new/choose", "Issue"),
@@ -28,20 +27,18 @@ class HelpCommand(private val tag: String) : ListenerAdapter() {
 }
 
 private fun buildHelpEmbed(tag: String): MessageEmbed {
-    val quote = Utils.markdownLink("$docs/version2/quote/", "詳しくはこちら")
-    val command = Utils.markdownLink("$docs/version2/command/", "詳しくはこちら")
     return EmbedBuilder().apply {
         setTitle("ヘルプ", github)
         setAuthor("$tag ($releseTag)")
         setDescription("✨ Discord Bot to show MessageLink's preview")
         addField(
             "引用",
-            "メッセージリンクを送信するとそのメッセージをEmbedとして送信します。`<>` でリンクを囲えば、リンクだけを送ることができます。\n$quote",
+            "メッセージリンクを送信するとそのメッセージをEmbedとして送信します。`<>` でリンクを囲えば、リンクだけを送ることができます。\n${markdownLink("$docs/version2/quote/")}",
             false
         )
         addField(
             "コマンド",
-            "引用以外の機能はスラッシュコマンドで利用できます。\n$command",
+            "引用以外の機能はスラッシュコマンドで利用できます。\n${markdownLink("$docs/version2/command/")}",
             false
         )
         addField(
@@ -50,4 +47,15 @@ private fun buildHelpEmbed(tag: String): MessageEmbed {
             false
         )
     }.build()
+}
+
+/**
+ * 埋め込み上で使えるマークダウンリンクを作成します。
+ *
+ * @param url URL
+ * @param name マークダウンリンクの名前
+ * @return マークダウンリンク
+ */
+private fun markdownLink(url: String): String {
+    return "[詳しくはこちら]($url)"
 }
