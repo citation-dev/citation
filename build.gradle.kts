@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("net.dv8tion:JDA:5.0.0-alpha.21")
+    implementation("net.dv8tion:JDA:5.0.0-alpha.22")
     implementation("org.slf4j:slf4j-simple:2.0.3")
     implementation("io.github.cdimascio:dotenv-kotlin:6.3.1")
 }
