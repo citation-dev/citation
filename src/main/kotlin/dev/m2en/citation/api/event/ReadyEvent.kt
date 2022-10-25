@@ -46,12 +46,7 @@ private fun registerCommand(guild: Guild) {
     try {
         guild.updateCommands().addCommands(
             Commands.slash("help", "ヘルプを開く"),
-            Commands.slash("ping", "応答時間(Ping)を表示する")
-                .addOptions(
-                    OptionData(OptionType.STRING, "type", "確認する応答時間の種類 (指定がない場合は両方)", false)
-                        .addChoice("Rest", "rest")
-                        .addChoice("Gateway", "gateway")
-                ),
+            Commands.slash("ping", "応答時間(Ping)を表示する"),
             Commands.slash("docs", "ドキュメントを開く")
                 .addOption(OptionType.STRING, "query", "指定したページまでのリンクを表示します", true, true),
             Commands.slash("github", "GitHubを開く")
