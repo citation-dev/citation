@@ -1,6 +1,7 @@
 package dev.m2en.citation
 
 import dev.m2en.citation.api.command.HelpCommand
+import dev.m2en.citation.api.command.PingCommand
 import dev.m2en.citation.api.command.QueryCommand
 import dev.m2en.citation.api.event.AutoCompleteCreateEvent
 import dev.m2en.citation.api.event.ReadyEvent
@@ -53,6 +54,7 @@ class Client {
                     // Command:
                     AutoCompleteCreateEvent(),
                     HelpCommand(tag),
+                    PingCommand(),
                     QueryCommand,
                     // Button:
                     RequestDeleteEvent()
