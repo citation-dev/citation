@@ -31,11 +31,13 @@ class Client {
                 .disableCache(
                     CacheFlag.VOICE_STATE,
                     CacheFlag.ROLE_TAGS,
+                    CacheFlag.SCHEDULED_EVENTS
                 )
                 .setDisabledIntents(
                     GatewayIntent.GUILD_BANS,
                     GatewayIntent.GUILD_WEBHOOKS,
                     GatewayIntent.GUILD_MESSAGE_TYPING,
+                    GatewayIntent.SCHEDULED_EVENTS
                 )
                 .setEnabledIntents(
                     GatewayIntent.GUILD_MEMBERS,
