@@ -7,6 +7,8 @@ import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.commands.OptionType
 import net.dv8tion.jda.api.interactions.commands.build.Commands
+import net.dv8tion.jda.api.interactions.commands.build.OptionData
+import net.dv8tion.jda.api.interactions.commands.build.SubcommandData
 
 class ReadyEvent(private val tag: String?) : ListenerAdapter() {
 
@@ -44,6 +46,12 @@ private fun registerCommand(guild: Guild) {
     try {
         guild.updateCommands().addCommands(
             Commands.slash("help", "ヘルプを開く"),
+            Commands.slash("ping", "応答時間(Ping)を表示する")
+                .addOptions(
+                    OptionData(OptionType.STRING, "type", "確認する応答時間の種類 (指定がない場合は両方)", false)
+                        .addChoice("Rest", "rest")
+                        .addChoice("Gateway", "gateway")
+                ),
             Commands.slash("docs", "ドキュメントを開く")
                 .addOption(OptionType.STRING, "query", "指定したページまでのリンクを表示します", true, true),
             Commands.slash("github", "GitHubを開く")
