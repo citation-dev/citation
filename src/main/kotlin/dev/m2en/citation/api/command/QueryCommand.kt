@@ -12,6 +12,8 @@ private const val githubLink = "https://github.com/m2en/citation"
 object QueryCommand : ListenerAdapter() {
 
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
+        if(event.name != "query") return
+
         val option = event.getOption("query")!!.asString
         when (event.name) {
             "docs" -> searchDocs(event, option)

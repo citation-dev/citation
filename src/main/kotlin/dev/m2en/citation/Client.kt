@@ -1,6 +1,7 @@
 package dev.m2en.citation
 
 import dev.m2en.citation.api.command.HelpCommand
+import dev.m2en.citation.api.command.PingCommand
 import dev.m2en.citation.api.command.QueryCommand
 import dev.m2en.citation.api.event.AutoCompleteCreateEvent
 import dev.m2en.citation.api.event.ReadyEvent
@@ -31,11 +32,13 @@ class Client {
                 .disableCache(
                     CacheFlag.VOICE_STATE,
                     CacheFlag.ROLE_TAGS,
+                    CacheFlag.SCHEDULED_EVENTS
                 )
                 .setDisabledIntents(
                     GatewayIntent.GUILD_BANS,
                     GatewayIntent.GUILD_WEBHOOKS,
                     GatewayIntent.GUILD_MESSAGE_TYPING,
+                    GatewayIntent.SCHEDULED_EVENTS
                 )
                 .setEnabledIntents(
                     GatewayIntent.GUILD_MEMBERS,
@@ -51,6 +54,7 @@ class Client {
                     // Command:
                     AutoCompleteCreateEvent(),
                     HelpCommand(tag),
+                    PingCommand(),
                     QueryCommand,
                     // Button:
                     RequestDeleteEvent()
