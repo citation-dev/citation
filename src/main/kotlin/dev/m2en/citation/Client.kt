@@ -29,31 +29,15 @@ class Client {
                 .setActivity(Activity.playing("/help | $tag"))
                 .setBulkDeleteSplittingEnabled(true)
                 .setAutoReconnect(true)
-                /**
-                 * .disableCache(
-                CacheFlag.VOICE_STATE,
-                CacheFlag.ROLE_TAGS,
-                CacheFlag.SCHEDULED_EVENTS
-                )
-                .setDisabledIntents(
-                GatewayIntent.GUILD_BANS,
-                GatewayIntent.GUILD_WEBHOOKS,
-                GatewayIntent.GUILD_MESSAGE_TYPING,
-                GatewayIntent.SCHEDULED_EVENTS
-                )
-                .setEnabledIntents(
-                GatewayIntent.GUILD_MEMBERS,
-                GatewayIntent.GUILD_MESSAGES,
-                GatewayIntent.GUILD_MESSAGE_REACTIONS,
-                GatewayIntent.GUILD_EMOJIS_AND_STICKERS,
-                GatewayIntent.MESSAGE_CONTENT,
-                )
-                 */
+
+                // メッセージコンテンツ、ギルドメンバー、ギルドメッセージのインテントを有効化
                 .setEnabledIntents(
                     GatewayIntent.MESSAGE_CONTENT,
                     GatewayIntent.GUILD_MEMBERS,
                     GatewayIntent.GUILD_MESSAGES
                 )
+
+                // citationでは使用しないインテントを無効化
                 .setDisabledIntents(
                     GatewayIntent.GUILD_VOICE_STATES,
                     GatewayIntent.GUILD_PRESENCES,
@@ -68,6 +52,8 @@ class Client {
                     GatewayIntent.DIRECT_MESSAGE_TYPING,
                     GatewayIntent.SCHEDULED_EVENTS
                 )
+
+                // 不要なキャッシュは貯めないように無効化
                 .disableCache(
                     CacheFlag.VOICE_STATE,
                     CacheFlag.CLIENT_STATUS,
