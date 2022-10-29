@@ -29,23 +29,56 @@ class Client {
                 .setActivity(Activity.playing("/help | $tag"))
                 .setBulkDeleteSplittingEnabled(true)
                 .setAutoReconnect(true)
-                .disableCache(
-                    CacheFlag.VOICE_STATE,
-                    CacheFlag.ROLE_TAGS,
-                    CacheFlag.SCHEDULED_EVENTS
+                /**
+                 * .disableCache(
+                CacheFlag.VOICE_STATE,
+                CacheFlag.ROLE_TAGS,
+                CacheFlag.SCHEDULED_EVENTS
                 )
                 .setDisabledIntents(
-                    GatewayIntent.GUILD_BANS,
-                    GatewayIntent.GUILD_WEBHOOKS,
-                    GatewayIntent.GUILD_MESSAGE_TYPING,
-                    GatewayIntent.SCHEDULED_EVENTS
+                GatewayIntent.GUILD_BANS,
+                GatewayIntent.GUILD_WEBHOOKS,
+                GatewayIntent.GUILD_MESSAGE_TYPING,
+                GatewayIntent.SCHEDULED_EVENTS
                 )
                 .setEnabledIntents(
-                    GatewayIntent.GUILD_MEMBERS,
-                    GatewayIntent.GUILD_MESSAGES,
-                    GatewayIntent.GUILD_MESSAGE_REACTIONS,
-                    GatewayIntent.GUILD_EMOJIS_AND_STICKERS,
+                GatewayIntent.GUILD_MEMBERS,
+                GatewayIntent.GUILD_MESSAGES,
+                GatewayIntent.GUILD_MESSAGE_REACTIONS,
+                GatewayIntent.GUILD_EMOJIS_AND_STICKERS,
+                GatewayIntent.MESSAGE_CONTENT,
+                )
+                 */
+                .setEnabledIntents(
                     GatewayIntent.MESSAGE_CONTENT,
+                    GatewayIntent.GUILD_MEMBERS,
+                    GatewayIntent.GUILD_MESSAGES
+                )
+                .setDisabledIntents(
+                    GatewayIntent.GUILD_VOICE_STATES,
+                    GatewayIntent.GUILD_PRESENCES,
+                    GatewayIntent.GUILD_BANS,
+                    GatewayIntent.GUILD_EMOJIS_AND_STICKERS,
+                    GatewayIntent.GUILD_WEBHOOKS,
+                    GatewayIntent.GUILD_INVITES,
+                    GatewayIntent.GUILD_MESSAGE_REACTIONS,
+                    GatewayIntent.GUILD_MESSAGE_TYPING,
+                    GatewayIntent.DIRECT_MESSAGES,
+                    GatewayIntent.DIRECT_MESSAGE_REACTIONS,
+                    GatewayIntent.DIRECT_MESSAGE_TYPING,
+                    GatewayIntent.SCHEDULED_EVENTS
+                )
+                .disableCache(
+                    CacheFlag.VOICE_STATE,
+                    CacheFlag.CLIENT_STATUS,
+                    CacheFlag.ACTIVITY,
+                    CacheFlag.EMOJI,
+                    CacheFlag.STICKER,
+                    CacheFlag.MEMBER_OVERRIDES,
+                    CacheFlag.ROLE_TAGS,
+                    CacheFlag.FORUM_TAGS,
+                    CacheFlag.ONLINE_STATUS,
+                    CacheFlag.SCHEDULED_EVENTS
                 )
                 .addEventListeners(
                     // Event:
