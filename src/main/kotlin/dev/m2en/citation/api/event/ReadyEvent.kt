@@ -1,3 +1,7 @@
+// ------------------------------------
+// Created by m2en : Ready Client Event
+// ------------------------------------
+
 package dev.m2en.citation.api.event
 
 import dev.m2en.citation.internal.utils.Logger
@@ -44,6 +48,7 @@ private fun registerCommand(guild: Guild) {
     try {
         guild.updateCommands().addCommands(
             Commands.slash("help", "ヘルプを開く"),
+            Commands.slash("ping", "応答時間(Ping)を表示する"),
             Commands.slash("docs", "ドキュメントを開く")
                 .addOption(OptionType.STRING, "query", "指定したページまでのリンクを表示します", true, true),
             Commands.slash("github", "GitHubを開く")

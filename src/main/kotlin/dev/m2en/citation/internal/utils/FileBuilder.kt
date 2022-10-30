@@ -1,3 +1,7 @@
+// -------------------------------------------------------
+// Created by m2en : Logic to create attachments for Embed
+// -------------------------------------------------------
+
 package dev.m2en.citation.internal.utils
 
 import net.dv8tion.jda.api.EmbedBuilder
@@ -41,7 +45,7 @@ class FileBuilder {
 
                 embed.addField("スタンプ", stickerName, true)
 
-                when(stickerType) {
+                when (stickerType) {
                     Sticker.StickerFormat.PNG, Sticker.StickerFormat.APNG -> {
                         embed.setThumbnail(stickerUrl)
                     }

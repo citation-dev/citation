@@ -1,7 +1,10 @@
+// ---------------------------------------
+// Created by m2en : Logic to create Embed
+// ---------------------------------------
+
 package dev.m2en.citation.internal.utils
 
 import net.dv8tion.jda.api.EmbedBuilder
-import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageEmbed
 
 class EmbedBuilder {

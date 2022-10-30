@@ -1,13 +1,15 @@
+// -----------------------------------------
+// Created by m2en : Processing Help Command
+// -----------------------------------------
+
 package dev.m2en.citation.api.command
 
-import dev.m2en.citation.internal.utils.Utils
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.components.buttons.Button
 
-private const val releseTag = "2022.2.1"
 private const val github = "https://github.com/m2en/citation"
 private const val docs = "https://citation.m2en.dev"
 
@@ -29,11 +31,15 @@ class HelpCommand(private val tag: String) : ListenerAdapter() {
 private fun buildHelpEmbed(tag: String): MessageEmbed {
     return EmbedBuilder().apply {
         setTitle("ヘルプ", github)
-        setAuthor("$tag ($releseTag)")
+        setAuthor(tag)
         setDescription("✨ Discord Bot to show MessageLink's preview")
         addField(
             "引用",
-            "メッセージリンクを送信するとそのメッセージをEmbedとして送信します。`<>` でリンクを囲えば、リンクだけを送ることができます。\n${markdownLink("$docs/version2/quote/")}",
+            "メッセージリンクを送信するとそのメッセージをEmbedとして送信します。`<>` でリンクを囲えば、リンクだけを送ることができます。\n${
+                markdownLink(
+                    "$docs/version2/quote/"
+                )
+            }",
             false
         )
         addField(
