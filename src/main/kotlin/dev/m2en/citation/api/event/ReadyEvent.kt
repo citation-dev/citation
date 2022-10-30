@@ -1,3 +1,7 @@
+// ------------------------------------
+// Created by m2en : Ready Client Event
+// ------------------------------------
+
 package dev.m2en.citation.api.event
 
 import dev.m2en.citation.internal.utils.Logger
@@ -7,8 +11,6 @@ import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.commands.OptionType
 import net.dv8tion.jda.api.interactions.commands.build.Commands
-import net.dv8tion.jda.api.interactions.commands.build.OptionData
-import net.dv8tion.jda.api.interactions.commands.build.SubcommandData
 
 class ReadyEvent(private val tag: String?) : ListenerAdapter() {
 

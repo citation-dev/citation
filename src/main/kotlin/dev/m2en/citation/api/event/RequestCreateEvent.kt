@@ -1,3 +1,7 @@
+// ------------------------------------------------------------------
+// Created by m2en : Processes sent citation requests (message links)
+// ------------------------------------------------------------------
+
 package dev.m2en.citation.api.event
 
 import dev.m2en.citation.internal.manager.ChannelManager
@@ -67,6 +71,7 @@ private fun getId(matches: MatchResult): Triple<String, String, String> {
     val messageId = matches.groupValues[3]
     return Triple(guildId, channelId, messageId)
 }
+
 private fun buildQuoteEmbed(message: Message, authorName: String): MessageEmbed {
     val messageAuthor = message.author
     val messageAuthorIcon = messageAuthor.avatarUrl
@@ -91,7 +96,7 @@ private fun buildQuoteEmbed(message: Message, authorName: String): MessageEmbed 
         FileBuilder.setAttachment(message.attachments, embed)
     }
 
-    if(message.stickers.size == 1) {
+    if (message.stickers.size == 1) {
         FileBuilder.setSticker(message.stickers, embed)
     }
 
