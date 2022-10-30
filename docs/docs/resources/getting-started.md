@@ -26,15 +26,19 @@ Bot を作成したら、`Reset Token` をクリックし、トークンを生�
 
 次に `Privileged Gateway Intents` を有効にします。
 
-`Bot` メニューから `Privileged Gateway Intents` の欄にある、`MESSAGE CONTENT INTENT` を有効にします。
+`Bot` メニューから `Privileged Gateway Intents` の欄にある、`MESSAGE CONTENT INTENT`, `SERVER MEMBERS INTENT` を有効にします。
 
-![Privileged Gateway Intents](./images/103852.png)
+![Privileged Gateway Intents](./images/032305.png)
+
+!!! note
+
+    v2.2.0 から `PRESENCE INTENT` の指定は不要になりました。
 
 ### 3. Bot をサーバーに招待する
 
 OAuth2 の `URL Generator` から サーバーの招待リンクを生成します。
 
-`SCOPES` に `bot` を追加し、`BOT PERMISSIONS` に適切な権限を設定します。citation に必要な権限は [citation に必要な権限](#citation-に必要な権限) を参照してください。
+`SCOPES` に `bot` を追加し、`BOT PERMISSIONS` に適切な権限を設定します。citation に必要な権限は [citation に必要な権限](#citation) を参照してください。
 
 生成されたリンクから Bot をサーバーに招待します。
 
