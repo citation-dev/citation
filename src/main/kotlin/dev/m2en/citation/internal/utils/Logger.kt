@@ -1,3 +1,7 @@
+// --------------------------------
+// Created by m2en : Logging System
+// --------------------------------
+
 package dev.m2en.citation.internal.utils
 
 class Logger {

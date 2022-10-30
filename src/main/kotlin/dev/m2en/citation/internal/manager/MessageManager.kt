@@ -1,3 +1,7 @@
+// --------------------------------------------------------
+// Created by m2en : Logic to retrieve and inspect messages
+// --------------------------------------------------------
+
 package dev.m2en.citation.internal.manager
 
 import net.dv8tion.jda.api.entities.Message

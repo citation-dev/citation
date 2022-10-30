@@ -1,3 +1,7 @@
+// -----------------------------------------
+// Created by m2en : Processing Ping Command
+// -----------------------------------------
+
 package dev.m2en.citation.api.command
 
 import net.dv8tion.jda.api.EmbedBuilder
@@ -5,15 +9,12 @@ import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
-import net.dv8tion.jda.api.interactions.commands.SlashCommandInteraction
-import net.dv8tion.jda.api.interactions.components.buttons.Button
-import net.dv8tion.jda.api.requests.RestAction
 
 
-class PingCommand: ListenerAdapter() {
+class PingCommand : ListenerAdapter() {
 
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
-        if(event.name != "ping") return
+        if (event.name != "ping") return
 
         val jda = event.jda
 
@@ -23,7 +24,7 @@ class PingCommand: ListenerAdapter() {
     }
 
     override fun onButtonInteraction(event: ButtonInteractionEvent) {
-        if(event.componentId != "ping-hint") return
+        if (event.componentId != "ping-hint") return
 
         event.reply(hint)
     }

@@ -1,3 +1,7 @@
+// ------------------------------------------
+// Made by m2en : Build citation client logic
+// ------------------------------------------
+
 package dev.m2en.citation
 
 import dev.m2en.citation.api.command.HelpCommand

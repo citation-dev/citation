@@ -1,3 +1,7 @@
+// -------------------------------------------------------
+// Created by m2en : Logic to acquire and inspect channels
+// -------------------------------------------------------
+
 package dev.m2en.citation.internal.manager
 
 import net.dv8tion.jda.api.entities.Guild
@@ -28,7 +32,7 @@ class ChannelManager {
                 throw RuntimeException("チャンネルタイプが不正です")
             }
 
-            if(isNSFW(channel)) {
+            if (isNSFW(channel)) {
                 throw RuntimeException("NSFWチャンネルのメッセージは引用できません。")
             }
 
@@ -60,11 +64,12 @@ class ChannelManager {
                 is ForumChannel -> channel.isNSFW
                 is VoiceChannel -> channel.isNSFW
                 is ThreadChannel -> {
-                    if(channel.parentChannel.type == ChannelType.FORUM) {
+                    if (channel.parentChannel.type == ChannelType.FORUM) {
                         return channel.parentChannel.asForumChannel().isNSFW
                     }
                     return channel.parentChannel.asTextChannel().isNSFW
                 }
+
                 else -> false
             }
         }
