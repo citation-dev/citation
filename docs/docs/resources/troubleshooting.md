@@ -29,9 +29,8 @@ CloseCode(4014 / Disallowed intents. Your bot might not be eligible to request a
 
 1. `MESSAGE CONTENT INTENT`
 2. `SERVER MEMBERS INTENT`
-3. `PRESENCE INTENT`
 
-![Privileged Gateway Intents](./images/103852.png)
+![Privileged Gateway Intents](./images/032305.png)
 
 ### トークンが正しくない
 
