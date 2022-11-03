@@ -20,7 +20,7 @@ class HelpCommand(private val tag: String) : ListenerAdapter() {
 
         event.replyEmbeds(buildHelpEmbed(tag))
             .setActionRow(
-                Button.link(docs, "ドキュメント"),
+                Button.link(docs, "Document"),
                 Button.link("$github/issues/new/choose", "Issue"),
                 Button.link("$github/discussions", "Discussion")
             )
@@ -45,11 +45,6 @@ private fun buildHelpEmbed(tag: String): MessageEmbed {
         addField(
             "コマンド",
             "引用以外の機能はスラッシュコマンドで利用できます。\n${markdownLink("$docs/version2/command/")}",
-            false
-        )
-        addField(
-            "ドキュメント",
-            "citationの使い方は **citation docs** を確認してください。(`/docs`で検索もできます)",
             false
         )
     }.build()
