@@ -6,11 +6,9 @@ package dev.m2en.citation
 
 import dev.m2en.citation.api.command.HelpCommand
 import dev.m2en.citation.api.command.PingCommand
-import dev.m2en.citation.api.command.QueryCommand
-import dev.m2en.citation.api.event.AutoCompleteCreateEvent
 import dev.m2en.citation.api.event.ReadyEvent
-import dev.m2en.citation.api.event.RequestCreateEvent
-import dev.m2en.citation.api.event.RequestDeleteEvent
+import dev.m2en.citation.api.event.CitationCreateEvent
+import dev.m2en.citation.api.event.CitationDeleteEvent
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
@@ -73,14 +71,12 @@ class Client {
                 .addEventListeners(
                     // Event:
                     ReadyEvent(tag),
-                    RequestCreateEvent(),
+                    CitationCreateEvent(),
                     // Command:
-                    AutoCompleteCreateEvent(),
                     HelpCommand(tag),
                     PingCommand(),
-                    QueryCommand,
                     // Button:
-                    RequestDeleteEvent()
+                    CitationDeleteEvent()
                 )
 
         }
