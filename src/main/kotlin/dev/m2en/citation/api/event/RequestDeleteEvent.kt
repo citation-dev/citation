@@ -24,26 +24,12 @@ class RequestDeleteEvent : ListenerAdapter() {
             ) && event.componentId != requester.id
         ) {
             Logger.sendWarn("${requester.user.name} の削除リクエストを受理しました。")
-            sendResult(event, "権限が不足しています。", true)
+            event.replyEmbeds(EmbedBuilder.buildErrorEmbed("削除に失敗しました", "権限が不足しています。")).setEphemeral(true).queue()
             return
         }
 
-        sendResult(event, null, false)
+        event.replyEmbeds(EmbedBuilder.buildEmbed("削除に成功しました。")).setEphemeral(true).queue()
         target.delete().queue()
         Logger.sendInfo("${requester.user.name} の削除リクエストを受理しました。")
-    }
-
-    private fun sendResult(
-        interaction: ButtonInteraction,
-        message: String?,
-        error: Boolean = false
-    ) {
-        if (error) {
-            interaction.replyEmbeds(EmbedBuilder.buildErrorEmbed("削除に失敗しました。", message))
-                .setEphemeral(true).queue()
-        } else {
-            interaction.replyEmbeds(EmbedBuilder.buildEmbed("削除に成功しました。", message))
-                .setEphemeral(true).queue()
-        }
     }
 }
