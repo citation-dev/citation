@@ -15,7 +15,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.components.buttons.Button
 
-class RequestCreateEvent : ListenerAdapter() {
+class CitationCreateEvent : ListenerAdapter() {
 
     /**
      * メッセージリンクを取り出す正規表現
