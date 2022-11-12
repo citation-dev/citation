@@ -43,7 +43,7 @@ class PingCommand : ListenerAdapter() {
     private val hint = """
         > - Rest PingはDiscord APIがREST requestに応答するまでにかかった時間を表してます。
         > - Gateway PingはDiscord APIが最後のハートビートに応答するまでにかかった時間(アクティブなセッションのWebSocket Ping)を表しています。
-        > - Pingに関する詳しい情報は [ドキュメント](https://citation.m2en.dev/version2/command-overview/#ping) を参照してください。
+        > - Pingに関する詳しい情報は [ドキュメント](https://citation.m2en.dev/reference/features/ping) を参照してください。
         > - citationのレスポンスが悪い場合は [Discord Status](https://discordstatus.com/) の **API Response Time** を確認してください。 
     """.trimIndent()
 }

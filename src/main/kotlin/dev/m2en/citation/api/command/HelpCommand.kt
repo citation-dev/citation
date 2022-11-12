@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.components.buttons.Button
 
-private const val github = "https://github.com/m2en/citation"
+private const val github = "https://github.com/citation-dev/citation"
 private const val docs = "https://citation.m2en.dev"
 
 class HelpCommand(private val tag: String) : ListenerAdapter() {
@@ -37,14 +37,14 @@ private fun buildHelpEmbed(tag: String): MessageEmbed {
             "引用",
             "メッセージリンクを送信するとそのメッセージをEmbedとして送信します。`<>` でリンクを囲えば、リンクだけを送ることができます。\n${
                 markdownLink(
-                    "$docs/version2/quote/"
+                    "$docs/reference/features/citation"
                 )
             }",
             false
         )
         addField(
             "コマンド",
-            "引用以外の機能はスラッシュコマンドで利用できます。\n${markdownLink("$docs/version2/command/")}",
+            "引用以外の機能はスラッシュコマンドで利用できます。\n${markdownLink("$docs/reference/features")}",
             false
         )
     }.build()

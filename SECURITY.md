@@ -8,13 +8,11 @@ citationは、GitHub Packages Registry(ghcr.io)にて、ビルド済みイメー
 
 以下の表は現在コントリビューターがサポートしているcitationのバージョン一覧となります。
 
-// TODO: テーブルを更新
-
-| Version                    | Status     | Support Start Date                                                 | Support End Date                                                       |
-|----------------------------|------------|--------------------------------------------------------------------|------------------------------------------------------------------------|
-| v2 (`v2.0.0`～)             | `Active`   | [2022/10/16](https://github.com/m2en/citation/releases/tag/v2.0.0) | 現在サポート中                                                                |
-| v1 (`v1.0.0`～)             | `Inactive` | [2022/08/21](https://github.com/m2en/citation/releases/tag/v1.0.0) | [2022/10/16](https://github.com/m2en/citation/releases/tag/v1.4.0)     |
-| v0 (`v0.1.0`～`v1.0.0-rc1`) | `Inactive` | [2022/08/15](https://github.com/m2en/citation/releases/tag/v0.1.0) | [2022/08/19](https://github.com/m2en/citation/releases/tag/v1.0.0-rc1) |
+| Version                    | Status     | Support Start Date                                                         | Support End Date                                                               |
+|----------------------------|------------|----------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| v2 (`v2.0.0`～)             | `Active`   | [2022/10/16](https://github.com/citation-dev/citation/releases/tag/v2.0.0) | 現在サポート中                                                                        |
+| v1 (`v1.0.0`～)             | `Inactive` | [2022/08/21](https://github.com/citation-dev/citation/releases/tag/v1.0.0) | [2022/10/16](https://github.com/citation-dev/citation/releases/tag/v1.4.0)     |
+| v0 (`v0.1.0`～`v1.0.0-rc1`) | `Inactive` | [2022/08/15](https://github.com/citation-dev/citation/releases/tag/v0.1.0) | [2022/08/19](https://github.com/citation-dev/citation/releases/tag/v1.0.0-rc1) |
 
 `Status` が `Inactive` となっているバージョンは、サポート対象外となります。 セキュリティパッチは例外を除いて配信されません。
 
@@ -24,22 +22,22 @@ Dockerfileなどで利用する際のバージョン指定の際はなるべく 
 # Docker Compose
 services:
   citation:
-    image: ghcr.io/m2en/citation:latest
+    image: ghcr.io/citation-dev/citation:latest
 ```
 
 ```shell
 # Docker Pull
-docker pull ghcr.io/m2en/citation:latest
+docker pull ghcr.io/citation-dev/citation:latest
 ```
 
 ```dockerfile
 # Dockerfile
-FROM ghcr.io/m2en/citation:latest
+FROM ghcr.io/citation-dev/citation:latest
 ```
 
 ## Reporting a Vulnerability
 
-citationに関する脆弱性を発見した際はDiscordやTwitter、Issue、Discussionsでは報告せず、 [me@m2en.dev](mailto:me@m2en.dev) まで **PGP鍵での暗号化を行って** メールで報告してください。
+citationに関する脆弱性を発見した際はDiscordやTwitter、Issue、Discussionsでは報告せず、 [citation@m2en.dev](mailto:citation@m2en.dev) まで **PGP鍵での暗号化を行って** メールで報告してください。
 
 暗号化を行う際は、以下の公開鍵を利用してください。
 
