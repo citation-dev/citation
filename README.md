@@ -28,7 +28,7 @@ citation は Docker をサポートしており、簡単に導入することが
 GitHub Container Registry(ghcr.io) からイメージを取得することができます。
 
 ```shell
-docker pull ghcr.io/m2en/citation:latest
+docker pull ghcr.io/citation-dev/citation:latest
 docker run -d --env-file .env citation
 ```
 

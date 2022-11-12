@@ -8,8 +8,6 @@ citationは、GitHub Packages Registry(ghcr.io)にて、ビルド済みイメー
 
 以下の表は現在コントリビューターがサポートしているcitationのバージョン一覧となります。
 
-// TODO: テーブルを更新
-
 | Version                    | Status     | Support Start Date                                                 | Support End Date                                                       |
 |----------------------------|------------|--------------------------------------------------------------------|------------------------------------------------------------------------|
 | v2 (`v2.0.0`～)             | `Active`   | [2022/10/16](https://github.com/m2en/citation/releases/tag/v2.0.0) | 現在サポート中                                                                |
@@ -24,17 +22,17 @@ Dockerfileなどで利用する際のバージョン指定の際はなるべく 
 # Docker Compose
 services:
   citation:
-    image: ghcr.io/m2en/citation:latest
+    image: ghcr.io/citation/citation:latest
 ```
 
 ```shell
 # Docker Pull
-docker pull ghcr.io/m2en/citation:latest
+docker pull ghcr.io/citation/citation:latest
 ```
 
 ```dockerfile
 # Dockerfile
-FROM ghcr.io/m2en/citation:latest
+FROM ghcr.io/citation/citation:latest
 ```
 
 ## Reporting a Vulnerability
