@@ -36,7 +36,7 @@ docker run -d --env-file .env citation
 
 ## ✨ Demo
 
-![引用する様子](https://citation.m2en.dev/assets/quote.gif)
+![引用する様子](https://citation.m2en.dev/assets/quote.a881ee79.gif)
 
 ## 🙌 Contributing
 
