@@ -11,7 +11,7 @@ assignees: ''
     1. 既に同じIssueが開かれていないか確認してください。
     2. できるだけ詳細に書いてください。
     3. セキュリティに関係する重大な不具合についてはIssueではなく、メールで報告してください。詳細は citation Security Policy をご覧ください。
-        https://citation.m2en.dev/security-policy/
+        https://github.com/citation-dev/citation/blob/main/SECURITY.md
 -->
 
 ## 概要
