@@ -30,8 +30,14 @@ class CitationDeleteEvent : ListenerAdapter() {
             return
         }
 
+        if(checkRequesterPermission(requester)) {
+            event.replyEmbeds(EmbedBuilder.buildEmbed("削除に成功しました。", "権限を持っていたため、IDの確認は行われません。")).setEphemeral(true).queue()
+            target.delete().queue()
+            Logger.sendInfo("${requester.user.name} の削除リクエストを受理しました。(権限バイパスあり)")
+            return
+        }
 
-        if (!checkRequesterPermission(requester) && event.componentId != requester.id) {
+        if (event.componentId != requester.id) {
             event.replyEmbeds(EmbedBuilder.buildErrorEmbed("削除に失敗しました", "あなたの引用ではないため、削除できません。")).setEphemeral(true).queue()
             return
         }

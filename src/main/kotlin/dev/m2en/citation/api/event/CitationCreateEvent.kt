@@ -15,6 +15,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.components.buttons.Button
 
+// TODO: 権限のチェックを追加する (MESSAGE_SEND)
 class CitationCreateEvent : ListenerAdapter() {
 
     /**
