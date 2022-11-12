@@ -37,14 +37,14 @@ private fun buildHelpEmbed(tag: String): MessageEmbed {
             "引用",
             "メッセージリンクを送信するとそのメッセージをEmbedとして送信します。`<>` でリンクを囲えば、リンクだけを送ることができます。\n${
                 markdownLink(
-                    "$docs/version2/quote/"
+                    "$docs/reference/features/citation"
                 )
             }",
             false
         )
         addField(
             "コマンド",
-            "引用以外の機能はスラッシュコマンドで利用できます。\n${markdownLink("$docs/version2/command/")}",
+            "引用以外の機能はスラッシュコマンドで利用できます。\n${markdownLink("$docs/reference/features")}",
             false
         )
     }.build()
