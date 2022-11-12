@@ -39,7 +39,7 @@ FROM ghcr.io/m2en/citation:latest
 
 ## Reporting a Vulnerability
 
-citationに関する脆弱性を発見した際はDiscordやTwitter、Issue、Discussionsでは報告せず、 [me@m2en.dev](mailto:me@m2en.dev) まで **PGP鍵での暗号化を行って** メールで報告してください。
+citationに関する脆弱性を発見した際はDiscordやTwitter、Issue、Discussionsでは報告せず、 [citation@m2en.dev](mailto:citation@m2en.dev) まで **PGP鍵での暗号化を行って** メールで報告してください。
 
 暗号化を行う際は、以下の公開鍵を利用してください。
 

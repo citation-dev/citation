@@ -32,13 +32,11 @@ docker pull ghcr.io/m2en/citation:latest
 docker run -d --env-file .env citation
 ```
 
-Docker を使用しないセットアップ方法も存在します。(非推奨)
-
-詳しいセットアップ方法は [ドキュメントの Getting Started ページ](https://citation.m2en.dev/resources/getting-started/) を確認してください。
+詳しいセットアップ方法は [ドキュメント](https://citation.m2en.dev/guide/install-guide/getting-started.html) を確認してください。
 
 ## ✨ Demo
 
-![引用する様子](./docs/docs/version2/image/gif/quote.gif)
+![引用する様子](https://citation.m2en.dev/assets/quote.gif)
 
 ## 🙌 Contributing
 
@@ -54,7 +52,7 @@ citation に関する質問やフィードバックは [GitHub Discussions](http
 
 セキュリティに関する不具合を見つけた場合は Issue などでは報告せず、正しい方法で報告を行ってください。
 
-詳しくは [citation Security Policy](https://citation.m2en.dev/resources/security-policy/) を確認してください。
+詳しくは [citation Security Policy](https://github.com/citation-dev/citation/blob/main/SECURITY.md) を確認してください。
 
 ## ❤️ Support
 
