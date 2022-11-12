@@ -12,6 +12,6 @@ COPY --from=Build build/libs/citation.jar /app/citation.jar
 COPY --from=Build .env.example /app/.env
 
 WORKDIR /app
-LABEL org.opencontainers.image.source=https://github.com/m2en/citation
+LABEL org.opencontainers.image.source=https://github.com/citation-dev/citation
 
 CMD ["java", "-jar", "/app/citation.jar"]

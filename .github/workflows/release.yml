@@ -33,5 +33,5 @@ jobs:
           labels: |
             org.opencontainers.image.source = https://github.com/${{ github.repository }}
           tags: |
-            ghcr.io/${{ github.actor }}/citation:latest
-            ghcr.io/${{ github.actor }}/citation:${{ github.event.inputs.version }}
+            ghcr.io/citation-dev/citation:latest
+            ghcr.io/citation-dev/citation:${{ github.event.inputs.version }}
