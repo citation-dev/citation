@@ -8,11 +8,11 @@ citationは、GitHub Packages Registry(ghcr.io)にて、ビルド済みイメー
 
 以下の表は現在コントリビューターがサポートしているcitationのバージョン一覧となります。
 
-| Version                    | Status     | Support Start Date                                                 | Support End Date                                                       |
-|----------------------------|------------|--------------------------------------------------------------------|------------------------------------------------------------------------|
-| v2 (`v2.0.0`～)             | `Active`   | [2022/10/16](https://github.com/m2en/citation/releases/tag/v2.0.0) | 現在サポート中                                                                |
-| v1 (`v1.0.0`～)             | `Inactive` | [2022/08/21](https://github.com/m2en/citation/releases/tag/v1.0.0) | [2022/10/16](https://github.com/m2en/citation/releases/tag/v1.4.0)     |
-| v0 (`v0.1.0`～`v1.0.0-rc1`) | `Inactive` | [2022/08/15](https://github.com/m2en/citation/releases/tag/v0.1.0) | [2022/08/19](https://github.com/m2en/citation/releases/tag/v1.0.0-rc1) |
+| Version                    | Status     | Support Start Date                                                         | Support End Date                                                               |
+|----------------------------|------------|----------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| v2 (`v2.0.0`～)             | `Active`   | [2022/10/16](https://github.com/citation-dev/citation/releases/tag/v2.0.0) | 現在サポート中                                                                        |
+| v1 (`v1.0.0`～)             | `Inactive` | [2022/08/21](https://github.com/citation-dev/citation/releases/tag/v1.0.0) | [2022/10/16](https://github.com/citation-dev/citation/releases/tag/v1.4.0)     |
+| v0 (`v0.1.0`～`v1.0.0-rc1`) | `Inactive` | [2022/08/15](https://github.com/citation-dev/citation/releases/tag/v0.1.0) | [2022/08/19](https://github.com/citation-dev/citation/releases/tag/v1.0.0-rc1) |
 
 `Status` が `Inactive` となっているバージョンは、サポート対象外となります。 セキュリティパッチは例外を除いて配信されません。
 
@@ -22,17 +22,17 @@ Dockerfileなどで利用する際のバージョン指定の際はなるべく 
 # Docker Compose
 services:
   citation:
-    image: ghcr.io/citation/citation:latest
+    image: ghcr.io/citation-dev/citation:latest
 ```
 
 ```shell
 # Docker Pull
-docker pull ghcr.io/citation/citation:latest
+docker pull ghcr.io/citation-dev/citation:latest
 ```
 
 ```dockerfile
 # Dockerfile
-FROM ghcr.io/citation/citation:latest
+FROM ghcr.io/citation-dev/citation:latest
 ```
 
 ## Reporting a Vulnerability
