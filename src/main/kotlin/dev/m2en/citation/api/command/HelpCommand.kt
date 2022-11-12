@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.components.buttons.Button
 
-private const val github = "https://github.com/m2en/citation"
+private const val github = "https://github.com/citation-dev/citation"
 private const val docs = "https://citation.m2en.dev"
 
 class HelpCommand(private val tag: String) : ListenerAdapter() {
