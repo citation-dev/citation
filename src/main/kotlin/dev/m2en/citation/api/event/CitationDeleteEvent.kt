@@ -62,8 +62,10 @@ class CitationDeleteEvent : ListenerAdapter() {
     }
 
     private fun checkRequesterPermission(requester: Member): Boolean {
-        if (!requester.hasPermission(Permission.MESSAGE_MANAGE)) return false
-        if (!requester.hasPermission(Permission.ADMINISTRATOR)) return false
+        if (!requester.hasPermission(Permission.MESSAGE_MANAGE) && !requester.hasPermission(Permission.ADMINISTRATOR)) {
+            return false
+        }
+
         return true
     }
 }
