@@ -19,47 +19,48 @@
   </a>
 </p>
 
-[日本語](README.md) / [英語版](README_EN.md) 
+[Japanese](README.md) / [English](README_EN.md)
 
-[citation docs](https://citation.m2en.dev/)
+[citation docs](https://citation.m2en.dev/en/)
 
 ## 🚀 Usage
 
-citation は Docker をサポートしており、簡単に導入することができます。
+citation supports Docker and can be easily deployed.
 
-GitHub Container Registry(ghcr.io) からイメージを取得することができます。
+You can get an image from the GitHub Container Registry (ghcr.io).
 
 ```shell
 docker pull ghcr.io/citation-dev/citation:latest
 
 docker run -d --env-file .env citation
-```
+````
 
-詳しいセットアップ方法は [ドキュメント](https://citation.m2en.dev/guide/install-guide/getting-started.html) を確認してください。
+Check [documentation](https://citation.m2en.dev/guide/install-guide/getting-started.html) for detailed setup instructions.
 
 ## ✨ Demo
 
-![引用する様子](https://github.com/citation-dev/citation.m2en.dev/blob/main/src/image/reference/features/gif/quote.gif?raw=true)
+![citation](https://github.com/citation-dev/citation.m2en.dev/blob/main/src/image/reference/features/gif/quote.gif?raw=true)
 
 ## 🙌 Contributing
 
-Contributions, issues など大歓迎です。
+Contributions, issues, etc. are welcome.
 
-citation の開発に貢献したい場合は [citation Contributing Guide](https://github.com/citation-dev/citation/blob/main/.github/CONTRIBUTING.md) を確認してください。
+If you want to contribute to the development of citation, please check [citation Contributing Guide](https://github.com/citation-dev/citation/blob/main/.github/CONTRIBUTING.md) Please check [citation Contributing Guide]() if you want to contribute to citation development.
 
 ## 🕊️ Community
 
-citation に関する質問やフィードバックは [GitHub Discussions](https://github.com/m2en/citation/discussions) をご利用ください。
+Please use [GitHub Discussions](https://github.com/m2en/citation/discussions) for questions and feedback about citation.
 
 ## 🛡️ Security
 
-セキュリティに関する不具合を見つけた場合は Issue などでは報告せず、正しい方法で報告を行ってください。
+If you find a security issue, please do not report it in an Issue, but report it in the correct way.
 
-詳しくは [citation Security Policy](https://github.com/citation-dev/citation/blob/main/SECURITY.md) を確認してください。
+Please check [citation Security Policy](https://github.com/citation-dev/citation/blob/main/SECURITY.md) for more information.
 
 ## ❤️ Support
 
-[m2en](https://github.com/sponsors/m2en) のGitHub Sponsorからサポートすることができます。
+Support can be obtained from [GitHub Sponsor](https://github.com/sponsors/m2en).
+
 
 ## 📝 License
 
@@ -67,7 +68,7 @@ Copyright @ 2022 [m2en](https://github.com/m2en)
 
 citation - [Apache 2.0 License](https://github.com/citation-dev/citation/blob/main/LICENSE)
 
-These are the people who contributed to citation. Thank you.  ❤️ 
+These are the people who contributed to citation. Thank you. ❤️
 
 <a href="https://github.com/m2en/citation/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=m2en/citation" />
