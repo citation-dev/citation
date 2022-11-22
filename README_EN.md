@@ -19,7 +19,7 @@
   </a>
 </p>
 
-[Japanese](README.md) / [English](README_EN.md)
+[日本語](README.md) / [English](README_EN.md)
 
 [citation docs](https://citation.m2en.dev/en/)
 
@@ -35,7 +35,7 @@ docker pull ghcr.io/citation-dev/citation:latest
 docker run -d --env-file .env citation
 ````
 
-Check [documentation](https://citation.m2en.dev/guide/install-guide/getting-started.html) for detailed setup instructions.
+Check [documentation](https://citation.m2en.dev/en/guide/install-guide/getting-started.html) for detailed setup instructions.
 
 ## ✨ Demo
 
@@ -45,7 +45,7 @@ Check [documentation](https://citation.m2en.dev/guide/install-guide/getting-star
 
 Contributions, issues, etc. are welcome.
 
-If you want to contribute to the development of citation, please check [citation Contributing Guide](https://github.com/citation-dev/citation/blob/main/.github/CONTRIBUTING.md) Please check [citation Contributing Guide]() if you want to contribute to citation development.
+If you want to contribute to the development of citation, please check [citation Contributing Guide](https://github.com/citation-dev/citation/blob/main/.github/CONTRIBUTING_EN.md) Please check [citation Contributing Guide]() if you want to contribute to citation development.
 
 ## 🕊️ Community
 
@@ -55,7 +55,7 @@ Please use [GitHub Discussions](https://github.com/m2en/citation/discussions) fo
 
 If you find a security issue, please do not report it in an Issue, but report it in the correct way.
 
-Please check [citation Security Policy](https://github.com/citation-dev/citation/blob/main/SECURITY.md) for more information.
+Please check [citation Security Policy](https://github.com/citation-dev/citation/blob/main/SECURITY_EN.md) for more information.
 
 ## ❤️ Support
 

@@ -13,7 +13,7 @@ The following table lists the citation versions currently supported by contribut
 | Version                                 | Status                  | Support Start Date                                                         | Support End Date                                                               |
 |-----------------------------------------|-------------------------|----------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | v2 (`v2.2.1`～)                          | `Active`                | [2022/10/16](https://github.com/citation-dev/citation/releases/tag/v2.2.1) | Currently supported                                                            |
-| v2 -`m2en/citation` (`v2.0.0`~`v2.2.1`) | `Active(not available)` | [2022/10/16](https://github.com/citation-dev/citation/releases/tag/v2.0.0) | currently supported                                                            |
+| v2 -`m2en/citation` (`v2.0.0`~`v2.2.1`) | `Active(not available)` | [2022/10/16](https://github.com/citation-dev/citation/releases/tag/v2.0.0) | Currently supported                                                            |
 | v1 (`v1.0.0`~)                          | `Inactive`              | [2022/08/21](https://github.com/citation-dev/citation/releases/tag/v1.0.0) | [2022/10/16](https://github.com/citation-dev/citation/releases/tag/v1.4.0)     |
 | v0 (`v0.1.0`~ `v1.0.0-rc1`)             | `Inactive`              | [2022/08/15](https://github.com/citation-dev/citation/releases/tag/v0.1.0) | [2022/08/19](https://github.com/citation-dev/citation/releases/tag/v1.0.0-rc1) |
 

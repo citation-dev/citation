@@ -25,7 +25,7 @@ The main forms of branch naming refer to the following.
 ```
 
 - `<type>` specifies the type of branch type.
-  - The type conforms to the [Conventional Commits](https://www.conventionalcommits.org/ja/v1.0.0/) rules for commit messages.
+  - The type conforms to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) rules for commit messages.
   - Example:
     - `feat`: new feature
     - `fix`: bug fixes
