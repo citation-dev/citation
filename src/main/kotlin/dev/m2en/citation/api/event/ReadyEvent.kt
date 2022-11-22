@@ -7,15 +7,25 @@ package dev.m2en.citation.api.event
 import dev.m2en.citation.api.manager.CommandManager
 import dev.m2en.citation.internal.utils.Logger
 import dev.m2en.citation.internal.utils.Utils
+import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
+private val RECOMMEND_PERMISSION = mutableListOf(
+    Permission.VIEW_CHANNEL,
+    Permission.MESSAGE_SEND,
+    Permission.MESSAGE_SEND_IN_THREADS,
+    Permission.MESSAGE_EMBED_LINKS,
+    Permission.MESSAGE_ATTACH_FILES,
+    Permission.MESSAGE_HISTORY,
+)
 class ReadyEvent(private val tag: String?) : ListenerAdapter() {
 
     override fun onReady(event: ReadyEvent) {
         super.onReady(event)
         Logger.sendInfo("======================")
         Logger.sendInfo("citationを起動します。")
+        Logger.sendInfo("======================")
         if (tag == null) {
             Logger.sendWarn("バージョン情報が取得できませんでした。")
         } else {
@@ -33,6 +43,11 @@ class ReadyEvent(private val tag: String?) : ListenerAdapter() {
         Logger.sendInfo("======================")
         Logger.sendInfo("起動完了しました。")
         Logger.sendInfo("======================")
+
+        if(event.guildAvailableCount == 0 || event.jda.guildCache.isEmpty) {
+            Logger.sendWarn("citationが接続したBotはどこのギルドにも所属していないか、利用できるギルドが存在しません。")
+            Logger.sendWarn("招待リンクを使用して招待してください。[${event.jda.getInviteUrl(RECOMMEND_PERMISSION)}]")
+        }
 
         val guild = event.jda.getGuildById(Utils.getEnv("GUILD_ID")) ?: throw NumberFormatException(
             "ギルドを取得することができませんでした。"
