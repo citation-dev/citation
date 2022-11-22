@@ -21,7 +21,7 @@
 
 [日本語](README.md) / [English](README_EN.md)
 
-[citation docs](https://citation.m2en.dev/en/)
+[citation docs](https://citation.m2en.dev/en/) / [Discord](https://discord.gg/vWbFzvdks7)
 
 ## 🚀 Usage
 
