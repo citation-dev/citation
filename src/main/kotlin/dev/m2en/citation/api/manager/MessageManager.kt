@@ -2,7 +2,7 @@
 // Created by m2en : Logic to retrieve and inspect messages
 // --------------------------------------------------------
 
-package dev.m2en.citation.internal.manager
+package dev.m2en.citation.api.manager
 
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageType

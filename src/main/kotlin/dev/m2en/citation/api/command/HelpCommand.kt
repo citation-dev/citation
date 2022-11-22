@@ -13,6 +13,9 @@ import net.dv8tion.jda.api.interactions.components.buttons.Button
 private const val github = "https://github.com/citation-dev/citation"
 private const val docs = "https://citation.m2en.dev"
 
+// TODO:
+//  i18n (多言語対応)
+//  (https://github.com/citation-dev/citation/issues/112)
 class HelpCommand(private val tag: String) : ListenerAdapter() {
 
     override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
