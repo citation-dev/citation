@@ -4,13 +4,11 @@
 
 package dev.m2en.citation.api.event
 
+import dev.m2en.citation.api.manager.CommandManager
 import dev.m2en.citation.internal.utils.Logger
 import dev.m2en.citation.internal.utils.Utils
-import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
-import net.dv8tion.jda.api.interactions.commands.OptionType
-import net.dv8tion.jda.api.interactions.commands.build.Commands
 
 class ReadyEvent(private val tag: String?) : ListenerAdapter() {
 
@@ -39,18 +37,7 @@ class ReadyEvent(private val tag: String?) : ListenerAdapter() {
         val guild = event.jda.getGuildById(Utils.getEnv("GUILD_ID")) ?: throw NumberFormatException(
             "ギルドを取得することができませんでした。"
         )
-        registerCommand(guild)
+        CommandManager.registerCommand(guild)
     }
 
-}
-
-private fun registerCommand(guild: Guild) {
-    try {
-        guild.updateCommands().addCommands(
-            Commands.slash("help", "ヘルプを開く"),
-            Commands.slash("ping", "応答時間(Ping)を表示する"),
-        ).queue()
-    } catch (e: IllegalArgumentException) {
-        e.printStackTrace()
-    }
 }
