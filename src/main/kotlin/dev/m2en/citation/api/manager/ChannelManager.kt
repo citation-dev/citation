@@ -2,7 +2,7 @@
 // Created by m2en : Logic to acquire and inspect channels
 // -------------------------------------------------------
 
-package dev.m2en.citation.internal.manager
+package dev.m2en.citation.api.manager
 
 import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.entities.channel.ChannelType

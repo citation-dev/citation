@@ -4,8 +4,8 @@
 
 package dev.m2en.citation.api.event
 
-import dev.m2en.citation.internal.manager.ChannelManager
-import dev.m2en.citation.internal.manager.MessageManager
+import dev.m2en.citation.api.manager.ChannelManager
+import dev.m2en.citation.api.manager.MessageManager
 import dev.m2en.citation.internal.utils.FileBuilder
 import dev.m2en.citation.internal.utils.Logger
 import net.dv8tion.jda.api.entities.Message
