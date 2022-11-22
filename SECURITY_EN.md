@@ -1,6 +1,6 @@
 # Security Policy
 
-[Japanese](SECURITY.md) / [English](SECURITY_EN.md)
+[日本語](SECURITY.md) / [English](SECURITY_EN.md)
 
 Security policy of CITATION.
 

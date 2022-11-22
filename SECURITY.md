@@ -1,6 +1,6 @@
 # Security Policy
 
-[日本語](SECURITY.md) / [英語版](SECURITY_EN.md)
+[日本語](SECURITY.md) / [English](SECURITY_EN.md)
 
 citationのセキュリティポリシーについてです。
 

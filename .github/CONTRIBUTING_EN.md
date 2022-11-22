@@ -1,5 +1,7 @@
 # Contributing Guide
 
+[日本語](CONTRIBUTING.md) / [English](CONTRIBUTING_EN.md)
+
 Contributing Guide
 
 ## Contribution Flow

@@ -19,7 +19,7 @@
   </a>
 </p>
 
-[日本語](README.md) / [英語版](README_EN.md) 
+[日本語](README.md) / [English](README_EN.md) 
 
 [citation docs](https://citation.m2en.dev/)
 
