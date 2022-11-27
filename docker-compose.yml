@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   citation:
-    image: ghcr.io/m2en/citation:latest
+    image: ghcr.io/citation-dev/citation:latest
     env_file:
       - .env
     restart: always
