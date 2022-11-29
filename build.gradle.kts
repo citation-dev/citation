@@ -19,8 +19,8 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("org.slf4j:slf4j-simple:2.0.5")
     implementation("net.dv8tion:JDA:5.0.0-beta.1")
-    implementation("org.slf4j:slf4j-simple:2.0.4")
     implementation("io.github.cdimascio:dotenv-kotlin:6.4.0")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.14.1")
 }
