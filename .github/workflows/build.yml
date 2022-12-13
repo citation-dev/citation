@@ -2,9 +2,13 @@ name: build
 
 on:
   pull_request:
-    paths-ignore:
-      - '**.md'
-      - '**.yml'
+    paths:
+      - 'build.gradle.kts'
+      - 'settings.gradle.kts'
+      - 'gradlew'
+      - 'gradlew.bat'
+      - '**.kt'
+      - 'build.yml'
 
 jobs:
   build:
