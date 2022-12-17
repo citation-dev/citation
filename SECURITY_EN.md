@@ -50,6 +50,20 @@ Key fingerprint: `78E4 CFE0 B3B2 0C4C 7BAA A3CA 6554 A829 D251 53F9`
 
 [pgp_keys.asc](https://keybase.io/m2en/pgp_keys.asc?fingerprint=78e4cfe0b3b20c4c7baaa3ca6554a829d25153f9)
 
+<details>
+<summary>Report from GitHub (Beta)</summary>
+
+----
+  
+ 
+In addition to email reporting via GPG keysignature, you can also report via [**Security Tab**](https://github.com/citation-dev/citation/security) in citation-dev/citation.
+  
+![image](https://user-images.githubusercontent.com/82575685/208250469-06d9e9c5-7804-4806-8122-e4b0628d7b16.png)
+
+For more information, see [Privately reporting a security vulnerability - GitHub Docs](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability) for more information.
+  
+</details>
+
 ----
 
 When reporting, please also provide as much of the following information as possible
