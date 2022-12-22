@@ -18,7 +18,7 @@ commandRegistration: true
 # Discord サーバーとの接続が確立しなかった際に、自動的に再接続を行うかどうか設定します。
 # default: true
 # true: 再接続を行います。 / false: 再接続を行いません。接続が切断された場合はセッションが終了します。
-autoConnect: true
+autoConnection: true
 
 # 接続を適切に切断するためにJDAが行う最後のクリーンアップを行うかどうか設定します。
 # 基本的に変更する必要はありません。
