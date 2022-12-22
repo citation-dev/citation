@@ -6,6 +6,7 @@ package dev.m2en.citation.api.event
 
 import dev.m2en.citation.api.manager.CommandManager
 import dev.m2en.citation.internal.utils.Logger
+import dev.m2en.citation.internal.utils.Settings
 import dev.m2en.citation.internal.utils.Utils
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.session.ReadyEvent
@@ -19,7 +20,7 @@ private val RECOMMEND_PERMISSION = mutableListOf(
     Permission.MESSAGE_ATTACH_FILES,
     Permission.MESSAGE_HISTORY,
 )
-class ReadyEvent(private val tag: String?) : ListenerAdapter() {
+class ReadyEvent(private val tag: String?, private val config: Settings) : ListenerAdapter() {
 
     override fun onReady(event: ReadyEvent) {
         super.onReady(event)
@@ -36,6 +37,11 @@ class ReadyEvent(private val tag: String?) : ListenerAdapter() {
         Logger.sendInfo("   (うち利用可能: ${event.guildAvailableCount})")
         Logger.sendInfo("   (うち利用不可能: ${event.guildUnavailableCount})")
         Logger.sendInfo("======================")
+        Logger.sendInfo("設定:")
+        Logger.sendInfo("   - コマンド登録: ${config.commandRegistration}")
+        Logger.sendInfo("   - 自動再接続: ${config.autoConnection}")
+        Logger.sendInfo("   - シャットダウン時のクリーンアップ: ${config.shutdownHook}")
+        Logger.sendInfo("======================")
         Logger.sendInfo("GitHub: https://github.com/citation-dev/citation")
         Logger.sendInfo("Issue: https://github.com/citation-dev/citation/issues/new/choose")
         Logger.sendInfo("Discussion: https://github.com/citation-dev/citation/discussions")
@@ -49,10 +55,12 @@ class ReadyEvent(private val tag: String?) : ListenerAdapter() {
             Logger.sendWarn("招待リンクを使用して招待してください。[${event.jda.getInviteUrl(RECOMMEND_PERMISSION)}]")
         }
 
-        val guild = event.jda.getGuildById(Utils.getEnv("GUILD_ID")) ?: throw NumberFormatException(
-            "ギルドを取得することができませんでした。"
-        )
-        CommandManager.registerCommand(guild)
+        if(config.commandRegistration) {
+            val guild = event.jda.getGuildById(Utils.getEnv("GUILD_ID")) ?: throw NumberFormatException(
+                "ギルドを取得することができませんでした。"
+            )
+            CommandManager.registerCommand(guild)
+        }
     }
 
 }
