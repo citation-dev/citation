@@ -44,3 +44,6 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+
+### citation ###
+config/config.yml
