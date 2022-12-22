@@ -1,0 +1,27 @@
+# ------------------------
+# citation config
+# ------------------------
+
+# citation の設定を行うコンフィグです。
+# 詳細はドキュメントを確認してください。
+# https://citation.m2en.dev/guide/customize/settings.html
+# https://citation.m2en.dev/guide/customize/settings_reference.html
+
+
+# コマンドの登録を行うかどうか設定します。
+# citationは起動するたびに一連のコマンド登録の処理を行います。何かしらの不都合で正常に起動できず、再接続機能と合わせて何度も登録処理が走ることがあります。
+# その場合でも citation は登録処理を行うため、一度登録が完了したらオフにすることをおすすめします。
+# default: true
+# true: 起動時にコマンド登録を行います。 / false: 起動時にコマンド登録を行いません。
+commandRegistration: true
+
+# Discord サーバーとの接続が確立しなかった際に、自動的に再接続を行うかどうか設定します。
+# default: true
+# true: 再接続を行います。 / false: 再接続を行いません。接続が切断された場合はセッションが終了します。
+autoConnect: true
+
+# 接続を適切に切断するためにJDAが行う最後のクリーンアップを行うかどうか設定します。
+# 基本的に変更する必要はありません。
+# default: true
+# true: クリーンアップを行います。 / false: クリーンアップを行いません。
+shutdownHook: true
