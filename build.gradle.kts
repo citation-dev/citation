@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "1.7.22"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("com.palantir.git-version") version "0.15.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.6.21"
 }
 
 group = "dev.m2en"
@@ -23,6 +24,7 @@ dependencies {
     implementation("net.dv8tion:JDA:5.0.0-beta.2")
     implementation("io.github.cdimascio:dotenv-kotlin:6.4.0")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.14.1")
+    implementation("com.charleskorn.kaml:kaml:0.49.0")
 }
 
 tasks.test {
