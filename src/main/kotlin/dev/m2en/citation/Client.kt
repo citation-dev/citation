@@ -9,6 +9,7 @@ import dev.m2en.citation.api.command.PingCommand
 import dev.m2en.citation.api.event.ReadyEvent
 import dev.m2en.citation.api.event.CitationCreateEvent
 import dev.m2en.citation.api.event.CitationDeleteEvent
+import dev.m2en.citation.internal.utils.Settings
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
@@ -25,12 +26,13 @@ class Client {
          * @param tag citationのバージョン
          * @return クライアント
          */
-        fun createClient(token: String, tag: String): JDABuilder {
+        fun createClient(token: String, tag: String, config: Settings): JDABuilder {
             return JDABuilder
                 .createDefault(token)
                 .setActivity(Activity.playing("/help | $tag"))
                 .setBulkDeleteSplittingEnabled(true)
-                .setAutoReconnect(true)
+                .setAutoReconnect(config.autoConnection)
+                .setEnableShutdownHook(config.shutdownHook)
 
                 // メッセージコンテンツ、ギルドメンバー、ギルドメッセージのインテントを有効化
                 .setEnabledIntents(
@@ -70,7 +72,7 @@ class Client {
                 )
                 .addEventListeners(
                     // Event:
-                    ReadyEvent(tag),
+                    ReadyEvent(tag, config),
                     CitationCreateEvent(),
                     // Command:
                     HelpCommand(tag),
