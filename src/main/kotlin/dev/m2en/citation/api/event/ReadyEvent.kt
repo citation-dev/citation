@@ -11,6 +11,10 @@ import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
+/**
+ * citation の推奨権限はドキュメントを参照してください。
+ * https://citation.m2en.dev/guide/install-guide/create-bot.html
+ */
 private val recommendPermission = mutableListOf(
     Permission.VIEW_CHANNEL,
     Permission.MESSAGE_SEND,
