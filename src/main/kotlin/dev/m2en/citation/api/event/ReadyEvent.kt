@@ -11,7 +11,7 @@ import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
-private val RECOMMEND_PERMISSION = mutableListOf(
+private val recommendPermission = mutableListOf(
     Permission.VIEW_CHANNEL,
     Permission.MESSAGE_SEND,
     Permission.MESSAGE_SEND_IN_THREADS,
@@ -19,6 +19,7 @@ private val RECOMMEND_PERMISSION = mutableListOf(
     Permission.MESSAGE_ATTACH_FILES,
     Permission.MESSAGE_HISTORY,
 )
+
 class ReadyEvent(private val tag: String?) : ListenerAdapter() {
 
     override fun onReady(event: ReadyEvent) {
@@ -46,7 +47,7 @@ class ReadyEvent(private val tag: String?) : ListenerAdapter() {
 
         if(event.guildAvailableCount == 0 || event.jda.guildCache.isEmpty) {
             Logger.sendWarn("citationが接続したBotはどこのギルドにも所属していないか、利用できるギルドが存在しません。")
-            Logger.sendWarn("招待リンクを使用して招待してください。[${event.jda.getInviteUrl(RECOMMEND_PERMISSION)}]")
+            Logger.sendWarn("招待リンクを使用して招待してください。[${event.jda.getInviteUrl(recommendPermission)}]")
         }
 
         val guild = event.jda.getGuildById(Utils.getEnv("GUILD_ID")) ?: throw NumberFormatException(
