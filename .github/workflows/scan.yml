@@ -3,11 +3,10 @@ name: trivy scan
 on:
   push:
     branches:
-      - main
-    branches-ignore:
       # Dependabot のプッシュでの Workflows は読み取り専用権限として実行される
       # この場合は Code Scanning は使用できないため、Dependabot のプッシュはスキャン対象に含めない
-      - 'dependabot/**/main/**'
+      - '!dependabot/**/main/**'
+      - main
   # プルリクエストの場合は上記の影響を受けないため、いつもどおりスキャンを行う
   pull_request:
 
