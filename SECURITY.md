@@ -50,6 +50,20 @@ citationに関する脆弱性を発見した際はDiscordやTwitter、Issue、Di
 
 [pgp_keys.asc](https://keybase.io/m2en/pgp_keys.asc?fingerprint=78e4cfe0b3b20c4c7baaa3ca6554a829d25153f9)
 
+<details>
+<summary>GitHubから報告する(Beta)</summary>
+
+----
+  
+ 
+GPG鍵署名でのメール報告の他に citation-dev/citation の [**Security Tab**](https://github.com/citation-dev/citation/security) からでも報告することができます。
+  
+![image](https://user-images.githubusercontent.com/82575685/208250469-06d9e9c5-7804-4806-8122-e4b0628d7b16.png)
+
+詳細は [Privately reporting a security vulnerability - GitHub Docs](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability) を確認してください。
+  
+</details>
+
 ----
 
 また報告する際は以下の情報をできる限り多く提供してください。
