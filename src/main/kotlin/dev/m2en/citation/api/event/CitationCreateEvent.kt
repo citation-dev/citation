@@ -23,7 +23,7 @@ class CitationCreateEvent : ListenerAdapter() {
      * GuildId/ChannelId/MessageId
      */
     private val linkRegex =
-        Regex("""https://(?:ptb\.|canary\.)?discord(?:app)?.com/channels/(\d+)/(\d+)/(\d+)""")
+        Regex("""https://(?:ptb\.|canary\.)?discord(?:app)?\.com/channels/(\d+)/(\d+)/(\d+)""")
 
     /**
      * スキップ対象のメッセージリンクを取り出す正規表現
