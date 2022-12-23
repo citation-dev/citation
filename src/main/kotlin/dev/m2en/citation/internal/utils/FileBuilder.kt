@@ -32,7 +32,8 @@ class FileBuilder {
                     return@forEach
                 }
 
-                embed.addField("添付ファイル", fileName, true)
+                embed.addField("添付ファイル", "[$fileName]($fileUrl)", true)
+
                 embed.setImage(fileUrl)
             }
         }

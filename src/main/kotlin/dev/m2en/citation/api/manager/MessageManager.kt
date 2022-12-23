@@ -36,7 +36,7 @@ class MessageManager {
          * @return true -> 利用可能, false -> 利用できない
          */
         private fun checkMessageType(message: Message): Boolean {
-            if (message.embeds.isNotEmpty() && message.contentRaw.isEmpty()) return false
+            if (message.embeds.isNotEmpty() || message.contentRaw.isEmpty()) return false
             return when (message.type) {
                 // 通常メッセージ、返信、スラッシュコマンド、コンテキストメニュー、スレッドの初期メッセージのみを受け入れる
                 MessageType.DEFAULT, MessageType.INLINE_REPLY,
